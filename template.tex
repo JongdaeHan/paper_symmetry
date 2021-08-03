@@ -443,95 +443,15 @@ In order to verify safety, it is recommended that at least 20\% of the training 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
-We have confirmed through experiments that adversarial training ca significantly improve the safety performance with little effect on accuracy of the model.
+We have confirmed through experiments that adversarial training can improve the safety performance with little effect on accuracy of the model.
+This means that generating adversarial examples using the dataset you have before proceeding with learning and including the adversarial examples in the training dataset can be used as one of the factors that can verify the safety of AI.
+Furthermore, we proposed the method to achieve a balance between accuracy and safety for the dataset used in the experiments by generating a mixed dataset of different ratios.
+It can be used as a methodology that can balance the performance between accuracy and safety by performing the experimental method proposed in the thesis several times according to the important requirements and adjusting the ratio of inclusion of adversarial examples in training dataset.
+Based on the proposed methods, when entering into an actual AI project, it can be used as one of the factors that can verify the safety before the training process that consumes a lot of resources by checking whether adversarial examples are included in the training dataset. Therefore, it is possible to reduce the resources required for at least one tarninig.
+Moreover, it is possible to reduce the cost of training model that verifies the requirements by adjusting the ratio of inclusion of adversarial examples for higher-value requirements through accuracy and safety after one training and evaluation.
 
-
-Bulleted lists look like this:
-\begin{itemize}
-\item	First bullet;
-\item	Second bullet;
-\item	Third bullet.
-\end{itemize}
-
-Numbered lists can be added as follows:
-\begin{enumerate}
-\item	First item; 
-\item	Second item;
-\item	Third item.
-\end{enumerate}
-
-The text continues here. 
-
-\subsection{Figures, Tables and Schemes}
-
-All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, etc.
-
-
-
-% The MDPI table float is called specialtable
-\begin{specialtable}[H] 
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
-%%% \tablesize{} %% You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{ccc}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-Entry 1		& Data			& Data\\
-Entry 2		& Data			& Data\\
-\bottomrule
-\end{tabular}
-\end{specialtable}
-
-%\begin{listing}[H]
-%\caption{Title of the listing}
-%\rule{\columnwidth}{1pt}
-%\raggedright Text of the listing. In font size footnotesize, small, or normalsize. Preferred format: left aligned and single spaced. Preferred border format: top border line and bottom border line.
-%\rule{\columnwidth}{1pt}
-%\end{listing}
-
-Text.
-
-Text.
-
-\subsection{Formatting of Mathematical Components}
-
-This is the example 1 of equation:
-\begin{equation}
-a = 1,
-\end{equation}
-the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
-%% If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph.
-
-This is the example 2 of equation:
-\end{paracol}
-\nointerlineskip
-\begin{equation}
-a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z
-\end{equation}
-
-% Example of a figure that spans the whole page width (the commands \widefigure and \begin{paracol}{2}, \linenumbers, and\switchcolumn need to be present). The same concept works for tables, too.
-% \begin{figure}[H]	
-% \widefigure
-% \includegraphics[width=15 cm]{Definitions/logo-mdpi}
-% \caption{This is a wide figure.\label{fig2}}
-% \end{figure}  
-\begin{paracol}{2}
-\linenumbers
-\switchcolumn
-
-Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows:
-%% Example of a theorem:
-\begin{Theorem}
-Example text of a theorem.
-\end{Theorem}
-
-The text continues here. Proofs must be formatted as follows:
-
-%% Example of a proof:
-\begin{proof}[Proof of Theorem 1]
-Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is clear which theorem is being referred to.
-\end{proof}
-The text continues here.
+In future work, we plan to verify the validity of the proposed method for more diverse classification datasets, different model structures, and various adversarial attack methods.
+In addition, we are going to conduct research on how NFRs other than AI and safety for purposes other than classification models can be pre-verified through experiements.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Patents}
