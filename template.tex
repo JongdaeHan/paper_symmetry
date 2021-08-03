@@ -1,0 +1,687 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[journal,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
+
+% For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
+
+%--------------------
+% Class Options:
+%--------------------
+%----------
+% journal
+%----------
+% Choose between the following MDPI journals:
+% acoustics, actuators, addictions, admsci, adolescents, aerospace, agriculture, agriengineering, agronomy, ai, algorithms, allergies, analytica, animals, antibiotics, antibodies, antioxidants, appliedchem, applmech, applmicrobiol, applnano, applsci, arts, asi, atmosphere, atoms, audiolres, automation, axioms, batteries, bdcc, behavsci, beverages, biochem, bioengineering, biologics, biology, biomechanics, biomedicines, biomedinformatics, biomimetics, biomolecules, biophysica, biosensors, biotech, birds, bloods, brainsci, buildings, businesses, cancers, carbon, cardiogenetics, catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, chemproc, children, civileng, cleantechnol, climate, clinpract, clockssleep, cmd, coatings, colloids, compounds, computation, computers, condensedmatter, conservation, constrmater, cosmetics, crops, cryptography, crystals, curroncol, cyber, dairy, data, dentistry, dermato, dermatopathology, designs, diabetology, diagnostics, digital, disabilities, diseases, diversity, dna, drones, dynamics, earth, ebj, ecologies, econometrics, economies, education, ejihpe, electricity, electrochem, electronicmat, electronics, encyclopedia, endocrines, energies, eng, engproc, entropy, environments, environsciproc, epidemiologia, epigenomes, fermentation, fibers, fire, fishes, fluids, foods, forecasting, forensicsci, forests, fractalfract, fuels, futureinternet, futuretransp, futurepharmacol, futurephys, galaxies, games, gases, gastroent, gastrointestdisord, gels, genealogy, genes, geographies, geohazards, geomatics, geosciences, geotechnics, geriatrics, hazardousmatters, healthcare, hearts, hemato, heritage, highthroughput, histories, horticulturae, humanities, hydrogen, hydrology, hygiene, idr, ijerph, ijfs, ijgi, ijms, ijns, ijtm, ijtpp, immuno, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jcdd, jcm, jcp, jcs, jdb, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmp, jmse, jne, jnt, jof, joitmc, jor, journalmedia, jox, jpm, jrfm, jsan, jtaer, jzbg, kidney, land, languages, laws, life, liquids, literature, livers, logistics, lubricants, machines, macromol, magnetism, magnetochemistry, make, marinedrugs, materials, materproc, mathematics, mca, measurements, medicina, medicines, medsci, membranes, metabolites, metals, metrology, micro, microarrays, microbiolres, micromachines, microorganisms, minerals, mining, modelling, molbank, molecules, mps, mti, nanoenergyadv, nanomanufacturing, nanomaterials, ncrna, network, neuroglia, neurolint, neurosci, nitrogen, notspecified, nri, nursrep, nutrients, obesities, oceans, ohbm, onco, oncopathology, optics, oral, organics, osteology, oxygen, parasites, parasitologia, particles, pathogens, pathophysiology, pediatrrep, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photochem, photonics, physchem, physics, physiolsci, plants, plasma, pollutants, polymers, polysaccharides, proceedings, processes, prosthesis, proteomes, psych, psychiatryint, publications, quantumrep, quaternary, qubs, radiation, reactions, recycling, regeneration, religions, remotesensing, reports, reprodmed, resources, risks, robotics, safety, sci, scipharm, sensors, separations, sexes, signals, sinusitis, smartcities, sna, societies, socsci, soilsystems, solids, sports, standards, stats, stresses, surfaces, surgeries, suschem, sustainability, symmetry, systems, taxonomy, technologies, telecom, textiles, thermo, tourismhosp, toxics, toxins, transplantology, traumas, tropicalmed, universe, urbansci, uro, vaccines, vehicles, vetsci, vibration, viruses, vision, water, wevj, women, world 
+
+%---------
+% article
+%---------
+% The default type of manuscript is "article", but can be replaced by: 
+% abstract, addendum, article, book, bookreview, briefreport, casereport, comment, commentary, communication, conferenceproceedings, correction, conferencereport, entry, expressionofconcern, extendedabstract, datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, studyprotocol, systematicreview, supfile, technicalnote, viewpoint, guidelines, registeredreport, tutorial
+% supfile = supplementary materials
+
+%----------
+% submit
+%----------
+% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g., the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
+
+%------------------
+% moreauthors
+%------------------
+% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
+
+%---------
+% pdftex
+%---------
+% The option pdftex is for use with pdfLaTeX. If eps figures are used, remove the option pdftex and use LaTeX and dvi2pdf.
+
+%=================================================================
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2021}
+\copyrightyear{2020}
+%\externaleditor{Academic Editor: Firstname Lastname} % For journal Automation, please change Academic Editor to "Communicated by"
+\datereceived{} 
+\dateaccepted{} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, paracol, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+%=================================================================
+%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{The Effects of Adversarial Training on the Safety of Classifictaion Models}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Title}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
+%\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Handong Kim $^{1,\dagger}$\orcidA{} and Jongdae Han $^{2,}$*}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Handong Kim and Jongdae Han}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lastname, F.; Lastname, F.; Lastname, F.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Affiliation 1; sw.engineering@kakao.com\\
+$^{2}$ \quad Affiliation 2; elvenwhite@smu.ac.kr}
+
+% Contact information of the corresponding author
+\corres{Correspondence: elvenwhite@smu.ac.kr; Tel.: (optional; include country code; if there are multiple corresponding authors, add author initials) +xx-xxxx-xxx-xxxx (F.L.)}
+
+% Current address and/or shared authorship
+\firstnote{Current address: Affiliation 3} 
+% \secondnote{These authors contributed equally to this work.}
+% The commands \thirdnote{} till \eighthnote{} are available for further notes
+
+%\simplesumm{} % Simple summary
+
+%\conference{} % An extended version of a conference paper
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
+
+% Keywords
+\keyword{keyword 1; keyword 2; keyword 3 (List three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.)} 
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Diversity
+%\LSID{\url{http://}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Applied Sciences:
+%\featuredapplication{Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Data:
+%\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
+
+%\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Toxins
+%\keycontribution{The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Encyclopedia
+%\encyclopediadef{Instead of the abstract}
+%\entrylink{The Link to this entry published on the encyclopedia platform.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{section}%{-1} %% Remove this when starting to work on the template.
+% \section{How to Use this Template}
+
+% The template details the sections that can be used in a manuscript. Note that the order and names of article sections may differ from the requirements of the journal (e.g., the positioning of the Materials and Methods section). Please check the instructions on the authors' page of the journal to verify the correct order and names. For any questions, please contact the editorial office of the journal or support@mdpi.com. For LaTeX-related questions please contact latex@mdpi.com.
+%The order of the section titles is: Introduction, Materials and Methods, Results, Discussion, Conclusions for these journals: aerospace,algorithms,antibodies,antioxidants,atmosphere,axioms,biomedicines,carbon,crystals,designs,diagnostics,environments,fermentation,fluids,forests,fractalfract,informatics,information,inventions,jfmk,jrfm,lubricants,neonatalscreening,neuroglia,particles,pharmaceutics,polymers,processes,technologies,viruses,vision
+
+\section{Introduction}
+ 
+Software requirements are one of the important factors affects software performance.
+If we verify the requirements in early step in software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to adjust future problems.
+Typical software has verified the requirements using methods such as V\&V model(Verification and Validation) that verified whether the software meets the requirments based on the evaluation measures within each software development life cycle.
+However, with the advent of Deep Nueral Network(DNN), artificial intelligence(AI), which differs from existing software that appeared throughout society, is difficult to verify by a method verifying existing software.
+In AI, it is very important to verify the NFRs of AI in areas such as autonomous driving, medical diagnosis, and finance that can have a fatal impact on humans.
+Since AI mainly operates as a black box, human can't directly identify what process it goes through and what features it learns to derive results.
+This characteristics of AI makes it difficult for non-functional requirements(NFRs) such as safety[], security[], and transparency[] of results to be verified.
+
+Most of the AI was mainly verified through numerical measures such as how high the accuracy is. 
+Verification through these numerical measures is one of the ways taht can verify the functional requirements for how well the AI works.
+However, it is hard to say that it is for verification for NFRs.
+So, the methods for verifying NFRs are needed, but there is no standardized verification methods.\\
+
+There are some studies for verifying AI NFRs. Some of studies' goal is not mainly for verifying AI NFRs, but there are some points thar can be said to be the purpose of study is for verifying AI NFRs.
+The Microsoft proposed Fairlearn[], an open source project to ensure fairness of machine learning models, to improve unfair situations that may occur when the fairness of training data is not guaranted.
+Other studies carried out include studies on explainable AI(XAI). These studies were conducted to enable people to understand the process of deriving results of AI. In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
+There are also studies of adversarial examples and adversarial training. These studies show that machine learning is inevitably vulnerable to adversarial examples due to its' learning algorithm and suggest several methods to counter adversarial attacks. Althogh the purpose of these stuides is to maintain or imporve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
+
+While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
+Therefore, in this paper, we proceed with a study to verify AI NFRs, inspired by the other interpretation of previous studies we said above.
+
+There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3. \\
+
+In this paper, we assume that the safety of AI can be improved by using adversarial examples as a part of datas for learning. For proving this, we set up the following research questions(RQ). \\
+
+\begin{description}
+    \item[RQ1.]	Can classification model correctly classify adversarial examples by learning adversarial examples?
+    \item[RQ2.]	Does it show the same results as RQ1 for the dataset related to safety?
+    \item[RQ3.]	At what rate will learning with adversarial examples perform best.
+\end{description}
+
+Through experiments to answer each RQ, we were able to make the following contributions in this paper. \\
+
+\begin{enumerate}
+    \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
+    \item	 We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
+    \item	We propose a process to adjust the ratio of inclusion adversarial example in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios demonstrated that adversarial inclusion ratios plays key roles for trade-off between accuracy and safety.
+\end{enumerate} \\
+
+The contents of the paper are structured as follows. In chapter 2, we deals with the introduction of previous studies conducted for verification methods for AI NFRs.
+In chapter 3, we deals with the definition of safety and experimental design that we would like to see in our paper.
+In chapter 4, we introduces exmperiments conducted according to designed experimental methods.
+In chapter 5, we analyze the experiental results and make a discussion of experimental results.
+In chapter 6, we intoduces the conclusion of the paper and future work.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Related works}
+
+There are prior studies that directly or indirectly affected the field of NFRs verification of AI.
+
+\subsection{The studies on the fairness of tarining data}
+
+AI learns the features of the data and derives the results of the input data based on the learned features. Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
+This can be said to be the result of not satisfying fairness, one of the AI NFRs that requires every users to achieve the same results.
+[] points out that the bias in training dataset can lead to discriminatory results according to features such as race, gender, and age of each individuals.
+To solve this problem, they proposed a statistical method to identify the discriminating elements of the training dataset, and furthermore, they argued that it is important to keep the fairness of AI as data bias is related to privacy.
+[] proposed the problem of discrimantation that the discriminatory feature of dataset can have on the group using AI and a method to solve the problem.
+To improve the fairness of the AI, [] and Microsoft's Fairlearn find and remove factors that hinder fairness, such as bias, which exists in training dataset.
+
+\subsection{Explainable Ariticial Intelligence(XAI)}
+
+The main purpose of the sutdies conducted on XAI is not to verify the AI NFRs.
+However, through these studies, people were able to know the learning and result derivation process of AI, which is directly related to the transparency of the AI, so they were included as a related studies.
+One of the characteristics of AI is that it works in a black box. People cannot check what features AI learns from training data and what process it goes through to derive results.
+This raises the problem that the results derived by AI cannot be trusted unconditionally.
+In particular, it is more important to solve these problems in fields where the results of AI have a large impact on humans, such as autonomous driving and medical diagnosis.
+In order to solve this problems, XAI conducted research to enbalbe humans to check the process of AI learning and the process of deriving results.
+Studies in [], [] define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have benn conducted for XAI.
+
+\subsection{Adversarial examples and adversarial attacks}
+
+The main purpose of the studies conducted on adversarial examples and adversarial training is not to verify the AI NFRs.
+However, in the study of [], it was noted that:
+\begin{quote}
+   " A good response to adversarial examples is an important part of the safety issue of AI"
+\end{quote}
+it can be seen that adversarial examples are related with safety of AI.
+[], [] show that the characteristics of the learning algorithm of AI are bound to vulnerable to adversarial examples, which behave as adversarial examples regradless of the structure and training data of the models.
+[] proposes an FGSM that uses gradients from the learning process to generate adversarial examples.
+[] demonstrated through experiments that when the original data used for learning was captured using a smartphone camera and applied to the model, it can behave like an adversarial examples. It has been shown to be effective in the real environment rather than the expoerimental environmnet.
+[] proposes a mehtod for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach\_knows the structure of network and tranining datasets\_. \\
+
+Several studies on NFRs have benn conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
+Inspired by theses studies, we proceed with the research of the thesis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definition of {\it safety} and Experimental design}
+
+In this chapter, we discusses what is the safety of AI in this paper and how the we designed the experiment to answer the RQs.
+
+\begin{figure}[H] % t: top, b: bottom: h: here
+\includegraphics[width=5 cm]{Definitions/logo-mdpi}
+\caption{Examples of adversarial examples.\label{fig1}}
+\end{figure}   
+
+AI needs to ensure minimum safety regradless of its purpose. In the field where AI is applied, actual input data may not exist in the dataset used for training.
+In addition, AI is likely to suffer from multiple threats in real-world applications and adversarial attacks(adversarial examples) are one of the examples.
+Examples of adversarial attacks can be seen in Figure~\ref{fig1}. Both signs appear to be the same sign in human eyes. However, the right one with adversarial attack is not properly classified compared to left one in Figure is classified correctly.
+Models applied to fields where the results can have a significant impact on humans, such as autonomous driving and medical diagnosis, can cause fatal safety problems if they do not properly respond to adversarial attacks. Therefore, in such a field, it is important to respond well to adversarial attacks and to ensure safety.
+Through this, the paper defiend safety as bellows.
+
+\begin{quote}
+    "Safety is the measure of whether the model responds appropriately to data with untrained features or to data that has been adversarial attacked to obtain incorrect results from the model."
+\end{quote}
+
+Learning all data and adversarial examples that may occur in the environment in which the model is applied is the best way to ensure safety.
+However, in reality, it is difficult to collect all data on all situations, and even if it collected, it is difficult because it consumes a lot of resources to process and train the data.
+Then, in a situation where it is impossible to learn all data, which data should be learned first to ensure minimum safety?
+In the paper, we assumed that adversarial examples are given the highest priority and are the data that should be learned.
+This is because adversarial examples are data designed for the purpose of causing problems or confusing the results of the model.
+For data under other conditions, it cannot be said that the results derived from the model unconditionally cause problems.
+On the other hand, adversarial examples are very likely to cause problems with the model's results.
+For example, in a traffic signs for autonomous driving, there may be data to cause problems as shown in Figure~\ref{fig1}, whereas there may be data that does not necessarily lead to problems, such as traffic signs with natural environment(sunlight, fog, etc.).
+Another reason is the difficulty of creating and configuring datasets. It is difficult to generate corresponding data because there are too many conditions for the data that can occur in the environment in which the model is applied.
+On the other hand, in the case of a adversarial examples, many studies on adversarial attack methods for this purpose have been conducted, so it is relatively easy to generate compared to the previous data.
+For these reasons, the paper thought adversarial training is a way to ensure minimum safety of AI, and tried to prove it through experiments.
+If adversarial training allows the model to better respond to adversarial examples\_improves safety performance\_, it can be used as a way to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data. \\
+
+In order to show this through experiments, we first prepared different kinds of datasets and used the prepared datasets to generate adversarial datasets with different degrees of transformation{\left({\epsilon}\right)}.
+The reason for the preparing several {\epsilon} is to check the effect of {\({\epsilon}\)} on safety performance. If the {\({\epsilon}\)} is too small, the safety performance will not improve because there is little difference from the original data, so it cannot classify adversarial examples well. If the {\({\epsilon}\)} is too large, the features of the original data cannot be learned properly, resulting in poor performance such as the accuracy of the existing model.
+In addition, when generating datasets for adversarial training, the size of the training dataset was kept the same as the size of the existing training dataset.
+This is because increasing the number of data does not necessarily lead to improved performance of the model, as well as requiring additional resources to learn it.
+Furthermore, in order to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, the experiment was conductted by setting the mixing ratio of the original data and the adversarial examples differently.
+At this time, if adversarial training is executed, the number of original training data was reduced, and thus the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evalutaiton datset, may decrease.
+It is important improving safety, but accuracy can be more important than safety at some moment that depends on the purpose of the model. So, it is also necessary to ensure accuracy as well as safety. 
+Therefore, in order to maintain the accuracy of the model learned with original dataset with the appropriate resources, we chose the method of mixing the original data and adversarial examples at an appropriate ratio while preserving the size of the traning dataset.
+To show this, the accuracy is additionaly selected as a measure of performance evaluation.
+Althogh both accuracy and safety are measures of performance of how well a given data is classified, but we devided measures by the target evaluation datasets to distinguish them on a scale with different meanings.
+Accuracy represents how well model classifies the {\it original} evaluation dataset, and safety represents how well model classifies the {\it adversarial} evaluation dataset, which is considered to be threatening to the model according to the definition given above.
+In the belief that the results may differ depending on the characteristics of the model's structure, we also prepared learning models with different types of structures. 
+Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methodology}
+
+We conducted experiments under different conditions to answer the RQs. For the experiment, we parpared a model with three different structures and a dataset with three different features.
+Section 4.1 introduces a introduction to the models and datasets used in our experiment and the reason why they were selected.
+Section 4.2 introduces a breif introduction to FGSM for generating adversarial examples and the reason why is was selected.
+Section 4.3 introduces each process of the experiment designed in chapter 3.
+
+\subsection{Models and Datasets}
+\subsubsection{Models}
+
+For the experiments, we used LeNet[], ResNet18[], VGG16[].
+LeNet model mainly used for classification has a relatively simple structure compared to other networks which does not require much time to learn.
+ResNet18 and VGG16 are the most well-known and widely used models for classification, and their performance has also been proven through multiple competitions.
+For ResNet18 and VGG16, the model defined in "torchvision.models" of PyTorch[], one of the deep leanring frameworks used for Python, was used.
+Each model didn't go through a sepearte finetune process, and the rest of the hyper parameters were used under the same conditions, except for epoch.
+The reason the same conditions were set without additional adjustment is that this paper does not aim for model to produce optimal performance.
+Moreover, adjustment of model structure and hyper parameters can make better performance through multiple training and evaluation processes, but it needs a lot of resources and does not help much for the safety of AI.
+However, for epoch, it was determined that the accuracy measured during the training was over 90\%. This is because the structures of used models are all different, when experiments are conducted with the same epoch, overfitting occurs in some models.
+
+\begin{figure}[H]
+\includegraphics[width=5 cm]{Definitions/logo-mdpi}
+\caption{Each structure of used models.\label{fig2}}
+\end{figure}   
+
+\subsection{Datasets}
+
+For the experiments, three dataset were used: CIFAR-10, CIFAR-100, and GTSRB. The CIFAR-10 dataset consists of a total 60,000 datas in 10 classes, each contains 6,000 datas with 3 channels and \begin{math}{32\times 32}\end{math} size.
+Of these, 5,000 datas are used for training and last datas used for evaluation.
+
+\begin{figure}[H] 
+\includegraphics[width=5 cm]{Definitions/logo-mdpi}
+\caption{Some datas from each dataset.\label{fig3}}
+\end{figure} 
+
+% 그림에서 확인할 수 있다는 내용 추가
+The CIFAR-100 dataset consists of a total 60,000 datas in 100 classes, each contains 600 datas with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 datas are used for training and last datas used for evaluation.
+The CIFAR-10 and CIFAR-100 datasets were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
+This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class. On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
+If it is possible to identify the improvement of safety through adversarial training for datasets with these opposite characteristics, valid results can be seen for most training dataset with characteristics intermediate between CIFAR-10 and CIFAR-100. So, we used CIFAR datasets for the experiment. \\
+
+The GTSRB(German Traffic Sign Recognition Benchmark) is a German traffic sign dataset. It consists of more than 50,000 datas with 43 classes.
+The difference between GTSRB and CIFAR datasets is that the number of data corresponding to each class is not uniform.
+The dataset used for applicapable AI training has some of this data bias.
+Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of model through adversarial training for dataset in which the number of data is not uniform for each class, we can get valid results for other dataset.
+Another reason for selecting GTSRB is that it is closely related to safety.
+
+\subsection{Fast Gradient Sign Method(FGSM)}
+
+We assumed that the safety of AI is how well it classifies adversarial examples that mentioned in chapter 3.
+To do this, it is necessary to generate adversarial examples. Among several adversarial attack methods to generate adversarial examples, we used the FGSM proposed by [].
+Because FGSM generates adversarial examples by using gradient in the training process, it is necessary to train at least once with the dataset which we want to generate adversarial examples.
+So, for the generating adversarial examples, we used LeNet, which has a relatively simple structure and does not require much time to learn in our paper.
+
+\begin{figure}[H] 
+\includegraphics[width=5 cm]{Definitions/logo-mdpi}
+\caption{Process of generating adversarial examples with FGSM.\label{fig4}}
+\end{figure} 
+
+As shown in Figure~\ref{fig4}, adversarial examples are generated using the gradient change that occurred during the training process.
+At this time, \begin{math}\epsilon\end{math} is used to determine the degree of adversarial attack by reflecting the slope value.
+In this paper, 0.05 and 0.1 were used as \begin{math}\epsilon\end{math}s. The failure to use values above 0.1 is due to the observation of human-obeservalbe transformation points in adversarial examples.
+Therefore, if a value greater than 0.1, it can no longer serve as a adversarial example, so two types of \begin{math}\epsilon\end{math}s are used to generate adversarial examples.
+In [], adversarial examples were applied only to the evaluation datas to confirm the effect of adversarial examples, but in our paper, training datas were also to create adversarial examples because adversarial examples should be used for training.
+
+\begin{figure}[H] 
+\includegraphics[width=5 cm]{Definitions/logo-mdpi}
+\caption{Examples of adversarial examples.\\(a) CIFAR-10 (b) CIFAR-100 (c)GTSRB\label{fig5}}
+\end{figure} 
+
+Through this method, as shown in Figure~\ref{fig5}, adversarial examples were generated for all data of CIFAR-10, CIFAR-100, and GTSRB to be used in the experiments.
+In this paper, the training datas and evaluation datas which the adversarial attack is applied will be referred to as {\it adversarial training datas} and {\it adversarial evaluation datas}.
+The generated adversarial training datas are randomly extracted at a certain ratio and mixed with the original training datas to be used for training. And the adversarial evalutaion datas are used for experiments to measure the safety.
+
+\subsection{Methodology}
+
+We did experiments on the PC with Ubuntu 18.04 OS that had consisted of 4.20GHz Intel(R) i7-7700K CPU, 64GB RAM, and NVIDIA Titan XP 12GB GPU. The models used in the experiment have hyper parameters set to a batch size of 64, learning rate of 0.001, momentum of 0.9, CrossEntropy as loss functions and SGD as optimization functions, respectively.
+Before proceeding with the training, we go through the process of mixing original train datas and the adversarial train datas generated from the result of section 4.2.
+In this step, we trained the model only with the original train datas for being baseline of accuracy and safety performance, first. We then generate the mixed traniing dataset that mixes original train datas with adversarial train datas.
+At this time, the mixing ratio was 8:2, 7:3, and 6:4 in total. When generating mixed dataset, the dataset was mixed by randomly extracting from each training datas according to the set ratio regardless of class.
+The total number of datas in the mixed train datas is equal to the number of original train datas.
+
+Once the training datas are ready, the model is trained. At this time, the hyper parameters of each model follow the aforementioned settings, and the training proceeds to the point where the accuracy becomes 90\% in the training process, storing the model at that time.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Results}
+
+Before discussing the experimental results, we defines some words in this chapter. The 'N model' means a model trainied on mixed train datas containing N\% of total number of traninig datas number of adversarial examples.
+For example, a model trained with only the original train datas is called 0 model, and a model trained with mixed train datas which contains 20\% of the number of train datas adverial examples is called 20 model.
+We use accuracy and safety for experimental results measurement. Accuracy is a measure of how well the trained model classifies the original evaluation datas, and can be defined as equation:
+
+\begin{equation}
+    acc = \# of correctly classfied / # of total original evaluation datas
+\end{equation}
+
+Safety is a measure of how well the trained model classifies the adversarial evalutaion datas, and it can be defined as equation:
+
+\begin{equation}
+    safety = \# of correctly classifed / # of total adversarial evaluation datas
+\end{equation}
+
+Althogh the same equation is applied, we distinguish between the two measurements depending on whether the evaluation datas is the original or adversarial.
+
+\subsection{CIFAR-10 Results}
+
+Table~\ref{table1}-a shows the CIFAR-10 according to \begin{math}\epsilon\end{math} and the results for each model.
+
+The results for the adversarial examples prodeuced by \begin{math}\epsilon\end{math} 0.05 in Table~\ref{table1}-a shows that the performance magnitude of accuracy and safety is significant, with 45\%  in LeNet, 20\% in ResNet18, and 45\% in VGG16.
+Looking at the results of 0 model and 20 model, the accuracy decreased by 3\%(LeNet), 2\%(ResNet18), and 5\%(VGG16) for each model, but in the case of safety, it was improved by 27\%(LeNet), 2\%(ResNet18), and 23\%(VGG16) for each model.
+Although the difference between 30 model and 40 model, the accuracy has slightly decreased compared to the 0 model, and the safety has been significantly improved.
+Comparing 20 model, 30 model, and 40 model respectively, lower accuracy and higher safety were confirmed in the model with a high proportion of adversarial examples, but the differences were not large.
+The same result can be seen in the result of the adversarial examples generated by \begin{math}\epsilon\end{math} with 0.1, except that the number is different. This result can be better seen through Graph~\ref{graph-1}.
+
+As shown in Graph~\ref{graph-1}, a slight drop in accracy and significant improvement in safety from 0 model to 20 model, and that there is only a slight change in models that have increased to ratio of adversarial examples.
+
+\subsection{CIFAR-100 Results}
+
+Table~\ref{table1}-b shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
+
+A first look at 0 model for the 0.05 \begin{math}\epsilon\end{math} adversarial examples shows a significant drop in accuracy comapred to CIFAR-10.
+In the meantime, safety is much lower than accuracy. In particular, it can be seen that there is a difference of about 30\% in VGG16.
+The reason that the accuracy is lower than that of CIFAR-10 is different characteristic of each dataset. The number of data for that class is small compared to the CIFAR-10, although the class has increased, so the degree of learning training under the same model conditions is different.
+As with the experimental results of CIFAR-10, there is only a difference in the numericla value, and it can be confirmed that the accuracy is slightly decreased when the model is changed from 0 model to 20 model, but the safety performance is improved. 
+This can be seen visually through the Graph~\ref{graph1}-b.
+
+\subsection{GTSRB Results}
+
+Table~\ref{table1}-c shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
+
+Looking at the 0 model of thhe result for the 0.05 \begin{math}\epsilon\end{math} adversarial example first, it can be seen that the accuracy and safety performance are significantly different at 68\%(LeNet), 38\%(ResNet18), and 53\%(VGG16).
+Similar to CIFAR datasets, we can see a very significnat improvement in safety performance from 0 model to 20 model.
+It can be visually confirmed through Graph~\ref{graph1}-c.
+In Graph~\ref{graph1}-c as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
+
+\subsection{Discussion}
+
+The interpretation of the experimental results according to 3 different datasets and models and various experimental conditions and the answer to the RQs in the thesis can be confirmed as follows. \\
+
+For all datasets, it can be seen that the safety of 0 model has a large performance difference compared to the accuracy. This confirms that the generated adversarial examples were properly generated. \\
+
+RQ1 was the question of whether adversarial training well classifies adversarial examples of classification models.
+In experiemnts using the CIFAR datasets, it was confirmed that the safety performance of 20 model, 30 model and 40 model including the adversarial examples was significantly improved compared to the safety of 0 model not including the adversarial examples.
+Through this, it was confirmed that adversarial training can contribute to the improvement of the safety performance of the classification model.
+However, in the CIFAR-100, training was not sufficient during epoch, resulting in lower values, but the performance change tendency itself observed in 0 model and the rest of the models could be ovserved in the same way.
+
+RQ2 is an extended question from RQ1, as to whether the dataset used in the experiemnt could have the same effect even if it was a dataset related to safety.
+In the experiemntal results using the GTSRB, similar to the results of the CIFAR datasets, it was confirmed that the safety was significantly improved in the 20 model, 30 model and 40 model compared to 0 model.
+
+RQ3 was a question of what ration would be the best performance to mix adversarial examples with original datas to form a mixed training dataset.
+This depends on the dataset used and whether the requirements they value are accuracy or safety, but in this paper we mainly looked at the performance balance between accuracy and safety.
+In the experiemnts, it can be seen that it is essential to mix the adversarial examples from training datas at least 20\% when contruct the training dataset in order to verify the safety.
+This is because the greatest improvement in safety can be obtained compared to 0 model when 20 model is used in all experimental environments.
+Even if adversarial training data is included at a higher rate than that, the degree of safety improvement is small, so it can be considered as the minimum requirements to configuer 20\% of the total training dataset as adversarial examples.
+If accuracy is considered a more important requirements, the proportion of adversarial examples can be reduced, and if safety is considered a more important requirement, more adversarial examples can be included.
+
+Additionally, in Graph~\ref{graph 1}, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
+Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety. \\
+
+To summarize the experimental results, adversarial training can contribute to improving the safety of the classificatio model, which also applies to safety-reslated datasets.
+In order to verify safety, it is recommended that at least 20\% of the training data consist of adversarial examples, and it can be proved that it can help to verify the desired requirements by adjusting the inclusion ratio of adversarial exampels according to priority among accuracy and safety.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+We have confirmed through experiments that adversarial training ca significantly improve the safety performance with little effect on accuracy of the model.
+
+
+Bulleted lists look like this:
+\begin{itemize}
+\item	First bullet;
+\item	Second bullet;
+\item	Third bullet.
+\end{itemize}
+
+Numbered lists can be added as follows:
+\begin{enumerate}
+\item	First item; 
+\item	Second item;
+\item	Third item.
+\end{enumerate}
+
+The text continues here. 
+
+\subsection{Figures, Tables and Schemes}
+
+All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, etc.
+
+
+
+% The MDPI table float is called specialtable
+\begin{specialtable}[H] 
+\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
+%%% \tablesize{} %% You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
+\begin{tabular}{ccc}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+Entry 1		& Data			& Data\\
+Entry 2		& Data			& Data\\
+\bottomrule
+\end{tabular}
+\end{specialtable}
+
+%\begin{listing}[H]
+%\caption{Title of the listing}
+%\rule{\columnwidth}{1pt}
+%\raggedright Text of the listing. In font size footnotesize, small, or normalsize. Preferred format: left aligned and single spaced. Preferred border format: top border line and bottom border line.
+%\rule{\columnwidth}{1pt}
+%\end{listing}
+
+Text.
+
+Text.
+
+\subsection{Formatting of Mathematical Components}
+
+This is the example 1 of equation:
+\begin{equation}
+a = 1,
+\end{equation}
+the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
+%% If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph.
+
+This is the example 2 of equation:
+\end{paracol}
+\nointerlineskip
+\begin{equation}
+a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z
+\end{equation}
+
+% Example of a figure that spans the whole page width (the commands \widefigure and \begin{paracol}{2}, \linenumbers, and\switchcolumn need to be present). The same concept works for tables, too.
+% \begin{figure}[H]	
+% \widefigure
+% \includegraphics[width=15 cm]{Definitions/logo-mdpi}
+% \caption{This is a wide figure.\label{fig2}}
+% \end{figure}  
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
+
+Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows:
+%% Example of a theorem:
+\begin{Theorem}
+Example text of a theorem.
+\end{Theorem}
+
+The text continues here. Proofs must be formatted as follows:
+
+%% Example of a proof:
+\begin{proof}[Proof of Theorem 1]
+Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is clear which theorem is being referred to.
+\end{proof}
+The text continues here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Patents}
+
+This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+%\supplementary{The following are available online at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title.}
+
+% Only for the journal Methods and Protocols:
+% If you wish to submit a video article, please do so with any other supplementary material.
+% \supplementary{The following are available at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
+
+\funding{Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.}
+
+\institutionalreview{In this section, please add the Institutional Review Board Statement and approval number for studies involving humans or animals. Please note that the Editorial Office might ask you for further information. Please add ``The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical review and approval were waived for this study, due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans or animals. You might also choose to exclude this statement if the study did not involve humans or animals.}
+
+\informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans.
+
+Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
+
+\dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.} 
+
+\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
+
+\conflictsofinterest{Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the~results''.} 
+
+%% Optional
+\sampleavailability{Samples of the compounds ... are available from the authors.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Only for journal Encyclopedia
+%\entrylink{The Link to this entry published on the encyclopedia platform.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+MDPI & Multidisciplinary Digital Publishing Institute\\
+DOAJ & Directory of open access journals\\
+TLA & Three letter acronym\\
+LD & Linear dichroism
+\end{tabular}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
+\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section{}
+\subsection{}
+The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
+
+\begin{specialtable}[H] 
+%\tablesize{\scriptsize}
+\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab2}}
+%\tablesize{} % You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
+\begin{tabular}{ccc}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+Entry 1		& Data			& Data\\
+Entry 2		& Data			& Data\\
+\bottomrule
+\end{tabular}
+\end{specialtable}
+
+\section{}
+All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{paracol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To add notes in main text, please use \endnote{} and un-comment the codes below.
+%\begin{adjustwidth}{-5.0cm}{0cm}
+%\printendnotes[custom]
+%\end{adjustwidth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\reftitle{References}
+
+% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+%\externalbibliography{yes}
+%\bibliography{your_external_BibTeX_file}
+
+%=====================================
+% References, variant B: internal bibliography
+%=====================================
+\begin{thebibliography}{999}
+% Reference 1
+\bibitem[Author1(year)]{ref-journal}
+Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
+% Reference 2
+\bibitem[Author2(year)]{ref-book1}
+Author~2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
+% Reference 3
+\bibitem[Author3(year)]{ref-book2}
+Author 1, A.; Author 2, B. \textit{Book Title}, 3rd ed.; Publisher: Publisher Location, Country, 2008; pp. 154--196.
+% Reference 4
+\bibitem[Author4(year)]{ref-unpublish}
+Author 1, A.B.; Author 2, C. Title of Unpublished Work. \textit{Abbreviated Journal Name} stage of publication (under review; accepted; in~press).
+% Reference 5
+\bibitem[Author5(year)]{ref-communication}
+Author 1, A.B. (University, City, State, Country); Author 2, C. (Institute, City, State, Country). Personal communication, 2012.
+% Reference 6
+\bibitem[Author6(year)]{ref-proceeding}
+Author 1, A.B.; Author 2, C.D.; Author 3, E.F. Title of Presentation. In Title of the Collected Work (if available), Proceedings of the Name of the Conference, Location of Conference, Country, Date of Conference; Editor 1, Editor 2, Eds. (if available); Publisher: City, Country, Year (if available); Abstract Number (optional), Pagination (optional).
+% Reference 7
+\bibitem[Author7(year)]{ref-thesis}
+Author 1, A.B. Title of Thesis. Level of Thesis, Degree-Granting University, Location of University, Date of Completion.
+% Reference 8
+\bibitem[Author8(year)]{ref-url}
+Title of Site. Available online: URL (accessed on Day Month Year).
+\end{thebibliography}
+
+% If authors have biography, please use the format below
+%\section*{Short Biography of Authors}
+%\bio
+%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author1.pdf}}}
+%{\textbf{Firstname Lastname} Biography of first author}
+%
+%\bio
+%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author2.jpg}}}
+%{\textbf{Firstname Lastname} Biography of second author}
+
+% The following MDPI journals use author-date citation: Admsci,  Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, Jintelligence, JRFM, Languages, Laws, Literature, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
+% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
+% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% for journal Sci
+%\reviewreports{\\
+%Reviewer 1 comments and authors’ response\\
+%Reviewer 2 comments and authors’ response\\
+%Reviewer 3 comments and authors’ response
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
