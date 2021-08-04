@@ -151,24 +151,17 @@ The reason why it is difficult to use the verification methods of existing softw
 In existing software, it is possible for people to directly check the operation of code, so functional requirements as well as non-functional requirements(NFRs) can be verified through code.
 However, in AI, funcional requirements can be verified by methods such as measuring the accuracy or F1-score of the model, but NFRs such as safety, security, and transparency are difficult to verify because the operation of code cannot be identified. % TODO :: reference 정리
 In AI, it is important to verify not only the functional requirements but also the NFRs of AI in areas that can have a fatal impact on humans such as autonomous driving, medical diagnosis, and finance.
-% TODO :: 내용 보충
-% 이러한 분야에서 비기능적 요구사항 검증이 중요한 이유
-% 그럼에도 불구하고 인공지능의 품질 평가는 비기능적 요구사항들에 대한 검증보다는 주로 정확도와 f1 score와 같이 수치적으로 학습된 모델이 얼마나 잘 동작하는지에 대해서 이루어졌다. 
-\\
+If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
+That is why AI needs to better verify these NFRs.
+Nevertheless, the quality assessment of AI has mainly been made on the functional requirements corresponding to how well the model trained through methods such as accuracy and F1 score rather than on NFRs.\\
 
-% 제거 예정(불필요)
-% Most of the AI was mainly verified through numerical measures such as how high the accuracy is. 
-% Verification through these numerical measures is one of the ways taht can verify the functional requirements for how well the AI works.
-% However, it is hard to say that it is for verification for NFRs.
-% So, the methods for verifying NFRs are needed, but there is no standardized verification methods.\\
-
-There are some studies for verifying AI NFRs. Some of studies' goal is not mainly for verifying AI NFRs, but there are some points thar can be said to be the purpose of study is for verifying AI NFRs.
+There are some studies for verifying NFRs of AI. Some of studies' goal is not mainly for verifying NFRs of AI, but there are some points thar can be said to be the purpose of study is for verifying NFRs of AI.
 The Microsoft proposed Fairlearn[], an open source project to ensure fairness of machine learning models, to improve unfair situations that may occur when the fairness of training data is not guaranted.
 Other studies carried out include studies on explainable AI(XAI). These studies were conducted to enable people to understand the process of deriving results of AI. In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
 There are also studies of adversarial examples and adversarial training. These studies show that machine learning is inevitably vulnerable to adversarial examples due to its' learning algorithm and suggest several methods to counter adversarial attacks. Althogh the purpose of these stuides is to maintain or imporve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
 
 While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
-Therefore, in this paper, we proceed with a study to verify AI NFRs, inspired by the other interpretation of previous studies we said above.
+Therefore, in this paper, we proceed with a study to verify NFRs of AI, inspired by the other interpretation of previous studies we said above.
 
 There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3. \\
 
@@ -183,8 +176,8 @@ In this paper, we assume that the safety of AI can be improved by using adversar
 Through experiments to answer each RQ, we were able to make the following contributions in this paper. \\
 
 \begin{enumerate}
-    \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
-    \item	 We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
+    \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 \~ 40\%.
+    \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
     \item	We propose a process to adjust the ratio of inclusion adversarial example in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios demonstrated that adversarial inclusion ratios plays key roles for trade-off between accuracy and safety.
 \end{enumerate} \\
 
@@ -235,7 +228,7 @@ Several studies on NFRs have benn conducted, and even for studies that do not ha
 Inspired by theses studies, we proceed with the research of the thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Definition of {\it safety} and Experimental design}
+\section{Definition of {\it safety} and Experimental design} % Overview of experiments
 
 In this chapter, we discusses what is the safety of AI in this paper and how the we designed the experiment to answer the RQs.
 
