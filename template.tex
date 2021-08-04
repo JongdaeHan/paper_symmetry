@@ -104,6 +104,10 @@ $^{2}$ \quad Affiliation 2; elvenwhite@smu.ac.kr}
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
+% AI가 일상 생활에서 많이 사용되는 추세이지만 중요 요소 중 하나인 비기능적 요구사항 검증에 대한 연구가 거의 이루어지지 않았다.
+% 논문에서는 분류 모델에 대해 적대적 학습을 활용하여 적대적 학습이 인공지능의 비기능적 요구사항 중 하나인 안전성에 미치는 영향을 평가, 안전성을 검증하기 위한 방법으로 사용할 수 있음을 주장한다.
+% 실험을 통해 적대적 학습이 안전성 성능 개선을 할 수 있음을 확인하였고, 이를 통해 학습 단계 이전 적대적 학습을 위한 적대적 예시를 생성하는 것이 인공지능의 안전성 검증을 위한 방법으로 사용할 수 있음을 확인하였다.
+% 또한 서로 다른 비율의 적대적 예시를 포함한 적대적 학습을 통해 중요시 하는 요구사항에 따라 적대적 학습을 진행할 수 있음을 확인하였다. 데이터의 특성에 따른 적대적 예시 포함 비율 조정 또한 요구사항 검증 방법 중 하나로 사용될 수 있음을 주장한다.
 
 % Keywords
 \keyword{keyword 1; keyword 2; keyword 3 (List three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.)} 
@@ -155,6 +159,7 @@ If NFRs such as safety, security, and transparency are not guaranteed, not only 
 That is why AI needs to better verify these NFRs.
 Nevertheless, the quality assessment of AI has mainly been made on the functional requirements corresponding to how well the model trained through methods such as accuracy and F1 score rather than on NFRs.\\
 
+% TODO :: Related works 정리 후 수정 예정
 There are some studies for verifying NFRs of AI. Some of studies' goal is not mainly for verifying NFRs of AI, but there are some points thar can be said to be the purpose of study is for verifying NFRs of AI.
 The Microsoft proposed Fairlearn[], an open source project to ensure fairness of machine learning models, to improve unfair situations that may occur when the fairness of training data is not guaranted.
 Other studies carried out include studies on explainable AI(XAI). These studies were conducted to enable people to understand the process of deriving results of AI. In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
@@ -192,7 +197,13 @@ In chapter 6, we intoduces the conclusion of the paper and future work.
 
 There are prior studies that directly or indirectly affected the field of NFRs verification of AI.
 
-\subsection{The studies on the fairness of tarining data}
+% TODO ::
+% \subsection{Importance of NFRs in AI}
+% AI의 비기능적 요구사항이 중요한 이유에 대한 논문들에 대해서 기술 Concrete problems in AI safety 논문을 중심으로 찾을 예정
+% the studies on the fairness of training data 항목 편입 예정
+% Introduction의 관련 연구 언급 부분에 대해서도 수정할 예정
+
+\subsection{The studies on the fairness of training data}
 
 AI learns the features of the data and derives the results of the input data based on the learned features. Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
 This can be said to be the result of not satisfying fairness, one of the AI NFRs that requires every users to achieve the same results.
