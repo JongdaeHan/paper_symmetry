@@ -166,11 +166,12 @@ Other studies carried out include studies on explainable AI(XAI). These studies 
 There are also studies of adversarial examples and adversarial training. These studies show that machine learning is inevitably vulnerable to adversarial examples due to its' learning algorithm and suggest several methods to counter adversarial attacks. Althogh the purpose of these stuides is to maintain or imporve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
 
 While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
-Therefore, in this paper, we proceed with a study to verify NFRs of AI, inspired by the other interpretation of previous studies we said above.
+Therefore, in this paper, we proceed with a study to verify NFRs of AI especially safety of classification model using adversarial training, inspired by the other interpretation of previous studies we said above.
 
 There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3. \\
 
-In this paper, we assume that the safety of AI can be improved by using adversarial examples as a part of datas for learning. For proving this, we set up the following research questions(RQ). \\
+In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of datas for learning(adversarial training).
+For proving this, we set up the following research questions(RQ). \\
 
 \begin{description}
     \item[RQ1.]	Can classification model correctly classify adversarial examples by learning adversarial examples?
@@ -181,7 +182,7 @@ In this paper, we assume that the safety of AI can be improved by using adversar
 Through experiments to answer each RQ, we were able to make the following contributions in this paper. \\
 
 \begin{enumerate}
-    \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 \~ 40\%.
+    \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
     \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
     \item	We propose a process to adjust the ratio of inclusion adversarial example in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios demonstrated that adversarial inclusion ratios plays key roles for trade-off between accuracy and safety.
 \end{enumerate} \\
@@ -350,7 +351,7 @@ In this paper, 0.05 and 0.1 were used as \begin{math}\epsilon\end{math}s. The fa
 Therefore, if a value greater than 0.1, it can no longer serve as a adversarial example, so two types of \begin{math}\epsilon\end{math}s are used to generate adversarial examples.
 In [], adversarial examples were applied only to the evaluation datas to confirm the effect of adversarial examples, but in our paper, training datas were also to create adversarial examples because adversarial examples should be used for training.
 
-\begin{figure}[H] 
+\begin{figure}[H]
 \includegraphics[width=5 cm]{Definitions/logo-mdpi}
 \caption{Examples of adversarial examples.\\(a) CIFAR-10 (b) CIFAR-100 (c)GTSRB\label{fig5}}
 \end{figure} 
@@ -390,7 +391,26 @@ Althogh the same equation is applied, we distinguish between the two measurement
 
 \subsection{CIFAR-10 Results}
 
-Table~\ref{table1}-a shows the CIFAR-10 according to \begin{math}\epsilon\end{math} and the results for each model.
+\begin{specialtable}[H]
+    \centering
+    \caption{Results of CIFAR-10 with \begin{math}\epsilon\end{math}}
+    \label{tab1}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \cline{1-5} \cline{7-9}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}       & \multirow{10}{*}{} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-5} \cline{7-9} 
+                                 &                           & LeNet               & ResNet18              & VGG16              &                    & LeNet              & ResNet18              & VGG16              \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 &                    & 63                 & 53                    & 78                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 18                  & 33                    & 33                 &                    & 11                 & 27                    & 27                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 &                    & 60                 & 50                    & 74                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 45                  & 35                    & 56                 &                    & 38                 & 31                    & 53                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 &                    & 57                 & 49                    & 69                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 45                  & 36                    & 56                 &                    & 41                 & 34                    & 54                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 &                    & 58                 & 47                    & 70                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 47                  & 36                    & 56                 &                    & 45                 & 34                    & 56                 \\ \cline{1-5} \cline{7-9} 
+    \end{tabular}
+\end{specialtable}
+
+Table~\ref{tab1} shows the CIFAR-10 according to \begin{math}\epsilon\end{math} and the results for each model.
 
 The results for the adversarial examples prodeuced by \begin{math}\epsilon\end{math} 0.05 in Table~\ref{table1}-a shows that the performance magnitude of accuracy and safety is significant, with 45\%  in LeNet, 20\% in ResNet18, and 45\% in VGG16.
 Looking at the results of 0 model and 20 model, the accuracy decreased by 3\%(LeNet), 2\%(ResNet18), and 5\%(VGG16) for each model, but in the case of safety, it was improved by 27\%(LeNet), 2\%(ResNet18), and 23\%(VGG16) for each model.
@@ -402,7 +422,26 @@ As shown in Graph~\ref{graph-1}, a slight drop in accracy and significant improv
 
 \subsection{CIFAR-100 Results}
 
-Table~\ref{table1}-b shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
+\begin{specialtable}[H]
+    \centering
+    \caption{Results of CIFAR-100 with \begin{math}\epsilon\end{math}}
+    \label{tab2}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \cline{1-5} \cline{7-9}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}       & \multirow{10}{*}{} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-5} \cline{7-9}
+                                 &                           & LeNet               & ResNet18              & VGG16              &                    & LeNet              & ResNet18              & VGG16              \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 &                    & 63                 & 53                    & 78                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 18                  & 33                    & 33                 &                    & 11                 & 27                    & 27                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 &                    & 60                 & 50                    & 74                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 45                  & 35                    & 56                 &                    & 38                 & 31                    & 53                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 &                    & 57                 & 49                    & 69                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 45                  & 36                    & 56                 &                    & 41                 & 34                    & 54                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 &                    & 58                 & 47                    & 70                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 47                  & 36                    & 56                 &                    & 45                 & 34                    & 56                 \\ \cline{1-5} \cline{7-9} 
+    \end{tabular}
+\end{specialtable}
+
+Table~\ref{tab2} shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
 
 A first look at 0 model for the 0.05 \begin{math}\epsilon\end{math} adversarial examples shows a significant drop in accuracy comapred to CIFAR-10.
 In the meantime, safety is much lower than accuracy. In particular, it can be seen that there is a difference of about 30\% in VGG16.
@@ -412,7 +451,26 @@ This can be seen visually through the Graph~\ref{graph1}-b.
 
 \subsection{GTSRB Results}
 
-Table~\ref{table1}-c shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
+\begin{specialtable}[H]
+    \centering
+    \caption{Results of GTSRB with \begin{math}\epsilon\end{math}}
+    \label{tab3}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \cline{1-5} \cline{7-9}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}       & \multirow{10}{*}{} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-5} \cline{7-9}
+                                 &                           & LeNet               & ResNet18              & VGG16              &                    & LeNet              & ResNet18              & VGG16              \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 &                    & 63                 & 53                    & 78                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 18                  & 33                    & 33                 &                    & 11                 & 27                    & 27                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 &                    & 60                 & 50                    & 74                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 45                  & 35                    & 56                 &                    & 38                 & 31                    & 53                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 &                    & 57                 & 49                    & 69                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 45                  & 36                    & 56                 &                    & 41                 & 34                    & 54                 \\ \cline{1-5} \cline{7-9} 
+    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 &                    & 58                 & 47                    & 70                 \\ \cline{2-5} \cline{7-9} 
+                                 & Adversarial               & 47                  & 36                    & 56                 &                    & 45                 & 34                    & 56                 \\ \cline{1-5} \cline{7-9} 
+    \end{tabular}
+\end{specialtable}
+
+Table~\ref{table3} shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
 
 Looking at the 0 model of thhe result for the 0.05 \begin{math}\epsilon\end{math} adversarial example first, it can be seen that the accuracy and safety performance are significantly different at 68\%(LeNet), 38\%(ResNet18), and 53\%(VGG16).
 Similar to CIFAR datasets, we can see a very significnat improvement in safety performance from 0 model to 20 model.
@@ -520,20 +578,6 @@ LD & Linear dichroism
 \section{}
 \subsection{}
 The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
-
-\begin{specialtable}[H] 
-%\tablesize{\scriptsize}
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab2}}
-%\tablesize{} % You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{ccc}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-Entry 1		& Data			& Data\\
-Entry 2		& Data			& Data\\
-\bottomrule
-\end{tabular}
-\end{specialtable}
 
 \section{}
 All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc. 
