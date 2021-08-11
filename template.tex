@@ -398,19 +398,20 @@ Althogh the same equation is applied, we distinguish between the two measurement
 
 \begin{specialtable}[H]
     \centering
-    \caption{Results of CIFAR-10 with \begin{math}\epsilon\end{math}\label{tab1}}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-    \cline{1-5} \cline{7-9}
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}       & \multirow{10}{*}{} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-5} \cline{7-9} 
-                                 &                           & LeNet               & ResNet18              & VGG16              &                    & LeNet              & ResNet18              & VGG16              \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 &                    & 63                 & 53                    & 78                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 18                  & 33                    & 33                 &                    & 11                 & 27                    & 27                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 &                    & 60                 & 50                    & 74                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 45                  & 35                    & 56                 &                    & 38                 & 31                    & 53                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 &                    & 57                 & 49                    & 69                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 45                  & 36                    & 56                 &                    & 41                 & 34                    & 54                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 &                    & 58                 & 47                    & 70                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 47                  & 36                    & 56                 &                    & 45                 & 34                    & 56                 \\ \cline{1-5} \cline{7-9} 
+    \caption{Results of CIFAR-10 with \begin{math}\epsilon\end{math}}
+    \label{tab1}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05} & \multicolumn{3}{c|}        {\begin{math}\epsilon\end{math} 0.1}          \\ \cline{3-8} 
+                                 &                           & LeNet               & ResNet18              & VGG16              & LeNet              & ResNet18              & VGG16              \\ \hline
+    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 & 63                 & 53                    & 78                 \\ \cline{2-8} 
+                                 & Adversarial               & 18                  & 33                    & 33                 & 11                 & 27                    & 27                 \\ \hline
+    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 & 60                 & 50                    & 74                 \\ \cline{2-8} 
+                                 & Adversarial               & 45                  & 35                    & 56                 & 38                 & 31                    & 53                 \\ \hline
+    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 & 57                 & 49                    & 69                 \\ \cline{2-8} 
+                                 & Adversarial               & 45                  & 36                    & 56                 & 41                 & 34                    & 54                 \\ \hline
+    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 & 58                 & 47                    & 70                 \\ \cline{2-8} 
+                                 & Adversarial               & 47                  & 36                    & 56                 & 45                 & 34                    & 56                 \\ \hline
     \end{tabular}
 \end{specialtable}
 
@@ -441,17 +442,17 @@ As shown in Graph~\ref{graph1}, a slight drop in accracy and significant improve
     \caption{Results of CIFAR-100 with \begin{math}\epsilon\end{math}}
     \label{tab2}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-    \cline{1-5} \cline{7-9}
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}       & \multirow{10}{*}{} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-5} \cline{7-9}
-                                 &                           & LeNet               & ResNet18              & VGG16              &                    & LeNet              & ResNet18              & VGG16              \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 &                    & 63                 & 53                    & 78                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 18                  & 33                    & 33                 &                    & 11                 & 27                    & 27                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 &                    & 60                 & 50                    & 74                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 45                  & 35                    & 56                 &                    & 38                 & 31                    & 53                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 &                    & 57                 & 49                    & 69                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 45                  & 36                    & 56                 &                    & 41                 & 34                    & 54                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 &                    & 58                 & 47                    & 70                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 47                  & 36                    & 56                 &                    & 45                 & 34                    & 56                 \\ \cline{1-5} \cline{7-9} 
+    \hline
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
+                                 &                           & LeNet               & ResNet18              & VGG16       & LeNet              & ResNet18              & VGG16              \\ \hline 
+    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
+                                 & Adversarial               & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
+    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
+                                 & Adversarial               & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
+    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
+                                 & Adversarial               & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
+    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
+                                 & Adversarial               & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
     \end{tabular}
 \end{specialtable}
 
@@ -481,17 +482,17 @@ This can be seen visually through the Graph~\ref{graph1}-b.
     \caption{Results of GTSRB with \begin{math}\epsilon\end{math}}
     \label{tab3}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-    \cline{1-5} \cline{7-9}
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}       & \multirow{10}{*}{} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-5} \cline{7-9}
-                                 &                           & LeNet               & ResNet18              & VGG16              &                    & LeNet              & ResNet18              & VGG16              \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 &                    & 63                 & 53                    & 78                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 18                  & 33                    & 33                 &                    & 11                 & 27                    & 27                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 &                    & 60                 & 50                    & 74                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 45                  & 35                    & 56                 &                    & 38                 & 31                    & 53                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 &                    & 57                 & 49                    & 69                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 45                  & 36                    & 56                 &                    & 41                 & 34                    & 54                 \\ \cline{1-5} \cline{7-9} 
-    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 &                    & 58                 & 47                    & 70                 \\ \cline{2-5} \cline{7-9} 
-                                 & Adversarial               & 47                  & 36                    & 56                 &                    & 45                 & 34                    & 56                 \\ \cline{1-5} \cline{7-9} 
+    \hline
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
+                                 &                           & LeNet               & ResNet18              & VGG16       & LeNet              & ResNet18              & VGG16              \\ \hline 
+    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
+                                 & Adversarial               & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
+    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
+                                 & Adversarial               & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
+    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
+                                 & Adversarial               & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
+    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
+                                 & Adversarial               & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
     \end{tabular}
 \end{specialtable}
 
@@ -514,6 +515,11 @@ It can be visually confirmed through Graph~\ref{graph1}-c.
 In Graph~\ref{graph1}-c as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
 
 \subsection{Discussion}
+
+% 실험 결과가 이러이러 했으므로 우리는 이런 프로세스를 제안할 것이다.
+% 기존 소프트웨어의 경우 데이터 준비를 하고 학습 및 평가를 진행하고 이후 피드백 과정을 통해서 모델을 정제하였다.
+% 우리 모델에서는 데이터 준비 단계에서 적대적 예시 포함 비율 여부와 같은 것을 검증함을 통해서 1차적으로 검증을 들어가고 학습하기 때문에 필요한 피드백을 최소 1회 줄일 수 있다.
+% 이를 통해 다음과 같은 프로세스를 제안한다.
 
 The interpretation of the experimental results according to 3 different datasets and models and various experimental conditions and the answer to the RQs in the thesis can be confirmed as follows. \\
 
