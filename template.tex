@@ -191,6 +191,7 @@ For proving this, we set up the following research questions(RQ).
 
 Through experiments to answer each RQ, we were able to make the following contributions in this paper.
 
+% main 기법이 아닌 결과에 따른 선택적으로 main process로 사용할 수 있거나 성능 향상을 위한 보조적인 수단으로 활용할 수 있음을 어필₩
 \begin{enumerate}
     \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
     \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
@@ -550,7 +551,12 @@ Even if adversarial training data is included at a higher rate than that, the de
 If accuracy is considered a more important requirements, the proportion of adversarial examples can be reduced, and if safety is considered a more important requirement, more adversarial examples can be included.
 
 Additionally, in Graph~\ref{graph 1}, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
-Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety. \\
+Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety.
+
+\begin{figure}[H]
+    \includegraphics[width=13 cm]{Definitions/comparison.png}
+    \caption{Comparison between existing process and our process\label{comparison}}
+\end{figure} 
 
 To summarize the experimental results, adversarial training can contribute to improving the safety of the classificatio model, which also applies to safety-reslated datasets.
 In order to verify safety, it is recommended that at least 20\% of the training data consist of adversarial examples, and it can be proved that it can help to verify the desired requirements by adjusting the inclusion ratio of adversarial exampels according to priority among accuracy and safety.
