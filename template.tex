@@ -138,41 +138,50 @@ $^{2}$ \quad Affiliation 2; elvenwhite@smu.ac.kr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Only for the journal Encyclopedia
-%\encyclopediadef{Instead of the abstract}
-%\entrylink{The Link to this entry published on the encyclopedia platform.}
+% \encyclopediadef{Instead of the abstract}
+% \entrylink{The Link to this entry published on the encyclopedia platform.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{section}
 
 \section{Introduction}
- 
+
+% 기능적 요구사항 및 비기능적 요구사항에 대한 간단한 설명과 검증하는 것이 왜 중요한지에 대한 설명 추가
+% 기존 소프트웨어에서 요구사항을 검증하는 방법에 대한 내용 순서 조정
+% AI 요구사항 검증 및 문제 제시에 대한 내용 수정
 Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
-Existing software has been quickley verifying requirements through V model which makes detailed documentation and testing at each stage of the software development life cycle.
-However, with the advent of Deep Neural Network(DNN), artificial intelligence(AI), which has different characteristics with existing software that appeared throughout society, is difficult to verify by methods verifying existing software.
-The reason why it is difficult to use the verification methods of existing software in AI is because AI operated as black box model. So, people can't directly know what process it goes through and what features it learns to derive results.
-In existing software, it is possible for people to directly check the operation of code, so functional requirements as well as non-functional requirements(NFRs) can be verified through code.
-However, in AI, funcional requirements can be verified by methods such as measuring the accuracy or F1-score of the model, but NFRs such as safety, security, and transparency are difficult to verify because the operation of code cannot be identified. % TODO :: reference 정리
-In AI, it is important to verify not only the functional requirements but also the NFRs of AI in areas that can have a fatal impact on humans such as autonomous driving, medical diagnosis, and finance.
-If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
-That is why AI needs to better verify these NFRs.
-Nevertheless, the quality assessment of AI has mainly been made on the functional requirements corresponding to how well the model trained through methods such as accuracy and F1 score rather than on NFRs.\\
+Requirements can be divided into functional requirements and non-functional requirements(NFRs).
+Functional requirements are requirements for whether the software properly provides the functions that users want.
+NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior), security, safety(whether the execution result of software is safe), reliability(transparency, whether software can be trusted), and etc. % reference 정리
+It can be said that it is essential to verifty not only functional requirements but also NFRs for high quality software.
 
-% TODO :: Related works 정리 후 수정 예정
+% 기존 소프트웨어에서의 요구사항 검증 방법
+Existing software has been quickley verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
+In existing software, it is possible for people to directly check the operation of code, so functional requirements as well as non-functional requirements(NFRs) can be verified through code.\
+
+% 인공지능에서 비기능적 요구사항의 중요성 및 문제 제시
+However, with the advent of Deep Neural Network(DNN), artificial intelligence(AI), which has different characteristics with existing software that appeared throughout society, is difficult to verify requirements by methods used in existing software.
+Performance, which is one of the NFRs, can be verified to some extent through accuracy or F1-score measurement. However, other NFRs like safety are difficult to verify.
+The reason why it is difficult to use the verification methods of existing software in AI is because AI operated as black box model. In existing software, these NFRs could be verified through code, but in AI, it is difficult to verify them because it counldn't identify the operation of the code.
+In AI, verification of NFRs is important especially in the areas that can have a fatal impact on humans such as autonomous driving, medical diagnosis, and finance.
+If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
+Nevertheless, the quality assessment of AI is mainly done only on the performance corresponding to how well AI through methods such as accuracy and F1-score and NFRs are rarely dealt with.
+
+% TODO :: Related works 정리 후 수정 예정(이 문단 전체)
+% 주요 내용 : 학습 데이터 공정성을 통해 개선하려는 연구들이 진행되었음. 다른 방법(xai, adversarial training)을 통해 AI의 성능을 개선하려는 연구들이 있었는데, 이러한 연구들에서 비기능적 요구사항 검증 방법에 대한 실마리를 잡을 수 있다.
 There are some studies for verifying NFRs of AI. Some of studies' goal is not mainly for verifying NFRs of AI, but there are some points thar can be said to be the purpose of study is for verifying NFRs of AI.
 The Microsoft proposed Fairlearn[], an open source project to ensure fairness of machine learning models, to improve unfair situations that may occur when the fairness of training data is not guaranted.
 Other studies carried out include studies on explainable AI(XAI). These studies were conducted to enable people to understand the process of deriving results of AI. In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
-There are also studies of adversarial examples and adversarial training. These studies show that machine learning is inevitably vulnerable to adversarial examples due to its' learning algorithm and suggest several methods to counter adversarial attacks. Althogh the purpose of these stuides is to maintain or imporve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
+There are also studies of adversarial examples and adversarial training. These studies show that machine learning is inevitably vulnerable to adversarial examples due to its' learning algorithm and suggest several methods to counter adversarial attacks.
+Althogh the purpose of these stuides is to maintain or imporve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
 While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
 Therefore, in this paper, we proceed with a study to verify NFRs of AI especially safety of classification model using adversarial training, inspired by the other interpretation of previous studies we said above.
-
-There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3. \\
-
+% 특히 적대적 학습을 통한 적대적 예시에 대한 robust한 결과를 얻어낼 수 있다는 점으로부터, 소프트웨어의 안전성 검증과 연관을 지을 수 있을 것이라고 생각하였다. 
+% 이를 확인하기 위해 논문에서는 분류 모델과 이에 대한 자세한 내용은 3장에 대해서 다룬다.
+There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3.
 In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of datas for learning(adversarial training).
-For proving this, we set up the following research questions(RQ). \\
+For proving this, we set up the following research questions(RQ).
 
 \begin{description}
     \item[RQ1.]	Can classification model correctly classify adversarial examples by learning adversarial examples?
@@ -180,13 +189,13 @@ For proving this, we set up the following research questions(RQ). \\
     \item[RQ3.]	At what rate will learning with adversarial examples perform best.
 \end{description}
 
-Through experiments to answer each RQ, we were able to make the following contributions in this paper. \\
+Through experiments to answer each RQ, we were able to make the following contributions in this paper.
 
 \begin{enumerate}
     \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
     \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
     \item	We propose a process to adjust the ratio of inclusion adversarial example in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios demonstrated that adversarial inclusion ratios plays key roles for trade-off between accuracy and safety.
-\end{enumerate} \\
+\end{enumerate} 
 
 The contents of the paper are structured as follows. In chapter 2, we deals with the introduction of previous studies conducted for verification methods for AI NFRs.
 In chapter 3, we deals with the definition of safety and experimental design that we would like to see in our paper.
@@ -277,8 +286,8 @@ On the other hand, in the case of a adversarial examples, many studies on advers
 For these reasons, the paper thought adversarial training is a way to ensure minimum safety of AI, and tried to prove it through experiments.
 If adversarial training allows the model to better respond to adversarial examples\_improves safety performance\_, it can be used as a way to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data. \\
 
-In order to show this through experiments, we first prepared different kinds of datasets and used the prepared datasets to generate adversarial datasets with different degrees of transformation{\left({\epsilon}\right)}.
-The reason for the preparing several {\epsilon} is to check the effect of {\({\epsilon}\)} on safety performance. If the {\({\epsilon}\)} is too small, the safety performance will not improve because there is little difference from the original data, so it cannot classify adversarial examples well. If the {\({\epsilon}\)} is too large, the features of the original data cannot be learned properly, resulting in poor performance such as the accuracy of the existing model.
+In order to show this through experiments, we first prepared different kinds of datasets and used the prepared datasets to generate adversarial datasets with different degrees of transformation \begin{math}\epsilon\end{math}.
+The reason for the preparing several \begin{math}\epsilon\end{math} is to check the effect of \begin{math}\epsilon\end{math} on safety performance. If the \begin{math}\epsilon\end{math}is too small, the safety performance will not improve because there is little difference from the original data, so it cannot classify adversarial examples well. If the (\begin{math}\epsilon\end{math}) is too large, the features of the original data cannot be learned properly, resulting in poor performance such as the accuracy of the existing model.
 In addition, when generating datasets for adversarial training, the size of the training dataset was kept the same as the size of the existing training dataset.
 This is because increasing the number of data does not necessarily lead to improved performance of the model, as well as requiring additional resources to learn it.
 Furthermore, in order to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, the experiment was conductted by setting the mixing ratio of the original data and the adversarial examples differently.
@@ -383,13 +392,13 @@ For example, a model trained with only the original train datas is called 0 mode
 We use accuracy and safety for experimental results measurement. Accuracy is a measure of how well the trained model classifies the original evaluation datas, and can be defined as equation:
 
 \begin{equation}
-    acc = \# of correctly classfied / # of total original evaluation datas
+    acc = numbers of correctly classfied / numbers of total original evaluation datas
 \end{equation}
 
 Safety is a measure of how well the trained model classifies the adversarial evalutaion datas, and it can be defined as equation:
 
 \begin{equation}
-    safety = \# of correctly classifed / # of total adversarial evaluation datas
+    safety = numbers of correctly classifed / numbers of total adversarial evaluation datas
 \end{equation}
 
 Althogh the same equation is applied, we distinguish between the two measurements depending on whether the evaluation datas is the original or adversarial.
@@ -503,16 +512,16 @@ Similar to CIFAR datasets, we can see a very significnat improvement in safety p
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005gtsrb.png}
-    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.05\label{graph1}}
+    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.05\label{graph5}}
 \end{figure} 
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01gtsrb.png}
-    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.1\label{graph2}}
+    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.1\label{graph6}}
 \end{figure} 
 
-It can be visually confirmed through Graph~\ref{graph1}-c.
-In Graph~\ref{graph1}-c as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
+It can be visually confirmed through Graph~\ref{graph5}-c.
+In Graph~\ref{graph6}-c as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
 
 \subsection{Discussion}
 
