@@ -251,7 +251,7 @@ Several studies on NFRs have benn conducted, and even for studies that do not ha
 Inspired by theses studies, we proceed with the research of the thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Definition of {\it safety} and Experimental design} % Overview of experiments
+\section{Definition of safety and Experimental design} % Overview of experiments
 
 % Introduction에서 생략하거나 자세히 설명하지 않은 부분에 대한 내용 추가
 % 왜 안전성인가 ? 왜 분류 모델인가 ?
@@ -260,18 +260,18 @@ Inspired by theses studies, we proceed with the research of the thesis.
 In this chapter, we discusses what is the safety of AI in this paper and how the we designed the experiment to answer the RQs.
 
 \begin{figure}[H] % t: top, b: bottom: h: here
-\includegraphics[width=5 cm]{Definitions/logo-mdpi}
-\caption{Examples of adversarial examples.\label{fig1}}
+\includegraphics[width=13 cm]{Definitions/example-of-adversarial.png}
+\caption{Examples of adversarial examples.\label{example-of-adversarial}}
 \end{figure}   
 
 AI needs to ensure minimum safety regradless of its purpose. In the field where AI is applied, actual input data may not exist in the dataset used for training.
 In addition, AI is likely to suffer from multiple threats in real-world applications and adversarial attacks(adversarial examples) are one of the examples.
-Examples of adversarial attacks can be seen in Figure~\ref{fig1}. Both signs appear to be the same sign in human eyes. However, the right one with adversarial attack is not properly classified compared to left one in Figure is classified correctly.
+Examples of adversarial attacks can be seen in Figure~\ref{example-of-adversarial}. Both signs appear to be the same sign in human eyes. However, the right one with adversarial attack is not properly classified compared to left one in Figure is classified correctly.
 Models applied to fields where the results can have a significant impact on humans, such as autonomous driving and medical diagnosis, can cause fatal safety problems if they do not properly respond to adversarial attacks. Therefore, in such a field, it is important to respond well to adversarial attacks and to ensure safety.
 Through this, the paper defiend safety as bellows.
 
 \begin{quote}
-    "Safety is the measure of whether the model responds appropriately to data with untrained features or to data that has been adversarial attacked to obtain incorrect results from the model."
+    "{\it Safety} is the measure of whether the model responds appropriately to data with untrained features or to data that has been adversarial attacked to obtain incorrect results from the model."
 \end{quote}
 
 Learning all data and adversarial examples that may occur in the environment in which the model is applied is the best way to ensure safety.
@@ -355,12 +355,13 @@ To do this, it is necessary to generate adversarial examples. Among several adve
 Because FGSM generates adversarial examples by using gradient in the training process, it is necessary to train at least once with the dataset which we want to generate adversarial examples.
 So, for the generating adversarial examples, we used LeNet, which has a relatively simple structure and does not require much time to learn in our paper.
 
+% Explaining and harness ~ 논문에서 사용한 이미지 사용 As shown in Figure~\ref{fgsm} 여기에 명시
 \begin{figure}[H] 
-\includegraphics[width=5 cm]{Definitions/logo-mdpi}
-\caption{Process of generating adversarial examples with FGSM.\label{fig4}}
+\includegraphics[width=13cm]{Definitions/fgsm.png}
+\caption{Process of generating adversarial examples with FGSM.\label{fgsm}}
 \end{figure} 
 
-As shown in Figure~\ref{fig4}, adversarial examples are generated using the gradient change that occurred during the training process.
+As shown in Figure~\ref{fgsm}, adversarial examples are generated using the gradient change that occurred during the training process.
 At this time, \begin{math}\epsilon\end{math} is used to determine the degree of adversarial attack by reflecting the slope value.
 In this paper, 0.05 and 0.1 were used as \begin{math}\epsilon\end{math}s. The failure to use values above 0.1 is due to the observation of human-obeservalbe transformation points in adversarial examples.
 Therefore, if a value greater than 0.1, it can no longer serve as a adversarial example, so two types of \begin{math}\epsilon\end{math}s are used to generate adversarial examples.
@@ -553,6 +554,9 @@ If accuracy is considered a more important requirements, the proportion of adver
 Additionally, in Graph~\ref{graph 1}, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
 Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety.
 
+% 이 그림에 대한 해석
+% 그냥 데이터만으로 학습을 진행하고 데이터 셋을 정제하거나 모델을 파인튠한 기존 프로세스
+% 데이터 준비 단계에서 적대적 예시 데이터 셋을 활용하여 결과에서 데이터 셋 정제하거나 모델 파인튠에 사용할 수 있는 부가적인 정보를 얻을 수 있는 우리의구조
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/comparison.png}
     \caption{Comparison between existing process and our process\label{comparison}}
