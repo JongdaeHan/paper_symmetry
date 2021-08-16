@@ -183,6 +183,7 @@ There are the purpose of AI is very diverse and the required NFRs vary according
 In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of datas for learning(adversarial training).
 For proving this, we set up the following research questions(RQ).
 
+% 네트워크 구조에도 상관없이 적용될 수 있음에 대한 내용을 추가해야 할 필요가 있다. 왜냐하면 우리가 3개의 서로 다른 네트워크를 사용하기 때문에
 \begin{description}
     \item[RQ1.]	Can classification model correctly classify adversarial examples by learning adversarial examples?
     \item[RQ2.]	Does it show the same results as RQ1 for the dataset related to safety?
@@ -259,7 +260,7 @@ Inspired by theses studies, we proceed with the research of the thesis.
 
 In this chapter, we discusses what is the safety of AI in this paper and how the we designed the experiment to answer the RQs.
 
-\begin{figure}[H] % t: top, b: bottom: h: here
+\begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/example-of-adversarial.png}
 \caption{Examples of adversarial examples.\label{example-of-adversarial}}
 \end{figure}   
@@ -309,22 +310,7 @@ Section 4.1 introduces a introduction to the models and datasets used in our exp
 Section 4.2 introduces a breif introduction to FGSM for generating adversarial examples and the reason why is was selected.
 Section 4.3 introduces each process of the experiment designed in chapter 3.
 
-\subsection{Models and Datasets}
-\subsubsection{Models}
-
-For the experiments, we used LeNet[], ResNet18[], VGG16[].
-LeNet model mainly used for classification has a relatively simple structure compared to other networks which does not require much time to learn.
-ResNet18 and VGG16 are the most well-known and widely used models for classification, and their performance has also been proven through multiple competitions.
-For ResNet18 and VGG16, the model defined in "torchvision.models" of PyTorch[], one of the deep leanring frameworks used for Python, was used.
-Each model didn't go through a sepearte finetune process, and the rest of the hyper parameters were used under the same conditions, except for epoch.
-The reason the same conditions were set without additional adjustment is that this paper does not aim for model to produce optimal performance.
-Moreover, adjustment of model structure and hyper parameters can make better performance through multiple training and evaluation processes, but it needs a lot of resources and does not help much for the safety of AI.
-However, for epoch, it was determined that the accuracy measured during the training was over 90\%. This is because the structures of used models are all different, when experiments are conducted with the same epoch, overfitting occurs in some models.
-
-\begin{figure}[H]
-\includegraphics[width=5 cm]{Definitions/logo-mdpi}
-\caption{Each structure of used models.\label{fig2}}
-\end{figure}   
+\subsection{Datasets and Models}
 
 \subsection{Datasets}
 
@@ -347,6 +333,23 @@ The difference between GTSRB and CIFAR datasets is that the number of data corre
 The dataset used for applicapable AI training has some of this data bias.
 Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of model through adversarial training for dataset in which the number of data is not uniform for each class, we can get valid results for other dataset.
 Another reason for selecting GTSRB is that it is closely related to safety.
+
+\subsubsection{Models}
+
+In the paper, three models of different structures(LeNet5, ResNet-18, VGG-16) were used to understand the effect of adversarial training through data augmentation on safety performance regardless of network structure.
+LeNet is a classical CNN  structured model introduced in 1998 and features better performance compared to its simple structure.
+LeNet has the simplest structure among the models used in the experiment, it was used to understand the effect of the model of the simple structure.
+ResNet18 and VGG16 are the most well-known and widely used models for classification, and their performance has also been proven through ILSVRC(ImageNet Large Scale Visual Recognition Challenge).
+VGG16, althogh it came in second in the 2014 competition, is more popular than the winning model GoogLeNet for its simplicity and ease of use.
+ResNet18 is a model that won the 2015 competition with the additional of Residual blocks to VGGNet.
+We selected two models with guaranteed classification performace through the competition prize for experiments.
+ResNet18 is chosen because it has complex structure and VGG16 has a structure that is intermediate between ResNet18 and LeNet.
+For LeNet, we directly implemented the model by referring to the paper and used it.
+For ResNet18 and VGG16, the model defined in "torchvision.models" of PyTorch[], one of the deep leanring frameworks used for Python, was used.
+Each model didn't go through a sepearte finetune process, and the rest of the hyper parameters were used under the same conditions, except for epoch.
+The reason the same conditions were set without additional adjustment is that this paper does not aim for model to produce optimal performance.
+Moreover, adjustment of model structure and hyper parameters can make better performance through multiple training and evaluation processes, but it needs a lot of resources and does not help much for the safety of AI.
+However, for epoch, the first time when the accuracy exceeds 90\% in training within the maximum range of 30. This is because the structures of used models are all different, when experiments are conducted with the same epoch, overfitting occurs in some models.
 
 \subsection{Fast Gradient Sign Method(FGSM)}
 
