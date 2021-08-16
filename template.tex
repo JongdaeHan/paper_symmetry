@@ -106,8 +106,8 @@ $^{2}$ \quad Affiliation 2; elvenwhite@smu.ac.kr}
 \abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
 % AI가 일상 생활에서 많이 사용되는 추세이지만 중요 요소 중 하나인 비기능적 요구사항 검증에 대한 연구가 거의 이루어지지 않았다.
 % 논문에서는 분류 모델에 대해 적대적 학습을 활용하여 적대적 학습이 인공지능의 비기능적 요구사항 중 하나인 안전성에 미치는 영향을 평가, 안전성을 검증하기 위한 방법으로 사용할 수 있음을 주장한다.
-% 실험을 통해 적대적 학습이 안전성 성능 개선을 할 수 있음을 확인하였고, 이를 통해 학습 단계 이전 적대적 학습을 위한 적대적 예시를 생성하는 것이 인공지능의 안전성 검증을 위한 방법으로 사용할 수 있음을 확인하였다.
-% 또한 서로 다른 비율의 적대적 예시를 포함한 적대적 학습을 통해 중요시 하는 요구사항에 따라 적대적 학습을 진행할 수 있음을 확인하였다. 데이터의 특성에 따른 적대적 예시 포함 비율 조정 또한 요구사항 검증 방법 중 하나로 사용될 수 있음을 주장한다.
+% 서로 다른 데이터셋 및 모델에 대해서 적대적 학습이 정확도와 안전성에 미치는 영향을 확인, 정확도(성능)가 떨어지는 것에 비해 큰 폭의 안전성 상승을 확인할 수 있었고 이를 통해 적대적 예시를 만드는 것이 안전성 검증을 위한 요소로 사용될 수 있음을 증명하였다.
+% 나아가 서로 다른 적대적 예시 포함 비율 실험을 통하여 중요시하는 비기능적 요구사항에 따라 적대적 예시 포함 비율을 조정하는 것 또한 비기능적 요구사항을 검증할 수 있는 요소 중 하나로 활용될 수 있음을 증명하였다.
 
 % Keywords
 \keyword{keyword 1; keyword 2; keyword 3 (List three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.)} 
@@ -183,11 +183,11 @@ There are the purpose of AI is very diverse and the required NFRs vary according
 In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of datas for learning(adversarial training).
 For proving this, we set up the following research questions(RQ).
 
-% 네트워크 구조에도 상관없이 적용될 수 있음에 대한 내용을 추가해야 할 필요가 있다. 왜냐하면 우리가 3개의 서로 다른 네트워크를 사용하기 때문에
 \begin{description}
-    \item[RQ1.]	Can classification model correctly classify adversarial examples by learning adversarial examples?
+    \item[RQ1.]	Can classification model correctly classify adversarial examples by adversarial training?
     \item[RQ2.]	Does it show the same results as RQ1 for the dataset related to safety?
-    \item[RQ3.]	At what rate will learning with adversarial examples perform best.
+    \item[RQ3.] Does adversarial training affect safety performance regardless of model structure?
+    \item[RQ4.]	At what rate will learning with adversarial examples perform best?
 \end{description}
 
 Through experiments to answer each RQ, we were able to make the following contributions in this paper.
@@ -196,6 +196,7 @@ Through experiments to answer each RQ, we were able to make the following contri
 \begin{enumerate}
     \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
     \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversrail exmaples generated.
+    \item   We have shown that adversarial training can be utilized as one of the factores that can verify safety regradless of model structure. Experimental results show that there was a differences in numerical values depending on the model structure, showing the same tendency.
     \item	We propose a process to adjust the ratio of inclusion adversarial example in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios demonstrated that adversarial inclusion ratios plays key roles for trade-off between accuracy and safety.
 \end{enumerate} 
 
@@ -306,7 +307,7 @@ Detail informations about dataset, adversarial attack method, accuracy, safety, 
 \section{Methodology}
 
 We conducted experiments under different conditions to answer the RQs. For the experiment, we parpared a model with three different structures and a dataset with three different features.
-Section 4.1 introduces a introduction to the models and datasets used in our experiment and the reason why they were selected.
+Section 4.1 introduces a introduction to the datasets and models used in our experiment and the reason why they were selected.
 Section 4.2 introduces a breif introduction to FGSM for generating adversarial examples and the reason why is was selected.
 Section 4.3 introduces each process of the experiment designed in chapter 3.
 
@@ -314,6 +315,7 @@ Section 4.3 introduces each process of the experiment designed in chapter 3.
 
 \subsection{Datasets}
 
+% 각 데이터 셋을 사용한 이유에 대해서 작성
 For the experiments, three dataset were used: CIFAR-10, CIFAR-100, and GTSRB. The CIFAR-10 dataset consists of a total 60,000 datas in 10 classes, each contains 6,000 datas with 3 channels and \begin{math}{32\times 32}\end{math} size.
 Of these, 5,000 datas are used for training and last datas used for evaluation.
 
@@ -528,7 +530,7 @@ Similar to CIFAR datasets, we can see a very significnat improvement in safety p
 It can be visually confirmed through Graph~\ref{graph5}-c.
 In Graph~\ref{graph6}-c as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
 
-\subsection{Discussion}
+\subsection{Discussion} % 네트워크 구조 영향에 대한 해석 추가
 
 % 실험 결과가 이러이러 했으므로 우리는 이런 프로세스를 제안할 것이다.
 % 기존 소프트웨어의 경우 데이터 준비를 하고 학습 및 평가를 진행하고 이후 피드백 과정을 통해서 모델을 정제하였다.
