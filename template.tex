@@ -283,7 +283,7 @@ In the paper, we assumed that adversarial examples are given the highest priorit
 This is because adversarial examples are data designed for the purpose of causing problems or confusing the results of the model.
 For data under other conditions, it cannot be said that the results derived from the model unconditionally cause problems.
 On the other hand, adversarial examples are very likely to cause problems with the model's results.
-For example, in a traffic signs for autonomous driving, there may be data to cause problems as shown in Figure~\ref{fig1}, whereas there may be data that does not necessarily lead to problems, such as traffic signs with natural environment(sunlight, fog, etc.).
+For example, in a traffic signs for autonomous driving, there may be data to cause problems as shown in Figure~\ref{example-of-adversarial}, whereas there may be data that does not necessarily lead to problems, such as traffic signs with natural environment(sunlight, fog, etc.).
 Another reason is the difficulty of creating and configuring datasets. It is difficult to generate corresponding data because there are too many conditions for the data that can occur in the environment in which the model is applied.
 On the other hand, in the case of a adversarial examples, many studies on adversarial attack methods for this purpose have been conducted, so it is relatively easy to generate compared to the previous data.
 For these reasons, the paper thought adversarial training is a way to ensure minimum safety of AI, and tried to prove it through experiments.
@@ -325,6 +325,7 @@ Of these, 5,000 datas are used for training and last datas used for evaluation.
 \end{figure} 
 
 % 그림에서 확인할 수 있다는 내용 추가
+You can see the examples of used datasets in Figure~\ref{fig3}.
 The CIFAR-100 dataset consists of a total 60,000 datas in 100 classes, each contains 600 datas with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 datas are used for training and last datas used for evaluation.
 The CIFAR-10 and CIFAR-100 datasets were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
 This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class. On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
@@ -347,7 +348,7 @@ ResNet18 is a model that won the 2015 competition with the additional of Residua
 We selected two models with guaranteed classification performace through the competition prize for experiments.
 ResNet18 is chosen because it has complex structure and VGG16 has a structure that is intermediate between ResNet18 and LeNet.
 For LeNet, we directly implemented the model by referring to the paper and used it.
-For ResNet18 and VGG16, the model defined in "torchvision.models" of PyTorch[], one of the deep leanring frameworks used for Python, was used.
+For ResNet18 and VGG16, the model defined in {\it "torchvision.models"} of PyTorch[], one of the deep leanring frameworks used for Python, was used.
 Each model didn't go through a sepearte finetune process, and the rest of the hyper parameters were used under the same conditions, except for epoch.
 The reason the same conditions were set without additional adjustment is that this paper does not aim for model to produce optimal performance.
 Moreover, adjustment of model structure and hyper parameters can make better performance through multiple training and evaluation processes, but it needs a lot of resources and does not help much for the safety of AI.
@@ -383,6 +384,8 @@ The generated adversarial training datas are randomly extracted at a certain rat
 
 \subsection{Methodology}
 
+% 여기 보충 필요, 실험 방법에 대한 얘기는 하나도 안되있음
+% 각각 실험에 대한 소개와 방법들에 대한 내용이 들어가야 한다.
 We did experiments on the PC with Ubuntu 18.04 OS that had consisted of 4.20GHz Intel(R) i7-7700K CPU, 64GB RAM, and NVIDIA Titan XP 12GB GPU. The models used in the experiment have hyper parameters set to a batch size of 64, learning rate of 0.001, momentum of 0.9, CrossEntropy as loss functions and SGD as optimization functions, respectively.
 Before proceeding with the training, we go through the process of mixing original train datas and the adversarial train datas generated from the result of section 4.2.
 In this step, we trained the model only with the original train datas for being baseline of accuracy and safety performance, first. We then generate the mixed traniing dataset that mixes original train datas with adversarial train datas.
@@ -392,35 +395,44 @@ The total number of datas in the mixed train datas is equal to the number of ori
 Once the training datas are ready, the model is trained. At this time, the hyper parameters of each model follow the aforementioned settings, and the training proceeds to the point where the accuracy becomes 90\% in the training process, storing the model at that time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimental Results}
+\section{Experimental Results and Discussions}
 
-% 수식으로 전환 -> 3장으로 이동
-Before discussing the experimental results, we defines some words in this chapter. The {\bf N model} means a model trainied on mixed train datas containing N\% of total number of traninig datas number of adversarial examples.
-For example, a model trained with only the original train datas is called 0 model, and a model trained with mixed train datas which contains 20\% of the number of train datas adverial examples is called 20 model.
-We use accuracy and safety for experimental results measurement. Accuracy is a measure of how well the trained model classifies the original evaluation datas, and can be defined as equation:
+In this paper, we hypothesized that adversarial training could significantly improve safety while minimizing the impact on performance, And we designed the experiments to prove this assumptions.
+Chaper 5 summarized the results of the designed experiments and what can be learned through the experimental results.
+Before discussing the experimental results, we defines some words in this chapter.
+First, for datasets with any adversarial examples, it is called {\it orig}. Training datas and evaluation datas in {\it orig} were called {\it orig\_train} and {\it orig\_eval}.
+For datasets with adversarial examples, it is called {\it adv}. Training datas and evaluation datas in {\it adv} were called {\it adv\_train} and {\it adv\_eval}.
+These refer to each dataset and at the same time refer to the number of all datas contained in each dataset.
+The {\it N model} means a model trainied on mixed training datas containing N\% of total number of traninig datas number of adversarial examples.
+For example, a model trained with any adversarial training datas is called 0 model, and a model trained with mixed train datas which contains 20\% of the number of adversarial training datas is called 20 model.
+{\it N model} evaluate each evaluation data. At this time the number of all correctly classified data is expressed by adding {\it correct} in front of each evaluation data.
+For exmample, if evaluation data is {\it orig\_eval}, the number of all correctly classified data will be called {\it correct\_orig\_eval}.
+At the same time, if evaluation data is {\it adv\_eval}, the number of all correctly classified data will be called {\it correct\_adv\_eval}.
+
+We use accuracy and safety for experimental results measurement. Accuracy is a measure of how well the trained model classifies the {\it orig\_eval}, and can be defined as equation:
 
 \begin{equation}
-    acc = \text{correctly classfied} / \text{total {\it original} evaluation datas} \times 100
+    acc = \text{{\it correct\_orig\_eval}} / \text{{\it orig\_eval}} \times 100
 \end{equation} 
 
-Safety is a measure of how well the trained model classifies the adversarial evalutaion datas, and it can be defined as equation:
+Safety is a measure of how well the trained model classifies the {\it adv\_eval}, and it can be defined as equation:
 
 \begin{equation}
-    safety = \text{correctly classifed} / \text{total {\it adversarial} evaluation datas} \times 100
+    safety = \text{{\it correct\_adv\_eval}} / \text{{\it adv\_eval}} \times 100
 \end{equation}
 
-Althogh the same equation is applied, we distinguish between the two measurements depending on whether the evaluation datas is the original or adversarial.
+Althogh the same equation is applied, we distinguish between the two measurements depending on whether the evaluation datas are in the {\it orig\_eval} or {\it adv\_eval}.
 
 \subsection{CIFAR-10 Results}
 
 \begin{specialtable}[H]
     \centering
     \caption{Results of CIFAR-10 with \begin{math}\epsilon\end{math}}
-    \label{tab1}
+    \label{cifar10-result}
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05} & \multicolumn{3}{c|}        {\begin{math}\epsilon\end{math} 0.1}          \\ \cline{3-8} 
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05}          & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math} 0.1}         \\ \cline{3-8} 
                                  &                           & LeNet               & ResNet18              & VGG16              & LeNet              & ResNet18              & VGG16              \\ \hline
     \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 & 63                 & 53                    & 78                 \\ \cline{2-8} 
                                  & Adversarial               & 18                  & 33                    & 33                 & 11                 & 27                    & 27                 \\ \hline
@@ -434,33 +446,32 @@ Althogh the same equation is applied, we distinguish between the two measurement
     }
 \end{specialtable}
 
-Table~\ref{tab1} shows the CIFAR-10 according to \begin{math}\epsilon\end{math} and the results for each model.
+Table~\ref{cifar10-result} shows the CIFAR-10 according to \begin{math}\epsilon\end{math} and the results for each model.
 
-The results for the adversarial examples prodeuced by \begin{math}\epsilon\end{math} 0.05 in Table~\ref{table1}-a shows that the performance magnitude of accuracy and safety is significant, with 45\%  in LeNet, 20\% in ResNet18, and 45\% in VGG16.
+The results for the adversarial examples prodeuced by \begin{math}\epsilon\end{math} 0.05 shows that the performance magnitude of accuracy and safety is significant, with 45\%  in LeNet, 20\% in ResNet18, and 45\% in VGG16.
 Looking at the results of 0 model and 20 model, the accuracy decreased by 3\%(LeNet), 2\%(ResNet18), and 5\%(VGG16) for each model, but in the case of safety, it was improved by 27\%(LeNet), 2\%(ResNet18), and 23\%(VGG16) for each model.
 Although the difference between 30 model and 40 model, the accuracy has slightly decreased compared to the 0 model, and the safety has been significantly improved.
 Comparing 20 model, 30 model, and 40 model respectively, lower accuracy and higher safety were confirmed in the model with a high proportion of adversarial examples, but the differences were not large.
-The same result can be seen in the result of the adversarial examples generated by \begin{math}\epsilon\end{math} with 0.1, except that the number is different. This result can be better seen through Graph~\ref{graph-1}.
 
-% TODO ::0.05와 0.1 각 입실론에 대한 해석 작성
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005cifar10.png}
-    \caption{Graphs of CIFAR-10 with \begin{math}\epsilon\end{math} 0.05\label{graph1}}
+    \caption{Graphs of CIFAR-10 with \begin{math}\epsilon\end{math} 0.05\label{cifar10-0.05-graph}}
 \end{figure} 
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01cifar10.png}
-    \caption{Graphs of CIFAR-10 with \begin{math}\epsilon\end{math} 0.1\label{graph2}}
-\end{figure} 
+    \caption{Graphs of CIFAR-10 with \begin{math}\epsilon\end{math} 0.1\label{cifar10-0.1-graph}}
+\end{figure}
 
-As shown in Graph~\ref{graph1}, a slight drop in accracy and significant improvement in safety from 0 model to 20 model, and that there is only a slight change in models that have increased to ratio of adversarial examples.
+The same result can be seen in the result of the adversarial examples generated by \begin{math}\epsilon\end{math} with 0.1, except that the number is different. This result can be better seen through Figure~\ref{cifar10-0.05-graph} and Figure~\ref{cifar10-0.1-graph}.
+As shown in both figure, a slight drop in accracy and significant improvement in safety from 0 model to 20 model, and that there is only a slight change in models that have increased to ratio of adversarial examples.
 
 \subsection{CIFAR-100 Results}
 
 \begin{specialtable}[H]
     \centering
     \caption{Results of CIFAR-100 with \begin{math}\epsilon\end{math}}
-    \label{tab2}
+    \label{cifar100-results}
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
@@ -478,7 +489,7 @@ As shown in Graph~\ref{graph1}, a slight drop in accracy and significant improve
     }
 \end{specialtable}
 
-Table~\ref{tab2} shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
+Table~\ref{cifar100-results} shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
 
 A first look at 0 model for the 0.05 \begin{math}\epsilon\end{math} adversarial examples shows a significant drop in accuracy comapred to CIFAR-10.
 In the meantime, safety is much lower than accuracy. In particular, it can be seen that there is a difference of about 30\% in VGG16.
@@ -487,22 +498,22 @@ As with the experimental results of CIFAR-10, there is only a difference in the 
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005cifar100.png}
-    \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.05\label{graph3}}
+    \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.05\label{cifar100-0.05-graph}}
 \end{figure} 
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01cifar100.png}
-    \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.1\label{graph4}}
+    \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.1\label{cifar100-0.1-graph}}
 \end{figure} 
 
-This can be seen visually through the Graph~\ref{graph1}-b.
+This can be seen visually through the figure~\ref{cifar10-0.05-graph} and figure~\ref{cifar10-0.1-graph}.
 
 \subsection{GTSRB Results}
 
 \begin{specialtable}[H]
     \centering
     \caption{Results of GTSRB with \begin{math}\epsilon\end{math}}
-    \label{tab3}
+    \label{gtsrb-results}
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
@@ -520,23 +531,23 @@ This can be seen visually through the Graph~\ref{graph1}-b.
     }
 \end{specialtable}
 
-Table~\ref{table3} shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
+Table~\ref{gtsrb-results} shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
 
 Looking at the 0 model of thhe result for the 0.05 \begin{math}\epsilon\end{math} adversarial example first, it can be seen that the accuracy and safety performance are significantly different at 68\%(LeNet), 38\%(ResNet18), and 53\%(VGG16).
 Similar to CIFAR datasets, we can see a very significnat improvement in safety performance from 0 model to 20 model.
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005gtsrb.png}
-    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.05\label{graph5}}
+    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.05\label{gtsrb-0.05-graph}}
 \end{figure} 
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01gtsrb.png}
-    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.1\label{graph6}}
+    \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.1\label{gtsrb-0.1-graph}}
 \end{figure} 
 
-It can be visually confirmed through Graph~\ref{graph5}-c.
-In Graph~\ref{graph6}-c as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
+It can be visually confirmed through figure~\ref{gtsrb-0.05-graph} and figure~\ref{gtsrb-0.1-graph}.
+In figure~\ref{gtsrb-0.05-graph} and figure~\ref{gtsrb-0.1-graph} as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
 
 \subsection{Discussion} % 네트워크 구조 영향에 대한 해석 추가
 
@@ -564,7 +575,7 @@ This is because the greatest improvement in safety can be obtained compared to 0
 Even if adversarial training data is included at a higher rate than that, the degree of safety improvement is small, so it can be considered as the minimum requirements to configuer 20\% of the total training dataset as adversarial examples.
 If accuracy is considered a more important requirements, the proportion of adversarial examples can be reduced, and if safety is considered a more important requirement, more adversarial examples can be included.
 
-Additionally, in Graph~\ref{graph 1}, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
+Additionally, in graphs, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
 Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety.
 
 % 이 그림에 대한 해석
