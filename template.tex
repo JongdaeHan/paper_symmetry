@@ -412,13 +412,13 @@ At the same time, if evaluation data is {\it adv\_eval}, the number of all corre
 We use accuracy and safety for experimental results measurement. Accuracy is a measure of how well the trained model classifies the {\it orig\_eval}, and can be defined as equation:
 
 \begin{equation}
-    acc = \text{{\it correct\_orig\_eval}} / \text{{\it orig\_eval}} \times 100
+    acc(\%) = \text{{\it correct\_orig\_eval}} / \text{{\it orig\_eval}} \times 100
 \end{equation} 
 
 Safety is a measure of how well the trained model classifies the {\it adv\_eval}, and it can be defined as equation:
 
 \begin{equation}
-    safety = \text{{\it correct\_adv\_eval}} / \text{{\it adv\_eval}} \times 100
+    safety(\%) = \text{{\it correct\_adv\_eval}} / \text{{\it adv\_eval}} \times 100
 \end{equation}
 
 Althogh the same equation is applied, we distinguish between the two measurements depending on whether the evaluation datas are in the {\it orig\_eval} or {\it adv\_eval}.
@@ -432,27 +432,28 @@ Althogh the same equation is applied, we distinguish between the two measurement
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05}          & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math} 0.1}         \\ \cline{3-8} 
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05}          & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math} 0.1}         \\ \cline{3-8} 
                                  &                           & LeNet               & ResNet18              & VGG16              & LeNet              & ResNet18              & VGG16              \\ \hline
-    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78                 & 63                 & 53                    & 78                 \\ \cline{2-8} 
-                                 & Adversarial               & 18                  & 33                    & 33                 & 11                 & 27                    & 27                 \\ \hline
-    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73                 & 60                 & 50                    & 74                 \\ \cline{2-8} 
-                                 & Adversarial               & 45                  & 35                    & 56                 & 38                 & 31                    & 53                 \\ \hline
-    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72                 & 57                 & 49                    & 69                 \\ \cline{2-8} 
-                                 & Adversarial               & 45                  & 36                    & 56                 & 41                 & 34                    & 54                 \\ \hline
-    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70                 & 58                 & 47                    & 70                 \\ \cline{2-8} 
-                                 & Adversarial               & 47                  & 36                    & 56                 & 45                 & 34                    & 56                 \\ \hline
+    \multirow{2}{*}{10:0}        & Acc                       & 63                  & 53                    & 78                 & 63                 & 53                    & 78                 \\ \cline{2-8} 
+                                 & Safety                    & 18                  & 33                    & 33                 & 11                 & 27                    & 27                 \\ \hline
+    \multirow{2}{*}{8:2}         & Acc                       & 60                  & 51                    & 73                 & 60                 & 50                    & 74                 \\ \cline{2-8} 
+                                 & Safety                    & 45                  & 35                    & 56                 & 38                 & 31                    & 53                 \\ \hline
+    \multirow{2}{*}{7:3}         & Acc                       & 58                  & 49                    & 72                 & 57                 & 49                    & 69                 \\ \cline{2-8} 
+                                 & Safety                    & 45                  & 36                    & 56                 & 41                 & 34                    & 54                 \\ \hline
+    \multirow{2}{*}{6:4}         & Acc                       & 58                  & 48                    & 70                 & 58                 & 47                    & 70                 \\ \cline{2-8} 
+                                 & Safety                    & 47                  & 36                    & 56                 & 45                 & 34                    & 56                 \\ \hline
     \end{tabular}
     }
 \end{specialtable}
 
-Table~\ref{cifar10-result} shows the CIFAR-10 according to \begin{math}\epsilon\end{math} and the results for each model.
+Table~\ref{cifar10-result} shows the CIFAR-10 according to \begin{math}\epsilon\end{math} results for each model.
 
-The results for the adversarial examples prodeuced by \begin{math}\epsilon\end{math} 0.05 shows that the performance magnitude of accuracy and safety is significant, with 45\%  in LeNet, 20\% in ResNet18, and 45\% in VGG16.
+The results for the adversarial examples produced by \begin{math}\epsilon\end{math} 0.05 shows that the performance magnitude of accuracy and safety is significant, with 45\%  in LeNet, 20\% in ResNet18, and 45\% in VGG16.
 Looking at the results of 0 model and 20 model, the accuracy decreased by 3\%(LeNet), 2\%(ResNet18), and 5\%(VGG16) for each model, but in the case of safety, it was improved by 27\%(LeNet), 2\%(ResNet18), and 23\%(VGG16) for each model.
 Although the difference between 30 model and 40 model, the accuracy has slightly decreased compared to the 0 model, and the safety has been significantly improved.
 Comparing 20 model, 30 model, and 40 model respectively, lower accuracy and higher safety were confirmed in the model with a high proportion of adversarial examples, but the differences were not large.
-
+In reuslts for the adversarial examples produced by \begin{math}\epsilon\end{math} 0.1, as in \begin{math}\epsilon\end{math} 0.05, the accuracy of 20, 30, 40 model was slightly reduced compared to 0 model but a significant improvement in safety was achieved.
+% 여기부터 작업 다시 시작
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005cifar10.png}
     \caption{Graphs of CIFAR-10 with \begin{math}\epsilon\end{math} 0.05\label{cifar10-0.05-graph}}
@@ -475,16 +476,16 @@ As shown in both figure, a slight drop in accracy and significant improvement in
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
                                  &                           & LeNet               & ResNet18              & VGG16       & LeNet              & ResNet18              & VGG16              \\ \hline 
-    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
-                                 & Adversarial               & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
-    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
-                                 & Adversarial               & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
-    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
-                                 & Adversarial               & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
-    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
-                                 & Adversarial               & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
+    \multirow{2}{*}{10:0}        & Acc                       & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
+                                 & Safety                    & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
+    \multirow{2}{*}{8:2}         & Acc                       & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
+                                 & Safety                    & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
+    \multirow{2}{*}{7:3}         & Acc                       & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
+                                 & Safety                    & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
+    \multirow{2}{*}{6:4}         & Acc                       & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
+                                 & Safety                    & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
     \end{tabular}
     }
 \end{specialtable}
@@ -517,16 +518,16 @@ This can be seen visually through the figure~\ref{cifar10-0.05-graph} and figure
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Test set} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
                                  &                           & LeNet               & ResNet18              & VGG16       & LeNet              & ResNet18              & VGG16              \\ \hline 
-    \multirow{2}{*}{10:0}        & Clean                     & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
-                                 & Adversarial               & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
-    \multirow{2}{*}{8:2}         & Clean                     & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
-                                 & Adversarial               & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
-    \multirow{2}{*}{7:3}         & Clean                     & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
-                                 & Adversarial               & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
-    \multirow{2}{*}{6:4}         & Clean                     & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
-                                 & Adversarial               & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
+    \multirow{2}{*}{10:0}        & Acc                       & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
+                                 & Safety                    & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
+    \multirow{2}{*}{8:2}         & Acc                       & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
+                                 & Safety                    & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
+    \multirow{2}{*}{7:3}         & Acc                       & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
+                                 & Safety                    & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
+    \multirow{2}{*}{6:4}         & Acc                       & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
+                                 & Safety                    & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
     \end{tabular}
     }
 \end{specialtable}
