@@ -534,29 +534,46 @@ From the experimental results of CIFAR-100, it can be confirmed that adverarial 
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}  & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
                                  &                           & LeNet               & ResNet18              & VGG16       & LeNet              & ResNet18              & VGG16              \\ \hline 
-    \multirow{2}{*}{10:0}        & Acc                       & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
-                                 & Safety                    & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
-    \multirow{2}{*}{8:2}         & Acc                       & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
-                                 & Safety                    & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
-    \multirow{2}{*}{7:3}         & Acc                       & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
-                                 & Safety                    & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
-    \multirow{2}{*}{6:4}         & Acc                       & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
-                                 & Safety                    & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
+    \multirow{2}{*}{10:0}        & Acc                       & 85                  & 71                    & 93          & 85                 & 71                    & 93                 \\ \cline{2-8} 
+                                 & Safety                    & 17                  & 33                    & 40          & 17                 & 33                    & 40                 \\ \hline 
+    \multirow{2}{*}{8:2}         & Acc                       & 76                  & 63                    & 90          & 73                 & 60                    & 85                 \\ \cline{2-8} 
+                                 & Safety                    & 57                  & 49                    & 75          & 58                 & 42                    & 70                 \\ \hline 
+    \multirow{2}{*}{7:3}         & Acc                       & 75                  & 60                    & 86          & 70                 & 58                    & 81                 \\ \cline{2-8} 
+                                 & Safety                    & 63                  & 50                    & 76          & 65                 & 45                    & 72                 \\ \hline 
+    \multirow{2}{*}{6:4}         & Acc                       & 75                  & 58                    & 87          & 65                 & 54                    & 77                 \\ \cline{2-8} 
+                                 & Safety                    & 66                  & 52                    & 79          & 65                 & 46                    & 73                 \\ \hline 
     \end{tabular}
     }
 \end{specialtable}
 
 Table~\ref{gtsrb-results} shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
+From the result of 0 model, it can be seen that the GTSRB shows the highest accuracy than 0 model of the previous datasets, on the contrary, shows low safety.
+It can be seen that the accuracy and safety performance are significantly different at 68\%(LeNet), 38\%(ResNet18), and 53\%(VGG16)..
+This confirms that the models are well trained on the original GTSRB and are vulnerable to adversarial examples.
+From the previous experimental results, when 0 model and 20 model were compared, the effect of adversarial training on accuracy and safety was best confirmed.
+When GTSRB's 0 model and 20 model were compared, it can be seen that they were the most affected by adversarial training in our used datasets.
+To show this. the average of differences in accuracy and safety between 0 model and 20 model for each network was calculated in each dataset.
+In CIFAR-10 case, the accuracy of LeNet decreased by an average of 3\% and the safety increased by an average of 27\%.
+The accuracy of ResNet18 decresed on average of 2.5\% and the safety increased on average of 3\%.
+The accuracy of VGG16 decreased on average of 4.5\% and the safety increased on average of 24.5\%.
+In CIFAR-100 case, the accuracy of LeNet decreased by an average of 1.5\% and the safety increased by an average of 4\%.
+The accuracy of ResNet18 decresed on average of 2\% and the safety increased on average of 2\%.
+The accuracy of VGG16 decreased on average of 6\% and the safety increased on average of 12\%.
+In GTSRB case, the accuracy of LeNet decreased by an average of 10.5\% and the safety increased by an average of 39.5\%.
+The accuracy of ResNet18 decresed on average of 9.5\% and the safety increased on average of 12.5\%.
+The accuracy of VGG16 decreased on average of 5.5\% and the safety increased on average of 32.5\%.
+% 그 외에 모델들에 대해서는 이전 데이터셋과 마찬가지로 20 모델과 큰 성능 차이는 보이지 않지만 유사한 경향성이 발견되는 것을 확인할 수 있다.(여기부터 작업 진행)
 
-Looking at the 0 model of thhe result for the 0.05 \begin{math}\epsilon\end{math} adversarial example first, it can be seen that the accuracy and safety performance are significantly different at 68\%(LeNet), 38\%(ResNet18), and 53\%(VGG16).
 Similar to CIFAR datasets, we can see a very significnat improvement in safety performance from 0 model to 20 model.
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005gtsrb.png}
     \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.05\label{gtsrb-0.05-graph}}
 \end{figure} 
+
+% 그래프에 대한 해석 진행
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01gtsrb.png}
