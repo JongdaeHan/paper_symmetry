@@ -432,7 +432,7 @@ Althogh the same equation is applied, we distinguish between the two measurement
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05}          & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math} 0.1}         \\ \cline{3-8} 
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math}0.05}            & \multicolumn{3}{c|}{\begin{math}\epsilon\end{math} 0.1}         \\ \cline{3-8} 
                                  &                           & LeNet               & ResNet18              & VGG16              & LeNet              & ResNet18              & VGG16              \\ \hline
     \multirow{2}{*}{10:0}        & Acc                       & 63                  & 53                    & 78                 & 63                 & 53                    & 78                 \\ \cline{2-8} 
                                  & Safety                    & 18                  & 33                    & 33                 & 11                 & 27                    & 27                 \\ \hline
@@ -470,7 +470,7 @@ As can be seen in the table, when adversarial examples are included at a higher 
 
 In Figure~\ref{cifar10-0.1-graph}, the results for the {\it adv\_eval} made with \begin{math}\epsilon\end{math} 0.1 can be visually confirmed.
 In Figure~\ref{cifar10-0.1-graph}, as in Figure~\ref{cifar10-0.05-graph}, changes in accuracy and safety can be seen as the ratio of containing adversarial examples increases.
-% 아래부터 작업 시작
+
 \subsection{CIFAR-100 Results}
 
 \begin{specialtable}[H]
@@ -480,22 +480,26 @@ In Figure~\ref{cifar10-0.1-graph}, as in Figure~\ref{cifar10-0.05-graph}, change
     {\small
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
-    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}& \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
+    \multirow{2}{*}{Mixed Ratio} & \multirow{2}{*}{Matrix} & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.05\end{math}}  & \multicolumn{3}{c|}{\begin{math}\epsilon \ 0.1\end{math}}       \\ \cline{3-8}
                                  &                           & LeNet               & ResNet18              & VGG16       & LeNet              & ResNet18              & VGG16              \\ \hline 
-    \multirow{2}{*}{10:0}        & Acc                       & 63                  & 53                    & 78          & 63                 & 53                    & 78                 \\ \cline{2-8} 
-                                 & Safety                    & 18                  & 33                    & 33          & 11                 & 27                    & 27                 \\ \hline 
-    \multirow{2}{*}{8:2}         & Acc                       & 60                  & 51                    & 73          & 60                 & 50                    & 74                 \\ \cline{2-8} 
-                                 & Safety                    & 45                  & 35                    & 56          & 38                 & 31                    & 53                 \\ \hline 
-    \multirow{2}{*}{7:3}         & Acc                       & 58                  & 49                    & 72          & 57                 & 49                    & 69                 \\ \cline{2-8} 
-                                 & Safety                    & 45                  & 36                    & 56          & 41                 & 34                    & 54                 \\ \hline 
-    \multirow{2}{*}{6:4}         & Acc                       & 58                  & 48                    & 70          & 58                 & 47                    & 70                 \\ \cline{2-8} 
-                                 & Safety                    & 47                  & 36                    & 56          & 45                 & 34                    & 56                 \\ \hline 
+    \multirow{2}{*}{10:0}        & Acc                       & 27                  & 19                    & 40          & 27                 & 19                    & 40                 \\ \cline{2-8} 
+                                 & Safety                    & 15                  & 7                     & 10          & 4                  & 6                     & 7                  \\ \hline 
+    \multirow{2}{*}{8:2}         & Acc                       & 26                  & 17                    & 33          & 25                 & 17                    & 35                 \\ \cline{2-8} 
+                                 & Safety                    & 15                  & 9                     & 20          & 12                 & 8                     & 21                 \\ \hline 
+    \multirow{2}{*}{7:3}         & Acc                       & 26                  & 17                    & 33          & 21                 & 16                    & 29                 \\ \cline{2-8} 
+                                 & Safety                    & 15                  & 10                    & 22          & 12                 & 9                     & 20                 \\ \hline 
+    \multirow{2}{*}{6:4}         & Acc                       & 24                  & 15                    & 30          & 22                 & 16                    & 26                 \\ \cline{2-8} 
+                                 & Safety                    & 18                  & 10                    & 22          & 15                 & 10                    & 20                 \\ \hline 
     \end{tabular}
     }
 \end{specialtable}
 
 Table~\ref{cifar100-results} shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
 
+In the table, it can be seen that the results of CIFAR-100 are much lower than that of CIFAR-10.
+% cifar100의 라벨에 비해 데이터의 수가 적기 때문에 주어진 에폭 내에 학습이 잘 이루어지지 않음(추가필요). 그렇기 때문에 30에폭일 때 모델이 사용되었음(아래)
+The reason for the low result in CIFAR-100 is that the model with more than 90\% accuracy within the given 30 epochs was not used. % The reason for the low results is that unlike cifar10, which used a model with an accuracy of over 90% within a given 30 epoxy, cifar100 did not have a model with an accuracy of over 90% within a given epoxy, so it used a model with a different dataset and 30 epoxy.
+% 그럼에도 불구하고 적대적 학습을 진행하면 cifar10과 마찬가지로 적대적 예시가 더 많이 포함될 수록 정확성이 소폭 감소하고 안전성이 대폭 향상되는 경향을 확인할 수 있음
 A first look at 0 model for the 0.05 \begin{math}\epsilon\end{math} adversarial examples shows a significant drop in accuracy comapred to CIFAR-10.
 In the meantime, safety is much lower than accuracy. In particular, it can be seen that there is a difference of about 30\% in VGG16.
 The reason that the accuracy is lower than that of CIFAR-10 is different characteristic of each dataset. The number of data for that class is small compared to the CIFAR-10, although the class has increased, so the degree of learning training under the same model conditions is different.
@@ -511,7 +515,7 @@ As with the experimental results of CIFAR-10, there is only a difference in the 
     \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.1\label{cifar100-0.1-graph}}
 \end{figure} 
 
-This can be seen visually through the figure~\ref{cifar10-0.05-graph} and figure~\ref{cifar10-0.1-graph}.
+This can be seen visually through the Figure~\ref{cifar10-0.05-graph} and Figure~\ref{cifar10-0.1-graph}.
 
 \subsection{GTSRB Results}
 
