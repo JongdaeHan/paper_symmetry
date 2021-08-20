@@ -497,25 +497,33 @@ In Figure~\ref{cifar10-0.1-graph}, as in Figure~\ref{cifar10-0.05-graph}, change
 Table~\ref{cifar100-results} shows the CIFAR-100 according to \begin{math}\epsilon\end{math} and the results for each model.
 
 In the table, it can be seen that the results of CIFAR-100 are much lower than that of CIFAR-10.
-% cifar100의 라벨에 비해 데이터의 수가 적기 때문에 주어진 에폭 내에 학습이 잘 이루어지지 않음(추가필요). 그렇기 때문에 30에폭일 때 모델이 사용되었음(아래)
-The reason for the low result in CIFAR-100 is that the model with more than 90\% accuracy within the given 30 epochs was not used. % The reason for the low results is that unlike cifar10, which used a model with an accuracy of over 90% within a given 30 epoxy, cifar100 did not have a model with an accuracy of over 90% within a given epoxy, so it used a model with a different dataset and 30 epoxy.
-% 그럼에도 불구하고 적대적 학습을 진행하면 cifar10과 마찬가지로 적대적 예시가 더 많이 포함될 수록 정확성이 소폭 감소하고 안전성이 대폭 향상되는 경향을 확인할 수 있음
-A first look at 0 model for the 0.05 \begin{math}\epsilon\end{math} adversarial examples shows a significant drop in accuracy comapred to CIFAR-10.
-In the meantime, safety is much lower than accuracy. In particular, it can be seen that there is a difference of about 30\% in VGG16.
-The reason that the accuracy is lower than that of CIFAR-10 is different characteristic of each dataset. The number of data for that class is small compared to the CIFAR-10, although the class has increased, so the degree of learning training under the same model conditions is different.
-As with the experimental results of CIFAR-10, there is only a difference in the numericla value, and it can be confirmed that the accuracy is slightly decreased when the model is changed from 0 model to 20 model, but the safety performance is improved. 
+This is becuase CIFAR-100 has more classes than CIFAR-10, but less corresponding to the classes. Since the number of data for training is small, the models were not sufficiently trained within 30 epochs unlike other datasets. 
+Nevertheless, as in the experimental results of CIFAR-10, as the inclusion of adversarial examples in the training data increases, accuracy slightly decreases and safety tends to improve significantly.
+This can be confirmed through the results of 0 model and 20 model, where the range of performance change in accuracy and safety can be observed the most.
+It can be seen that the decrease in accuracy and the improvement in safety are the same in ResNet18, which shows the lowest result due to poor trianing.
+At the same time, it can be seen that the improvement in safety is larger than the decrease in accuracy in LeNet and VGG16, which are well trained compared to ResNet18.
+Through this, as with the experimental results of CIFAR-10, it can be confirmed that even in a situation where tarining is not performed well, the safety can be improved with a small effect on the accuracy through adversarial training.
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005cifar100.png}
     \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.05\label{cifar100-0.05-graph}}
 \end{figure} 
 
+This result can be better seen through Figure~\ref{cifar100-0.05-graph} and Figure~\ref{cifar100-0.1-graph} which graphically illustrated the table.
+In Figure~\ref{cifar100-0.05-graph}, the results for the CIFAR-100 {\it adv\_eval} made with \begin{math}\epsilon\end{math} 0.05 can be visually confirmed.
+In some models, it can seen that the improvement in safety is smaller than the decrease in accuracy, but this is because model training is not performed properly.
+Rather, even when training is not done properly, it can be seen that the safety increases by 3\% while the accuracy decreases by 2\%, like 30 model and 40 model of LeNet,
+and the safety increases by 1\% while the accuracy is maintained, like 20 model and 30 model of ResNet18.
+
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01cifar100.png}
     \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.1\label{cifar100-0.1-graph}}
 \end{figure} 
 
-This can be seen visually through the Figure~\ref{cifar10-0.05-graph} and Figure~\ref{cifar10-0.1-graph}.
+In Figure~\ref{cifar100-0.1-graph}, the results for the CIFAR-100 {\it adv\_eval} made with \begin{math}\epsilon\end{math} 00.1 can be visually confirmed.
+Even in ResNet18 which has not been trained the most, the worst case in the case where the decrease of accuracy and the improvement of safety are the same,
+and in LeNet and VGG16, it can be seen that the improvement of safety is generally greater than the decrease of accuracy.
+From the experimental results of CIFAR-100, it can be confirmed that adverarial training can bring about a significant improvement in safety with little effect on accuracy in most, if not all cases, even for models that have not been  trainined properly.
 
 \subsection{GTSRB Results}
 
