@@ -186,7 +186,7 @@ For proving this, we set up the following research questions(RQ).
 \begin{description}
     \item[RQ1.]	Can classification model correctly classify adversarial examples by adversarial training?
     \item[RQ2.]	Does it show the same results as RQ1 for the dataset related to safety?
-    \item[RQ3.] Does adversarial training affect safety performance regardless of model structure?
+    \item[RQ3.] Does adversarial training affect safety regardless of model structure?
     \item[RQ4.]	At what rate will learning with adversarial examples perform best?
 \end{description}
 
@@ -520,7 +520,7 @@ and the safety increases by 1\% while the accuracy is maintained, like 20 model 
     \caption{Graphs of CIFAR-100 with \begin{math}\epsilon\end{math} 0.1\label{cifar100-0.1-graph}}
 \end{figure} 
 
-In Figure~\ref{cifar100-0.1-graph}, the results for the CIFAR-100 {\it adv\_eval} made with \begin{math}\epsilon\end{math} 00.1 can be visually confirmed.
+In Figure~\ref{cifar100-0.1-graph}, the results for the CIFAR-100 {\it adv\_eval} made with \begin{math}\epsilon\end{math} 0.1 can be visually confirmed.
 Even in ResNet18 which has not been trained the most, the worst case in the case where the decrease of accuracy and the improvement of safety are the same,
 and in LeNet and VGG16, it can be seen that the improvement of safety is generally greater than the decrease of accuracy.
 From the experimental results of CIFAR-100, it can be confirmed that adverarial training can bring about a significant improvement in safety with little effect on accuracy in most, if not all cases, even for models that have not been  trainined properly.
@@ -554,6 +554,7 @@ It can be seen that the accuracy and safety performance are significantly differ
 This confirms that the models are well trained on the original GTSRB and are vulnerable to adversarial examples.
 From the previous experimental results, when 0 model and 20 model were compared, the effect of adversarial training on accuracy and safety was best confirmed.
 When GTSRB's 0 model and 20 model were compared, it can be seen that they were the most affected by adversarial training in our used datasets.
+% THINK :: 이 부분을 그래프 해석에서 각 그래프에 대해서 진행하는 것이 나을까 ?
 To show this. the average of differences in accuracy and safety between 0 model and 20 model for each network was calculated in each dataset.
 In CIFAR-10 case, the accuracy of LeNet decreased by an average of 3\% and the safety increased by an average of 27\%.
 The accuracy of ResNet18 decresed on average of 2.5\% and the safety increased on average of 3\%.
@@ -564,45 +565,53 @@ The accuracy of VGG16 decreased on average of 6\% and the safety increased on av
 In GTSRB case, the accuracy of LeNet decreased by an average of 10.5\% and the safety increased by an average of 39.5\%.
 The accuracy of ResNet18 decresed on average of 9.5\% and the safety increased on average of 12.5\%.
 The accuracy of VGG16 decreased on average of 5.5\% and the safety increased on average of 32.5\%.
-% 그 외에 모델들에 대해서는 이전 데이터셋과 마찬가지로 20 모델과 큰 성능 차이는 보이지 않지만 유사한 경향성이 발견되는 것을 확인할 수 있다.(여기부터 작업 진행)
-
-Similar to CIFAR datasets, we can see a very significnat improvement in safety performance from 0 model to 20 model.
+Through the results, it can be confirmed that the GTSRB also improves safety when adversarial trianing is performed, like the results of other datasets.
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-005gtsrb.png}
     \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.05\label{gtsrb-0.05-graph}}
 \end{figure} 
 
-% 그래프에 대한 해석 진행
+This result can be better seen through Figure~\ref{gtsrb-0.05-graph} and Figure~\ref{gtsrb-0.1-graph} which graphically illustrated the table.
+In Figure~\ref{gtsrb-0.05-graph}, the results for the GTSRB {\it adv\_eval} made with \begin{math}\epsilon\end{math} 0.05 can be visually confirmed.
+In most models except ResNet18, adversarial training could be seen to significnatly improve safety during a slight decrease in accuracy.
 
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/graph-01gtsrb.png}
     \caption{Graphs of GTSRB with \begin{math}\epsilon\end{math} 0.1\label{gtsrb-0.1-graph}}
 \end{figure} 
 
-It can be visually confirmed through figure~\ref{gtsrb-0.05-graph} and figure~\ref{gtsrb-0.1-graph}.
+In Figure~\ref{gtsrb-0.1-graph}, the results for the GTSRB {\it adv\_eval} made with \begin{math}\epsilon\end{math} 0.1 can be visually confirmed.
 In figure~\ref{gtsrb-0.05-graph} and figure~\ref{gtsrb-0.1-graph} as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
 
-\subsection{Discussion} % 네트워크 구조 영향에 대한 해석 추가
+\subsection{Discussion}
 
+% 이하 4줄에 대한 아이디어는 잠시 보류
 % 실험 결과가 이러이러 했으므로 우리는 이런 프로세스를 제안할 것이다.
 % 기존 소프트웨어의 경우 데이터 준비를 하고 학습 및 평가를 진행하고 이후 피드백 과정을 통해서 모델을 정제하였다.
 % 우리 모델에서는 데이터 준비 단계에서 적대적 예시 포함 비율 여부와 같은 것을 검증함을 통해서 1차적으로 검증을 들어가고 학습하기 때문에 필요한 피드백을 최소 1회 줄일 수 있다.
 % 이를 통해 다음과 같은 프로세스를 제안한다.
 
-The interpretation of the experimental results according to 3 different datasets and models and various experimental conditions and the answer to the RQs in the thesis can be confirmed as follows. \\
+The interpretation of the experimental results according to 3 different datasets and models and various experimental conditions and the answer to the RQs in the thesis can be confirmed as follows.
+For all datasets, it can be seen that the safety of 0 model has a large performance difference compared to the accuracy. This confirms that the generated adversarial examples were properly generated.
 
-For all datasets, it can be seen that the safety of 0 model has a large performance difference compared to the accuracy. This confirms that the generated adversarial examples were properly generated. \\
-
-RQ1 was the question of whether adversarial training well classifies adversarial examples of classification models.
+RQ1 was a question of whether adversarial training well classifies adversarial examples of classification models.
 In experiemnts using the CIFAR datasets, it was confirmed that the safety performance of 20 model, 30 model and 40 model including the adversarial examples was significantly improved compared to the safety of 0 model not including the adversarial examples.
 Through this, it was confirmed that adversarial training can contribute to the improvement of the safety performance of the classification model.
 However, in the CIFAR-100, training was not sufficient during epoch, resulting in lower values, but the performance change tendency itself observed in 0 model and the rest of the models could be ovserved in the same way.
 
 RQ2 is an extended question from RQ1, as to whether the dataset used in the experiemnt could have the same effect even if it was a dataset related to safety.
-In the experiemntal results using the GTSRB, similar to the results of the CIFAR datasets, it was confirmed that the safety was significantly improved in the 20 model, 30 model and 40 model compared to 0 model.
+Althogh it will be defferent depending on the size and structure of the data, it can be confirmed that the experimental results of GTSRB improve safety higher than the experimental results of CIFAR datasets.
+At the same time, as in CIFAR datasets, when adversarial training is performed, it can be confirmed that the degree of improvement in safety is greater than the degree of decrease in accuracy.
+Through this, it can be confirmed that adversarial training is the method that can improve safety while having a small effect on accuracy even in safety-related dataset.
 
-RQ3 was a question of what ration would be the best performance to mix adversarial examples with original datas to form a mixed training dataset.
+RQ3 is a question of whether adversarial training affectes safety regradless of structure of the model.
+To prove this, in the experiment, models with 3 different structrues were used.
+If the same results can be observed in three models with different structures, it can be confirmed that adversarial training is the method that can improve safety regardless of the model structure.
+As a result of the experiments, when adversarial training was performed, safety was improved compared to the case when it is not.
+Although the models used in the experiment may have a greater accuracy drop compared to the safety improvements, the overall experimental results show that they can improve safety performance without affecting accuracy regardless of model structure.
+
+RQ4 was a question of what ratio would be the best performance to mix adversarial examples with original datas to form a mixed training dataset.
 This depends on the dataset used and whether the requirements they value are accuracy or safety, but in this paper we mainly looked at the performance balance between accuracy and safety.
 In the experiemnts, it can be seen that it is essential to mix the adversarial examples from training datas at least 20\% when contruct the training dataset in order to verify the safety.
 This is because the greatest improvement in safety can be obtained compared to 0 model when 20 model is used in all experimental environments.
@@ -612,28 +621,41 @@ If accuracy is considered a more important requirements, the proportion of adver
 Additionally, in graphs, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
 Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety.
 
-% 이 그림에 대한 해석
-% 그냥 데이터만으로 학습을 진행하고 데이터 셋을 정제하거나 모델을 파인튠한 기존 프로세스
-% 데이터 준비 단계에서 적대적 예시 데이터 셋을 활용하여 결과에서 데이터 셋 정제하거나 모델 파인튠에 사용할 수 있는 부가적인 정보를 얻을 수 있는 우리의구조
+To summarize the experimental results, adversarial training can contribute to improving the safety of the classification model ragardless of structure of model, which also applies to safety-related datasets.
+In order to verify safety, it is recommended that at least 20\% of the training data consist of adversarial examples, and it can be proved that it can help to verify the desired requirements by adjusting the inclusion ratio of adversarial exampels according to priority among accuracy and safety.
+Through this, we propose a new classification model training process that reflects factors than can verify safety.
+
 \begin{figure}[H]
     \includegraphics[width=13 cm]{Definitions/comparison.png}
     \caption{Comparison between existing process and our process\label{comparison}}
 \end{figure} 
 
-To summarize the experimental results, adversarial training can contribute to improving the safety of the classificatio model, which also applies to safety-reslated datasets.
-In order to verify safety, it is recommended that at least 20\% of the training data consist of adversarial examples, and it can be proved that it can help to verify the desired requirements by adjusting the inclusion ratio of adversarial exampels according to priority among accuracy and safety.
+In the existing process, the preformance, one of the NFRs of AI, has been verified by training the model using the original dataset and performing evaluation on the trained model.
+If the performance did not reach the standard performance, the same process was repeated until the set performance was reached through a finetuning process such as adjusting the model structure or hyper-parameters or modifying the dataset.
+The problem with existing process is that it has to go through a number of finetune to meet the desired performance standards.
+It is difficult to obtain information such as how the data should be modified and what structure the model should be modified with simple numerical values.
+So, it requires a lot of resources because it is necessary to find the best optimal case by repeating the same process while changing the conditions little by little.
+In this paper, we propose the process that can reduce this adjustment process.
+First of all, an adversarial dataset is created using the original dataset.
+Then, using the generated adversarial dataset, a mixed training dataset is constructed and the model is trained.
+The trained model obtains accuracy and safety through the original evaluation dataset and the adversarial evaluation dataset.
+Existing process only knew accuracy, so they did not provide enough information on how to make adjustments.
+However, in the process of the paper, safety can be used to obtain additional information on coordination of data by comparing priorities between accuracy and safety.
+If the accuracy is a more important requirement, the inclusion rate of original data in the training dataset can be increased, and vice versa, the inclusion rate of adversarial data can be increased.
+This does not provide information about the model structure or hyper-parameters finetuning, but provides additional inforation about what augmentation should be applied to the minimal dataset.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
+\section{Conclusions} % 8월 22일 끝내고 메일 발송 준비 -> 이후에 3장, 2장, 1장 abstract 순서로 내용 다시 한 번 더 가다듬기
 
 We have confirmed through experiments that adversarial training can improve the safety performance with little effect on accuracy of the model.
 This means that generating adversarial examples using the dataset you have before proceeding with learning and including the adversarial examples in the training dataset can be used as one of the factors that can verify the safety of AI.
-Furthermore, we proposed the method to achieve a balance between accuracy and safety for the dataset used in the experiments by generating a mixed dataset of different ratios.
-It can be used as a methodology that can balance the performance between accuracy and safety by performing the experimental method proposed in the thesis several times according to the important requirements and adjusting the ratio of inclusion of adversarial examples in training dataset.
-Based on the proposed methods, when entering into an actual AI project, it can be used as one of the factors that can verify the safety before the training process that consumes a lot of resources by checking whether adversarial examples are included in the training dataset. Therefore, it is possible to reduce the resources required for at least one tarninig.
+Furthermore, we proposed the process to achieve a balance between accuracy and safety for the dataset used in the experiments by generating a mixed dataset of different ratios.
+It can be used as the methodology that can balance the performance between accuracy and safety by performing the experimental method proposed in the thesis several times according to the important requirements and adjusting the ratio of inclusion of adversarial examples in training dataset.
+Based on the proposed methods, when entering into an actual AI project, it can be used as one of the factors that can verify the safety before the training process that consumes a lot of resources by checking whether adversarial examples are included in the training dataset.
+Therefore, it is possible to reduce the resources required for at least one training.
 Moreover, it is possible to reduce the cost of training model that verifies the requirements by adjusting the ratio of inclusion of adversarial examples for higher-value requirements through accuracy and safety after one training and evaluation.
 
-In future work, we plan to verify the validity of the proposed method for more diverse classification datasets, different model structures, and various adversarial attack methods.
+In future work, we plan to verify the validity of the proposed method for more diverse classification datasets related to safety, different model structures, and various adversarial attack methods.
 In addition, we are going to conduct research on how NFRs other than AI and safety for purposes other than classification models can be pre-verified through experiements.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
