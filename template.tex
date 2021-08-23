@@ -321,11 +321,11 @@ Of these, 5,000 datas are used for training and last datas used for evaluation.
 
 \begin{figure}[H] 
 \includegraphics[width=5 cm]{Definitions/logo-mdpi}
-\caption{Some datas from each dataset.\label{fig3}}
+\caption{Some datas from each dataset.\label{used-datasets}}
 \end{figure} 
 
 % 그림에서 확인할 수 있다는 내용 추가
-You can see the examples of used datasets in Figure~\ref{fig3}.
+You can see the examples of used datasets in Figure~\ref{used-datasets}.
 The CIFAR-100 dataset consists of a total 60,000 datas in 100 classes, each contains 600 datas with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 datas are used for training and last datas used for evaluation.
 The CIFAR-10 and CIFAR-100 datasets were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
 This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class. On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
@@ -361,10 +361,9 @@ To do this, it is necessary to generate adversarial examples. Among several adve
 Because FGSM generates adversarial examples by using gradient in the training process, it is necessary to train at least once with the dataset which we want to generate adversarial examples.
 So, for the generating adversarial examples, we used LeNet, which has a relatively simple structure and does not require much time to learn in our paper.
 
-% Explaining and harness ~ 논문에서 사용한 이미지 사용 As shown in Figure~\ref{fgsm} 여기에 명시
 \begin{figure}[H] 
 \includegraphics[width=13cm]{Definitions/fgsm.png}
-\caption{Process of generating adversarial examples with FGSM.\label{fgsm}}
+\caption{Process of generating adversarial examples with FGSM. Image taken from []\label{fgsm}}
 \end{figure} 
 
 As shown in Figure~\ref{fgsm}, adversarial examples are generated using the gradient change that occurred during the training process.
@@ -382,7 +381,7 @@ Through this method, as shown in Figure~\ref{fig5}, adversarial examples were ge
 In this paper, the training datas and evaluation datas which the adversarial attack is applied will be referred to as {\it adversarial training datas} and {\it adversarial evaluation datas}.
 The generated adversarial training datas are randomly extracted at a certain ratio and mixed with the original training datas to be used for training. And the adversarial evalutaion datas are used for experiments to measure the safety.
 
-\subsection{Methodology}
+\subsection{Methodology} % START :: 여기부터 작업 시작
 
 % 여기 보충 필요, 실험 방법에 대한 얘기는 하나도 안되있음
 % 각각 실험에 대한 소개와 방법들에 대한 내용이 들어가야 한다.
@@ -645,7 +644,7 @@ If the accuracy is a more important requirement, the inclusion rate of original 
 This does not provide information about the model structure or hyper-parameters finetuning, but provides additional inforation about what augmentation should be applied to the minimal dataset.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions} % 8월 22일 끝내고 메일 발송 준비 -> 이후에 3장, 2장, 1장 abstract 순서로 내용 다시 한 번 더 가다듬기
+\section{Conclusions}
 
 We have confirmed through experiments that adversarial training can improve the safety performance with little effect on accuracy of the model.
 This means that generating adversarial examples using the dataset you have before proceeding with learning and including the adversarial examples in the training dataset can be used as one of the factors that can verify the safety of AI.
