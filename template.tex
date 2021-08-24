@@ -315,24 +315,30 @@ Section 4.3 introduces each process of the experiment designed in chapter 3.
 
 \subsection{Datasets}
 
-% 각 데이터 셋을 사용한 이유에 대해서 작성
-For the experiments, three dataset were used: CIFAR-10, CIFAR-100, and GTSRB. The CIFAR-10 dataset consists of a total 60,000 datas in 10 classes, each contains 6,000 datas with 3 channels and \begin{math}{32\times 32}\end{math} size.
+For the experiments, three dataset were used: CIFAR-10, CIFAR-100, and GTSRB.
+The CIFAR-10 consists of a total 60,000 datas in 10 classes, each contains 6,000 datas with 3 channels and \begin{math}{32\times 32}\end{math} size.
 Of these, 5,000 datas are used for training and last datas used for evaluation.
 
 \begin{figure}[H] 
-\includegraphics[width=5 cm]{Definitions/logo-mdpi}
-\caption{Some datas from each dataset.\label{used-datasets}}
+\includegraphics[width=13cm]{Definitions/logo-mdpi}
+\caption{Datas in CIFAR datasets.\label{cifar-datasets}}
 \end{figure} 
 
-% 그림에서 확인할 수 있다는 내용 추가
-You can see the examples of used datasets in Figure~\ref{used-datasets}.
-The CIFAR-100 dataset consists of a total 60,000 datas in 100 classes, each contains 600 datas with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 datas are used for training and last datas used for evaluation.
-The CIFAR-10 and CIFAR-100 datasets were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
-This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class. On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
-If it is possible to identify the improvement of safety through adversarial training for datasets with these opposite characteristics, valid results can be seen for most training dataset with characteristics intermediate between CIFAR-10 and CIFAR-100. So, we used CIFAR datasets for the experiment. \\
+You can see some datas of CIFAR datasets in Figure~\ref{cifar-datasets}.
+The CIFAR-100 consists of a total 60,000 datas in 100 classes, each contains 600 datas with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 datas are used for training and last datas used for evaluation.
+The CIFAR-10 and CIFAR-100 were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
+This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class.
+On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
+If it is possible to identify the improvement of safety through adversarial training for datasets with these opposite characteristics, valid results can be seen for most training dataset with characteristics intermediate between CIFAR-10 and CIFAR-100. So, we used CIFAR datasets for the experiment.
+
+\begin{figure}[H] 
+\includegraphics[width=13 cm]{Definitions/logo-mdpi}
+\caption{Datas in GTSRB.\label{gtsrb-datasets}}
+\end{figure} 
 
 The GTSRB(German Traffic Sign Recognition Benchmark) is a German traffic sign dataset. It consists of more than 50,000 datas with 43 classes.
 The difference between GTSRB and CIFAR datasets is that the number of data corresponding to each class is not uniform.
+You can see some datas of GTSRB in Figure~\ref{gtsrb-datasets}.
 The dataset used for applicapable AI training has some of this data bias.
 Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of model through adversarial training for dataset in which the number of data is not uniform for each class, we can get valid results for other dataset.
 Another reason for selecting GTSRB is that it is closely related to safety.
