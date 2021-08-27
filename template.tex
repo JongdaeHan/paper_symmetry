@@ -180,7 +180,7 @@ Therefore, in this paper, we proceed with a study to verify NFRs of AI especiall
 % 특히 적대적 학습을 통한 적대적 예시에 대한 robust한 결과를 얻어낼 수 있다는 점으로부터, 소프트웨어의 안전성 검증과 연관을 지을 수 있을 것이라고 생각하였다. 
 % 이를 확인하기 위해 논문에서는 분류 모델과 이에 대한 자세한 내용은 3장에 대해서 다룬다.
 There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3.
-In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of datas for learning(adversarial training).
+In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of data for learning(adversarial training).
 For proving this, we set up the following research questions(RQ).
 
 \begin{description}
@@ -295,13 +295,14 @@ In addition, when generating datasets for adversarial training, the size of the 
 This is because increasing the number of data does not necessarily lead to improved performance of the model, as well as requiring additional resources to learn it.
 Furthermore, in order to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, the experiment was conducted by setting the mixing ratio of the original data and the adversarial examples differently.
 At this time, if adversarial training is executed, the number of original training data was reduced, and thus the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evaluation dataset, may decrease.
-It is important improving safety, but accuracy can be more important than safety at some moment that depends on the purpose of the model. So, it is also necessary to ensure accuracy as well as safety. 
+It is important improving safety, but accuracy can be more important than safety at some moment that depends on the purpose of the model.
+So, it is also necessary to ensure accuracy as well as safety. 
 Therefore, in order to maintain the accuracy of the model learned with original dataset with the appropriate resources, we chose the method of mixing the original data and adversarial examples at an appropriate ratio while preserving the size of the training dataset.
 To show this, the accuracy is additionaly selected as a measure of performance evaluation.
 Althogh both accuracy and safety are measures of performance of how well a given data is classified, but we devided measures by the target evaluation datasets to distinguish them on a scale with different meanings.
 Accuracy represents how well model classifies the {\it original} evaluation dataset, and safety represents how well model classifies the {\it adversarial} evaluation dataset, which is considered to be threatening to the model according to the definition given above.
 In the belief that the results may differ depending on the characteristics of the model's structure, we also prepared learning models with different types of structures. 
-Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.
+Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
@@ -313,19 +314,19 @@ Section 4.3 introduces each process of the experiment designed in chapter 3.
 
 \subsection{Datasets and Models}
 
-\subsection{Datasets}
+\subsubsection{Datasets}
 
 For the experiments, three dataset were used: CIFAR-10, CIFAR-100, and GTSRB.
-The CIFAR-10 consists of a total 60,000 datas in 10 classes, each contains 6,000 datas with 3 channels and \begin{math}{32\times 32}\end{math} size.
-Of these, 5,000 datas are used for training and last datas used for evaluation.
+The CIFAR-10 consists of a total 60,000 data in 10 classes, each contains 6,000 data with 3 channels and \begin{math}{32\times 32}\end{math} size.
+Of these, 5,000 data are used for training and last data used for evaluation.
 
 \begin{figure}[H] 
 \includegraphics[width=13cm]{Definitions/cifar-datasets.png}
-\caption{Datas in CIFAR datasets.\label{cifar-datasets}}
+\caption{data in CIFAR datasets.\label{cifar-datasets}}
 \end{figure} 
 
-You can see some datas of CIFAR datasets in Figure~\ref{cifar-datasets}.
-The CIFAR-100 consists of a total 60,000 datas in 100 classes, each contains 600 datas with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 datas are used for training and last datas used for evaluation.
+You can see some data of CIFAR datasets in Figure~\ref{cifar-datasets}.
+The CIFAR-100 consists of a total 60,000 data in 100 classes, each contains 600 data with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 data are used for training and last data used for evaluation.
 The CIFAR-10 and CIFAR-100 were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
 This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class.
 On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
@@ -333,12 +334,12 @@ If it is possible to identify the improvement of safety through adversarial trai
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/gtsrb-dataset.png}
-\caption{Datas in GTSRB.\label{gtsrb-datasets}}
+\caption{data in GTSRB.\label{gtsrb-datasets}}
 \end{figure} 
 
-The GTSRB(German Traffic Sign Recognition Benchmark) is a German traffic sign dataset. It consists of more than 50,000 datas with 43 classes.
+The GTSRB(German Traffic Sign Recognition Benchmark) is a German traffic sign dataset. It consists of more than 50,000 data with 43 classes.
 The difference between GTSRB and CIFAR datasets is that the number of data corresponding to each class is not uniform.
-You can see some datas of GTSRB in Figure~\ref{gtsrb-datasets}.
+You can see some data of GTSRB in Figure~\ref{gtsrb-datasets}.
 The dataset used for applicable AI training has some of this data bias.
 Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of model through adversarial training for dataset in which the number of data is not uniform for each class, we can get valid results for other dataset.
 Another reason for selecting GTSRB is that it is closely related to safety.
@@ -369,14 +370,14 @@ So, for the generating adversarial examples, we used LeNet, which has a relative
 
 \begin{figure}[H] 
 \includegraphics[width=13cm]{Definitions/fgsm.png}
-\caption{Process of generating adversarial examples with FGSM. Image taken from []\label{fgsm}}
+\caption{Process of generating adversarial examples with FGSM. Image taken from \cite{fgsm-method}\label{fgsm}}
 \end{figure} 
 
 As shown in Figure~\ref{fgsm}, adversarial examples are generated using the gradient change that occurred during the training process.
 At this time, \begin{math}\epsilon\end{math} is used to determine the degree of adversarial attack by reflecting the slope value.
 In this paper, 0.05 and 0.1 were used as \begin{math}\epsilon\end{math}s. The failure to use values above 0.1 is due to the observation of human-observable transformation points in adversarial examples.
 Therefore, if a value greater than 0.1, it can no longer serve as a adversarial example, so two types of \begin{math}\epsilon\end{math}s are used to generate adversarial examples.
-In [], adversarial examples were applied only to the evaluation datas to confirm the effect of adversarial examples, but in our paper, training datas were also to create adversarial examples because adversarial examples should be used for training.
+In [], adversarial examples were applied only to the evaluation data to confirm the effect of adversarial examples, but in our paper, training data were also to create adversarial examples because adversarial examples should be used for training.
 
 \begin{figure}[H]
 \includegraphics[width=5 cm]{Definitions/logo-mdpi}
@@ -384,20 +385,37 @@ In [], adversarial examples were applied only to the evaluation datas to confirm
 \end{figure} 
 
 Through this method, as shown in Figure~\ref{adversarial-examples}, adversarial examples were generated for all data of CIFAR-10, CIFAR-100, and GTSRB to be used in the experiments.
-In this paper, the training datas and evaluation datas which the adversarial attack is applied will be referred to as {\it adversarial training datas} and {\it adversarial evaluation datas}.
-The generated adversarial training datas are randomly extracted at a certain ratio and mixed with the original training datas to be used for training. And the adversarial evaluaion datas are used for experiments to measure the safety.
+In this paper, the training data and evaluation data which the adversarial attack is applied will be referred to as {\it adversarial training data} and {\it adversarial evaluation data}.
+The generated adversarial training data are randomly extracted at a certain ratio and mixed with the original training data to be used for training.
+And the adversarial evaluaion data are used for experiments to measure the safety.
 
-\subsection{Methodology} % START :: 여기부터 작업 시작
+\subsection{Methodology}
 
-% 여기 보충 필요, 실험 방법에 대한 얘기는 하나도 안되있음
-% 각각 실험에 대한 소개와 방법들에 대한 내용이 들어가야 한다.
-We did experiments on the PC with Ubuntu 18.04 OS that had consisted of 4.20GHz Intel(R) i7-7700K CPU, 64GB RAM, and NVIDIA Titan XP 12GB GPU. The models used in the experiment have hyper parameters set to a batch size of 64, learning rate of 0.001, momentum of 0.9, CrossEntropy as loss functions and SGD as optimization functions, respectively.
-Before proceeding with the training, we go through the process of mixing original train datas and the adversarial train datas generated from the result of section 4.2.
-In this step, we trained the model only with the original train datas for being baseline of accuracy and safety performance, first. We then generate the mixed training dataset that mixes original train datas with adversarial train datas.
-At this time, the mixing ratio was 8:2, 7:3, and 6:4 in total. When generating mixed dataset, the dataset was mixed by randomly extracting from each training datas according to the set ratio regardless of class.
-The total number of datas in the mixed train datas is equal to the number of original train datas.
+We did experiments on the PC with Ubuntu 18.04 OS that had consisted of 4.20GHz Intel(R) i7-7700K CPU, 64GB RAM, and NVIDIA Titan XP 12GB GPU.
 
-Once the training datas are ready, the model is trained. At this time, the hyper parameters of each model follow the aforementioned settings, and the training proceeds to the point where the accuracy becomes 90\% in the training process, storing the model at that time.
+The models used in the experiment have hyper parameters set to a batch size of 64, learning rate of 0.001, momentum of 0.9, CrossEntropy as loss functions and SGD as optimization functions, respectively.
+
+Figure~\ref{methodology} is picture of the experimental process carried out in the paper.
+
+\begin{figure}[H]
+\includegraphics[width=13 cm]{Definitions/methodology.png}
+\caption{Experimental methodology\label{methodology}}
+\end{figure} 
+
+The experiment is mainly divided into two stages.
+The first step is data preparation. 
+We generate the adversarial dataset by applying FGSM in 4.2 to the original dataset we have.
+At this time, the adversarial attack is applied not only to the evalutation data but also to the training data.
+The generated adversarial training data has to go through one more process of mixing data.
+We generate mixed training data by randomly extracting the data from the original training data and the adversarial training data according to the specified ratio while preserving total number of training data same with total number of original training data.
+At this time, a total of 4 mixing ratios were used as shown in Figure~\ref{methodology} 1-2.
+The mixed training data, original evaluation data, and adversarial data generated through this step are used in the model training and evaluation step.
+
+The second step is to train and evaluate the models.
+The mixed training data generated in the previous step is used for training.
+By using the mixed training data for the model set with the afrorementioned hyperparameters, the training proceeds to the epoch in which the accuracy measured during the training process exceeds 90\%.
+If the training accuracy does not reach 90\% until the 30 epoch is reached, the 30 epoch model is used for evalutaion.
+The trained model evaluates the accuracy using the original evaluation data and the safetty using the adversarial evaluation data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental Results and Discussions}
@@ -405,11 +423,11 @@ Once the training datas are ready, the model is trained. At this time, the hyper
 In this paper, we hypothesized that adversarial training could significantly improve safety while minimizing the impact on performance, And we designed the experiments to prove this assumptions.
 Chapter 5 summarized the results of the designed experiments and what can be learned through the experimental results.
 Before discussing the experimental results, we defines some words in this chapter.
-First, for datasets with any adversarial examples, it is called {\it orig}. Training datas and evaluation datas in {\it orig} were called {\it orig\_train} and {\it orig\_eval}.
-For datasets with adversarial examples, it is called {\it adv}. Training datas and evaluation datas in {\it adv} were called {\it adv\_train} and {\it adv\_eval}.
-These refer to each dataset and at the same time refer to the number of all datas contained in each dataset.
-The {\it N model} means a model trained on mixed training datas containing N\% of total number of traninig datas number of adversarial examples.
-For example, a model trained with any adversarial training datas is called 0 model, and a model trained with mixed train datas which contains 20\% of the number of adversarial training datas is called 20 model.
+First, for datasets with any adversarial examples, it is called {\it orig}. Training data and evaluation data in {\it orig} were called {\it orig\_train} and {\it orig\_eval}.
+For datasets with adversarial examples, it is called {\it adv}. Training data and evaluation data in {\it adv} were called {\it adv\_train} and {\it adv\_eval}.
+These refer to each dataset and at the same time refer to the number of all data contained in each dataset.
+The {\it N model} means a model trained on mixed training data containing N\% of total number of traninig data number of adversarial examples.
+For example, a model trained with any adversarial training data is called 0 model, and a model trained with mixed train data which contains 20\% of the number of adversarial training data is called 20 model.
 {\it N model} evaluate each evaluation data. At this time the number of all correctly classified data is expressed by adding {\it correct} in front of each evaluation data.
 For example, if evaluation data is {\it orig\_eval}, the number of all correctly classified data will be called {\it correct\_orig\_eval}.
 At the same time, if evaluation data is {\it adv\_eval}, the number of all correctly classified data will be called {\it correct\_adv\_eval}.
@@ -426,7 +444,7 @@ Safety is a measure of how well the trained model classifies the {\it adv\_eval}
     safety(\%) = \text{{\it correct\_adv\_eval}} / \text{{\it adv\_eval}} \times 100
 \end{equation}
 
-Although the same equation is applied, we distinguish between the two measurements depending on whether the evaluation datas are in the {\it orig\_eval} or {\it adv\_eval}.
+Although the same equation is applied, we distinguish between the two measurements depending on whether the evaluation data are in the {\it orig\_eval} or {\it adv\_eval}.
 
 \subsection{CIFAR-10 Results}
 
@@ -616,9 +634,9 @@ If the same results can be observed in three models with different structures, i
 As a result of the experiments, when adversarial training was performed, safety was improved compared to the case when it is not.
 Although the models used in the experiment may have a greater accuracy drop compared to the safety improvements, the overall experimental results show that they can improve safety performance without affecting accuracy regardless of model structure.
 
-RQ4 was a question of what ratio would be the best performance to mix adversarial examples with original datas to form a mixed training dataset.
+RQ4 was a question of what ratio would be the best performance to mix adversarial examples with original data to form a mixed training dataset.
 This depends on the dataset used and whether the requirements they value are accuracy or safety, but in this paper we mainly looked at the performance balance between accuracy and safety.
-In the experiments, it can be seen that it is essential to mix the adversarial examples from training datas at least 20\% when construct the training dataset in order to verify the safety.
+In the experiments, it can be seen that it is essential to mix the adversarial examples from training data at least 20\% when construct the training dataset in order to verify the safety.
 This is because the greatest improvement in safety can be obtained compared to 0 model when 20 model is used in all experimental environments.
 Even if adversarial training data is included at a higher rate than that, the degree of safety improvement is small, so it can be considered as the minimum requirements to configure 20\% of the total training dataset as adversarial examples.
 If accuracy is considered a more important requirements, the proportion of adversarial examples can be reduced, and if safety is considered a more important requirement, more adversarial examples can be included.
@@ -733,6 +751,8 @@ All appendix sections must be cited in the main text. In the appendices, Figures
 % References, variant B: internal bibliography
 %=====================================
 \begin{thebibliography}{999}
+\bibitem[Goodfellow, I(2014)]{fgsm-method}
+Goodfellow, I., Shlens, J., Szegedy, C. Explaining and harnessing adversarial examples. \textit{arXiv preprint arXiv:1412.6572}, 2014.
 % Reference 1
 \bibitem[Author1(year)]{ref-journal}
 Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
