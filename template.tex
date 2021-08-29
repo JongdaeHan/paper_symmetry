@@ -102,7 +102,7 @@ $^{2}$ \quad Affiliation 2; elvenwhite@smu.ac.kr}
 
 %\conference{} % An extended version of a conference paper
 
-% Abstract (Do not insert blank lines, i.e. \\) 
+% Abstract (Do not insert blank lines, i.e. \\) % START
 \abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
 % AI가 일상 생활에서 많이 사용되는 추세이지만 중요 요소 중 하나인 비기능적 요구사항 검증에 대한 연구가 거의 이루어지지 않았다.
 % 논문에서는 분류 모델에 대해 적대적 학습을 활용하여 적대적 학습이 인공지능의 비기능적 요구사항 중 하나인 안전성에 미치는 영향을 평가, 안전성을 검증하기 위한 방법으로 사용할 수 있음을 주장한다.
@@ -408,7 +408,7 @@ We generate the adversarial dataset by applying FGSM in 4.2 to the original data
 At this time, the adversarial attack is applied not only to the evalutation data but also to the training data.
 The generated adversarial training data has to go through one more process of mixing data.
 We generate mixed training data by randomly extracting the data from the original training data and the adversarial training data according to the specified ratio while preserving total number of training data same with total number of original training data.
-At this time, a total of 4 mixing ratios were used as shown in Figure~\ref{methodology} 1-2.
+At this time, 4 different mixing ratios were used as shown in Figure~\ref{methodology} 1-2.
 The mixed training data, original evaluation data, and adversarial data generated through this step are used in the model training and evaluation step.
 
 The second step is to train and evaluate the models.
@@ -608,12 +608,6 @@ In Figure~\ref{gtsrb-0.1-graph}, the results for the GTSRB {\it adv\_eval} made 
 In figure~\ref{gtsrb-0.05-graph} and figure~\ref{gtsrb-0.1-graph} as with the CIFAR datasets, the improvement in safety is much larger than the decrease in accuracy, and it can be seen that there is a slight difference between models with adversarial examples.
 
 \subsection{Discussion}
-
-% 이하 4줄에 대한 아이디어는 잠시 보류
-% 실험 결과가 이러이러 했으므로 우리는 이런 프로세스를 제안할 것이다.
-% 기존 소프트웨어의 경우 데이터 준비를 하고 학습 및 평가를 진행하고 이후 피드백 과정을 통해서 모델을 정제하였다.
-% 우리 모델에서는 데이터 준비 단계에서 적대적 예시 포함 비율 여부와 같은 것을 검증함을 통해서 1차적으로 검증을 들어가고 학습하기 때문에 필요한 피드백을 최소 1회 줄일 수 있다.
-% 이를 통해 다음과 같은 프로세스를 제안한다.
 
 The interpretation of the experimental results according to 3 different datasets and models and various experimental conditions and the answer to the RQs in the thesis can be confirmed as follows.
 For all datasets, it can be seen that the safety of 0 model has a large performance difference compared to the accuracy. This confirms that the generated adversarial examples were properly generated.
