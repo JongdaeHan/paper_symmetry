@@ -243,7 +243,7 @@ it can be seen that adversarial examples are related with safety of AI.
 \cite{adversarial-szegedy,adversarial-goodfellow} show that the characteristics of the learning algorithm of AI are bound to vulnerable to adversarial examples, which behave as adversarial examples regardless of the structure and training data of the models.
 \cite{adversarial-goodfellow} proposes an FGSM that uses gradients from the learning process to generate adversarial examples.
 \cite{adversarial-kurakin2} demonstrated through experiments that when the original data used for learning was captured using a smartphone camera and applied to the model, it can behave like an adversarial examples. It has been shown to be effective in the real environment rather than the experimental environmnet.
-\cite{adversarial-papernot} proposes a method for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach which knows the structure of network and training datasets.
+\cite{adversarial-papernot} proposes a method for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach which knows the structure of network and training dataset.
 
 Several studies on NFRs have benn conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
 Inspired by theses studies, we proceed with the research of the thesis.
@@ -280,14 +280,14 @@ This is because adversarial examples are data designed for the purpose of causin
 For data under other conditions, it cannot be said that the results derived from the model unconditionally cause problems.
 On the other hand, adversarial examples are very likely to cause problems with the model's results.
 For example, in a traffic signs for autonomous driving, there may be data to cause problems as shown in Figure~\ref{example-of-adversarial}, whereas there may be data that does not necessarily lead to problems, such as traffic signs with natural environment(sunlight, fog, etc.).
-Another reason is the difficulty of creating and configuring datasets. It is difficult to generate corresponding data because there are too many conditions for the data that can occur in the environment in which the model is applied.
+Another reason is the difficulty of creating and configuring dataset. It is difficult to generate corresponding data because there are too many conditions for the data that can occur in the environment in which the model is applied.
 On the other hand, in the case of a adversarial examples, many studies on adversarial attack methods for this purpose have been conducted, so it is relatively easy to generate compared to the previous data.
 For these reasons, the paper thought adversarial training is a way to ensure minimum safety of AI, and tried to prove it through experiments.
 If adversarial training allows the model to better respond to adversarial examples\_improves safety performance\_, it can be used as a way to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data. \\
 
-In order to show this through experiments, we first prepared different kinds of datasets and used the prepared datasets to generate adversarial datasets with different degrees of transformation \begin{math}\epsilon\end{math}.
+In order to show this through experiments, we first prepared different kinds of dataset and used the prepared dataset to generate adversarial dataset with different degrees of transformation \begin{math}\epsilon\end{math}.
 The reason for the preparing several \begin{math}\epsilon\end{math} is to check the effect of \begin{math}\epsilon\end{math} on safety performance. If the \begin{math}\epsilon\end{math}is too small, the safety performance will not improve because there is little difference from the original data, so it cannot classify adversarial examples well. If the (\begin{math}\epsilon\end{math}) is too large, the features of the original data cannot be learned properly, resulting in poor performance such as the accuracy of the existing model.
-In addition, when generating datasets for adversarial training, the size of the training dataset was kept the same as the size of the existing training dataset.
+In addition, when generating dataset for adversarial training, the size of the training dataset was kept the same as the size of the existing training dataset.
 This is because increasing the number of data does not necessarily lead to improved performance of the model, as well as requiring additional resources to learn it.
 Furthermore, in order to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, the experiment was conducted by setting the mixing ratio of the original data and the adversarial examples differently.
 At this time, if adversarial training is executed, the number of original training data was reduced, and thus the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evaluation dataset, may decrease.
@@ -295,7 +295,7 @@ It is important improving safety, but accuracy can be more important than safety
 So, it is also necessary to ensure accuracy as well as safety. 
 Therefore, in order to maintain the accuracy of the model learned with original dataset with the appropriate resources, we chose the method of mixing the original data and adversarial examples at an appropriate ratio while preserving the size of the training dataset.
 To show this, the accuracy is additionaly selected as a measure of performance evaluation.
-Althogh both accuracy and safety are measures of performance of how well a given data is classified, but we devided measures by the target evaluation datasets to distinguish them on a scale with different meanings.
+Althogh both accuracy and safety are measures of performance of how well a given data is classified, but we devided measures by the target evaluation dataset to distinguish them on a scale with different meanings.
 Accuracy represents how well model classifies the {\it original} evaluation dataset, and safety represents how well model classifies the {\it adversarial} evaluation dataset, which is considered to be threatening to the model according to the definition given above.
 In the belief that the results may differ depending on the characteristics of the model's structure, we also prepared learning models with different types of structures. 
 Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.'
@@ -303,8 +303,8 @@ Detail informations about dataset, adversarial attack method, accuracy, safety, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
 
-We conducted experiments under different conditions to answer the RQs. For the experiment, we prepared datasets with three different characteristics and models with three different structures.
-Section 4.1 introduces a introduction to the datasets and models used in our experiment and the reason why they were selected.
+We conducted experiments under different conditions to answer the RQs. For the experiment, we prepared dataset with three different characteristics and models with three different structures.
+Section 4.1 introduces a introduction to the dataset and models used in our experiment and the reason why they were selected.
 Section 4.2 introduces a brief introduction to FGSM for generating adversarial examples and the reason why is was selected.
 Section 4.3 introduces each process of the experiment designed in chapter 3.
 
@@ -318,7 +318,7 @@ Of these, 5,000 data are used for training and last data used for evaluation.
 
 \begin{figure}[H] 
 \includegraphics[width=13cm]{Definitions/cifar-datasets.png}
-\caption{data in CIFAR datasets.\label{cifar-datasets}}
+\caption{CIFAR datasets.\label{cifar-datasets}}
 \end{figure} 
 
 You can see some data of CIFAR datasets in Figure~\ref{cifar-datasets}.
@@ -330,12 +330,12 @@ If it is possible to identify the improvement of safety through adversarial trai
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/gtsrb-dataset.png}
-\caption{data in GTSRB.\label{gtsrb-datasets}}
+\caption{GTSRB.\label{gtsrb-dataset}}
 \end{figure} 
 
 The GTSRB(German Traffic Sign Recognition Benchmark) is a German traffic sign dataset. It consists of more than 50,000 data with 43 classes.
 The difference between GTSRB and CIFAR datasets is that the number of data corresponding to each class is not uniform.
-You can see some data of GTSRB in Figure~\ref{gtsrb-datasets}.
+You can see some data of GTSRB in Figure~\ref{gtsrb-dataset}.
 The dataset used for applicable AI training has some of this data bias.
 Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of model through adversarial training for dataset in which the number of data is not uniform for each class, we can get valid results for other dataset.
 Another reason for selecting GTSRB is that it is closely related to safety.
@@ -419,8 +419,8 @@ The trained model evaluates the accuracy using the original evaluation data and 
 In this paper, we hypothesized that adversarial training could significantly improve safety while minimizing the impact on performance, And we designed the experiments to prove this assumptions.
 Chapter 5 summarized the results of the designed experiments and what can be learned through the experimental results.
 Before discussing the experimental results, we defines some words in this chapter.
-First, for datasets with any adversarial examples, it is called {\it orig}. Training data and evaluation data in {\it orig} were called {\it orig\_train} and {\it orig\_eval}.
-For datasets with adversarial examples, it is called {\it adv}. Training data and evaluation data in {\it adv} were called {\it adv\_train} and {\it adv\_eval}.
+First, for dataset with any adversarial examples, it is called {\it orig}. Training data and evaluation data in {\it orig} were called {\it orig\_train} and {\it orig\_eval}.
+For dataset with adversarial examples, it is called {\it adv}. Training data and evaluation data in {\it adv} were called {\it adv\_train} and {\it adv\_eval}.
 These refer to each dataset and at the same time refer to the number of all data contained in each dataset.
 The {\it N model} means a model trained on mixed training data containing N\% of total number of traninig data number of adversarial examples.
 For example, a model trained with any adversarial training data is called 0 model, and a model trained with mixed train data which contains 20\% of the number of adversarial training data is called 20 model.
@@ -568,11 +568,11 @@ From the experimental results of CIFAR-100, it can be confirmed that adversarial
 \end{specialtable}
 
 Table~\ref{gtsrb-results} shows the GTSRB according to \begin{math}\epsilon\end{math} and the results for each model.
-From the result of 0 model, it can be seen that the GTSRB shows the highest accuracy than 0 model of the previous datasets, on the contrary, shows low safety.
+From the result of 0 model, it can be seen that the GTSRB shows the highest accuracy than 0 model of the previous dataset, on the contrary, shows low safety.
 It can be seen that the accuracy and safety performance are significantly different at 68\%(LeNet), 38\%(ResNet18), and 53\%(VGG16)..
 This confirms that the models are well trained on the original GTSRB and are vulnerable to adversarial examples.
 From the previous experimental results, when 0 model and 20 model were compared, the effect of adversarial training on accuracy and safety was best confirmed.
-When GTSRB's 0 model and 20 model were compared, it can be seen that they were the most affected by adversarial training in our used datasets.
+When GTSRB's 0 model and 20 model were compared, it can be seen that they were the most affected by adversarial training in our used dataset.
 % THINK :: 이 부분을 그래프 해석에서 각 그래프에 대해서 진행하는 것이 나을까 ?
 To show this. the average of differences in accuracy and safety between 0 model and 20 model for each network was calculated in each dataset.
 In CIFAR-10 case, the accuracy of LeNet decreased by an average of 3\% and the safety increased by an average of 27\%.
@@ -606,7 +606,7 @@ In figure~\ref{gtsrb-0.05-graph} and figure~\ref{gtsrb-0.1-graph} as with the CI
 \subsection{Discussion}
 
 The interpretation of the experimental results according to 3 different datasets and models and various experimental conditions and the answer to the RQs in the thesis can be confirmed as follows.
-For all datasets, it can be seen that the safety of 0 model has a large performance difference compared to the accuracy. This confirms that the generated adversarial examples were properly generated.
+For all dataset, it can be seen that the safety of 0 model has a large performance difference compared to the accuracy. This confirms that the generated adversarial examples were properly generated.
 
 RQ1 was a question of whether adversarial training well classifies adversarial examples of classification models.
 In experiments using the CIFAR datasets, it was confirmed that the safety performance of 20 model, 30 model and 40 model including the adversarial examples was significantly improved compared to the safety of 0 model not including the adversarial examples.
@@ -631,10 +631,10 @@ This is because the greatest improvement in safety can be obtained compared to 0
 Even if adversarial training data is included at a higher rate than that, the degree of safety improvement is small, so it can be considered as the minimum requirements to configure 20\% of the total training dataset as adversarial examples.
 If accuracy is considered a more important requirements, the proportion of adversarial examples can be reduced, and if safety is considered a more important requirement, more adversarial examples can be included.
 
-Additionally, in graphs, it can be seen that the shape of the graph shows the same tendency for all datasets and different \begin{math}\epsilon\end{math}.
+Additionally, in graphs, it can be seen that the shape of the graph shows the same tendency for all dataset and different \begin{math}\epsilon\end{math}.
 Through this, it was confirmed that, regardless of the degree of deformation of the adversarial example, adversarial training can lead to improved safety.
 
-To summarize the experimental results, adversarial training can contribute to improving the safety of the classification model ragardless of structure of model, which also applies to safety-related datasets.
+To summarize the experimental results, adversarial training can contribute to improving the safety of the classification model ragardless of structure of model, which also applies to safety-related dataset.
 In order to verify safety, it is recommended that at least 20\% of the training data consist of adversarial examples, and it can be proved that it can help to verify the desired requirements by adjusting the inclusion ratio of adversarial examples according to priority among accuracy and safety.
 Through this, we propose a new classification model training process that reflects factors than can verify safety.
 
@@ -668,7 +668,7 @@ Based on the proposed methods, when entering into an actual AI project, it can b
 Therefore, it is possible to reduce the resources required for at least one training.
 Moreover, it is possible to reduce the cost of training model that verifies the requirements by adjusting the ratio of inclusion of adversarial examples for higher-value requirements through accuracy and safety after one training and evaluation.
 
-In future work, we plan to verify the validity of the proposed method for more diverse classification datasets related to safety, different model structures, and various adversarial attack methods.
+In future work, we plan to verify the validity of the proposed method for more diverse classification dataset related to safety, different model structures, and various adversarial attack methods.
 In addition, we are going to conduct research on how NFRs other than AI and safety for purposes other than classification models can be pre-verified through experiments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
