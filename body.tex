@@ -148,7 +148,7 @@ Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
 Requirements can be divided into functional requirements and non-functional requirements(NFRs).
 Functional requirements are requirements for whether the software properly provides the functions that users want.
-NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), security\cite{security-mei,security-mei2,security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski, }, and etc. % TODO :: 채우기 !!
+NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), security\cite{security-mei,security-mei2,security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski}, and etc. % TODO :: 채우기 !!
 It can be said that it is essential to verifty not only functional requirements but also NFRs for high quality software.
 
 Existing software has been quickly verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
@@ -187,7 +187,6 @@ For proving this, we set up the following research questions(RQ).
 
 Through experiments to answer each RQ, we were able to make the following contributions in this paper.
 
-% main 기법이 아닌 결과에 따른 선택적으로 main process로 사용할 수 있거나 성능 향상을 위한 보조적인 수단으로 활용할 수 있음을 어필₩
 \begin{enumerate}
     \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
     \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversarial exmaples generated.
@@ -313,7 +312,7 @@ Section 4.3 introduces each process of the experiment designed in chapter 3.
 
 \subsubsection{Datasets}
 
-For the experiments, three dataset were used: CIFAR-10, CIFAR-100, and GTSRB.
+For the experiments, three dataset were used: CIFAR-10, CIFAR-100\cite{cifar}, and GTSRB\cite{gtsrb}.
 The CIFAR-10 consists of a total 60,000 data in 10 classes, each contains 6,000 data with 3 channels and \begin{math}{32\times 32}\end{math} size.
 Of these, 5,000 data are used for training and last data used for evaluation.
 
@@ -343,10 +342,10 @@ Another reason for selecting GTSRB is that it is closely related to safety.
 
 \subsubsection{Models}
 
-In the paper, three models of different structures(LeNet5, ResNet18, VGG16) were used to understand the effect of adversarial training through data augmentation on safety performance regardless of network structure.
-LeNet is a classical CNN  structured model introduced in 1998 and features better performance compared to its simple structure.
+In the paper, three models of different structures were used to understand the effect of adversarial training through data augmentation on safety performance regardless of network structure.
+LeNet\cite{lenet} is a classical CNN  structured model introduced in 1998 and features better performance compared to its simple structure.
 LeNet has the simplest structure among the models used in the experiment, it was used to understand the effect of the model of the simple structure.
-ResNet18 and VGG16 are the most well-known and widely used models for classification, and their performance has also been proven through ILSVRC(ImageNet Large Scale Visual Recognition Challenge).
+ResNet18\cite{resnet} and VGG16\cite{vgg} are the most well-known and widely used models for classification, and their performance has also been proven through ILSVRC(ImageNet Large Scale Visual Recognition Challenge).
 VGG16, although it came in second in the 2014 competition, is more popular than the winning model GoogLeNet for its simplicity and ease of use.
 ResNet18 is a model that won the 2015 competition with the additional of Residual blocks to VGGNet.
 We selected two models with guaranteed classification performance through the competition prize for experiments.
@@ -771,6 +770,16 @@ Barreno, M., Nelson, B., Joseph, A. D., Tygar, J. D.,  The security of machine l
 Amodei, D., Olah, C., Steinhardt, J., Christiano, P., Schulman, J., Mané, D., Concrete problems in AI safety. \textit{arXiv preprint arXiv:1606.06565.}; 2016.
 \bibitem[Yosinski, J(2015)]{transparency-yosinski}
 Yosinski, J., Clune, J., Nguyen, A., Fuchs, T., Lipson, H., Understanding neural networks through deep visualization. \textit{arXiv preprint arXiv:1506.06579.}; 2015.
+\bibitem[Krizhevsky, A(2009)]{cifar}
+Krizhevskey, A., Hinton, G., Leawrning multiple layers of features from tiny images. 2009.
+\bibitem[Stallkamp, J(2012)]{gtsrb}
+Stallkamp, J., Schlipsing, M., Salmen, J., Igel, C., Man vs. computer: Benchmarking machine learning algorithms for traffic sign recognition. {\em Neural networks} {\bf 2012}, {\em 32}, 323--332.
+\bibitem[LeCun, Y(1995)]{lenet}
+LeCun, Y., Bottou, L., Haffner, P., Gradient-based learning applied to document recognition. Proceedings of the IEEE; 86(11); 2278--2324.
+\bibitem[He, K(2016)]{resnet}
+He, K., Zhang, X., Ren, S., Sun, J., Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition; 770--778.
+\bibitem[Simonyan, K(2014)]{vgg}
+Simonyan, K., Zisserman, A., Very deep convolutional networks for large-scale image recognition. \textit{arXiv preprint arXiv:1409.1556.}; 2014.
 % Reference 1
 \bibitem[Author1(year)]{ref-journal}
 Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
