@@ -157,6 +157,7 @@ In existing software, it is possible for people to directly check the operation 
 However, with the advent of Deep Neural Network(DNN), artificial intelligence(AI), which has different characteristics with existing software that appeared throughout society, is difficult to verify requirements by methods used in existing software.
 Performance, which is one of the NFRs, can be verified to some extent through accuracy or F1-score measurement. However, other NFRs like safety are difficult to verify.
 The reason why it is difficult to use the verification methods of existing software in AI is because AI operated as black box model. In existing software, these NFRs could be verified through code, but in AI, it is difficult to verify them because it counldn't identify the operation of the code.
+% TODO :: 자율 주행, 금융 및 의학 ai 관련 참조 논문들 찾기(xai 논문 확인)
 In AI, verification of NFRs is important especially in the areas that can have a fatal impact on humans such as autonomous driving\cite{ai-driving-bajarski,ai-driving-levinson}, medical diagnosis\cite{ai-medical-ramsundar,ai-medical-vieira}, and finance\cite{ai-finance-fu}.
 If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
 Nevertheless, the quality assessment of AI is mainly done only on the performance corresponding to how well AI through methods such as accuracy and F1-score and NFRs are rarely dealt with.
@@ -219,7 +220,7 @@ This can be said to be the result of not satisfying fairness, one of the AI NFRs
 \cite{fairness-dwork} points out that the bias in training dataset can lead to discriminatory results according to features such as race, gender, and age of each individuals.
 To solve this problem, they proposed a statistical method to identify the discriminating elements of the training dataset, and furthermore, they argued that it is important to keep the fairness of AI as data bias is related to privacy.
 \cite{fairness-feldman} proposed the problem of discrimination that the discriminatory feature of dataset can have on the group using AI and a method to solve the problem.
-% notion 1-2, 1-3 추가 필요
+% TODO :: notion 1-2, 1-3 추가 필요
 To improve the fairness of the AI, \cite{fairness-feldman} and \cite{fairness-microsoft} find and remove factors that hinder fairness, such as bias, which exists in training dataset.
 
 \subsection{Explainable Artificial Intelligence(XAI)}
