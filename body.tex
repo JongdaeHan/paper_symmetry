@@ -148,7 +148,7 @@ Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
 Requirements can be divided into functional requirements and non-functional requirements(NFRs).
 Functional requirements are requirements for whether the software properly provides the functions that users want.
-NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer,fairness-zhang}, security\cite{security-mei,security-mei2,security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski}, and etc. % TODO :: 채우기 !!
+NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, security\cite{security-mei, security-mei2, security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski}, and etc. % TODO :: 채우기 !!
 It can be said that it is essential to verifty not only functional requirements but also NFRs for high quality software.
 
 Existing software has been quickly verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
@@ -204,21 +204,14 @@ In chapter 6, we introduces the conclusion of the paper and future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related works} % START :: 레퍼런스 정리 시작 !!! 이거 하면 거의 다 끝나가 !!!
 
-There are prior studies that directly or indirectly affected the field of NFRs verification of AI.
-
-% TODO ::
-% \subsection{Importance of NFRs in AI}
-% AI의 비기능적 요구사항이 중요한 이유에 대한 논문들에 대해서 기술 Concrete problems in AI safety 논문을 중심으로 찾을 예정
-% the studies on the fairness of training data 항목 편입 예정
-% Introduction의 관련 연구 언급 부분에 대해서도 수정할 예정
-% 추가된 참조 수정 후 해당 참조 논문에 맞게 내용 추가
+There are prior studies that both directly and indirectly affected the field of NFRs verification of AI.
 
 \subsection{The studies on the fairness of training data}
 
 AI learns the features of the data and derives the results of the input data based on the learned features.
 Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
 This can be said to be the result of not satisfying fairness, one of the AI NFRs that requires every users to achieve the same results.
-\cite{fairness-dwork} points out that the bias in training dataset can lead to discriminatory results according to features such as race, gender, and age of each individuals.
+\cite{fairness-dwork, fairness-zemel} points out that the bias in training dataset can lead to discriminatory results according to features such as race, gender, and age of each individuals.
 To solve this problem, they proposed a statistical method to identify the discriminating elements of the training dataset, and furthermore, they argued that it is important to keep the fairness of AI as data bias is related to privacy.
 \cite{fairness-feldman} proposed the problem of discrimination that the discriminatory feature of dataset can have on the group using AI and a method to solve the problem.
 In addition, \cite{fairness-zhang} showed that not only the imbalance of data but also the imbalance of data features can be the factors that affects the performance of AI.
@@ -232,7 +225,7 @@ One of the characteristics of AI is that it works in a black box. People cannot 
 This raises the problem that the results derived by AI cannot be trusted unconditionally.
 In particular, it is more important to solve these problems in fields where the results of AI have a large impact on humans, such as autonomous driving and medical diagnosis.
 In order to solve this problems, XAI conducted research to enable humans to check the process of AI learning and the process of deriving results.
-Studies in \cite{xai-samek, xai-arrieta} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have benn conducted for XAI.
+Studies in \cite{xai-samek, xai-arrieta} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have been conducted for XAI.
 
 \subsection{Adversarial examples and adversarial attacks}
 
@@ -292,7 +285,7 @@ The reason for the preparing several \begin{math}\epsilon\end{math} is to check 
 In addition, when generating dataset for adversarial training, the size of the training dataset was kept the same as the size of the existing training dataset.
 This is because increasing the number of data does not necessarily lead to improved performance of the model, as well as requiring additional resources to learn it.
 Furthermore, in order to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, the experiment was conducted by setting the mixing ratio of the original data and the adversarial examples differently.
-At this time, if adversarial training is executed, the number of original training data was reduced, and thus the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evaluation dataset, may decrease.
+At this time, if adversarial training is executed, the number of original training data was reduced, and thus the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evaluation dataset, may decrease\cite{trade-off}. 
 It is important improving safety, but accuracy can be more important than safety at some moment that depends on the purpose of the model.
 So, it is also necessary to ensure accuracy as well as safety. 
 Therefore, in order to maintain the accuracy of the model learned with original dataset with the appropriate resources, we chose the method of mixing the original data and adversarial examples at an appropriate ratio while preserving the size of the training dataset.
@@ -751,6 +744,8 @@ Feldmen, M., Friedler, S. A., Moeller, J., Scheidegger, C., Venkatasubramanian, 
 Tramer, F., Atildakis, V. ,Geambasu, R., Hsu, D., Hubaux, J. P., Humbert, M, ..., Lin, H., Fairtest: Discovering unwarranted associations in data-driven applications. In IEEE European Symposium on SEcurity and Privacy, IEEE.
 \bibitem[Zhang, J(2021)]{fairness-zhang} 
 Zhang, J., Harman, M., Ignorance and Prejudice. In 2021 IEEE/ACM 43rd International Conference on Software Engineering(ICSE), IEEE.
+\bibitem[Zemel, R.(2013)]{fairness-zemel}
+Zemel, R., Wu, Y., Swersky, K., Pitassi, T., Dwork. C., Learning fair representations. International conference on machine learning; pp. 325--333.
 \bibitem[Samek, W(2017)]{xai-samek}
 Samek, W., Wiegand, T., Müller, K. R., Explainable artificial intelligence: Understanding, visualizing and interpreting deep learning models. \textit{arXiv preprint arXiv:1708.08296.} 2017.
 \bibitem[Arrieta, A. B.(2020)]{xai-arrieta}
@@ -797,6 +792,8 @@ Fu, K., Cheng, D., Tu, Y., Zhang, L., Credit card fraud detection using convolut
 Vieira, S., Pinaya, W. H., Mechelli, A., Using deep learning to investigate the neuroimaging correlates of psychiatric and neurologicla disorders: Methods and applications. {\em Neuroscience \& Biobehavioral Reviews} {\bf 2017}, {\em 74}, 58--75.
 \bibitem[Ramsundar, B(2015)]{ai-medical-ramsundar}
 Ramsundar, B., Kearnes, S., Riley, P., Webster, D., Konerding, D., Pande, V., Massively multitask networks for drug discovery. \textit{arXiv preprint arXiv:1502.02072.}; 2015.
+\bibitem[Ajunwa, I(2016)]{trade-off}
+Ajunwa, I., Friedler, S., Scheidegeer, C. E., Venkatasubramanian, S., Hiring by algorithm: predicting and preventing disparate impack. \textit{Available at SSRN.}; 2016.
 %%%% template
 % Reference 1
 \bibitem[Author1(year)]{ref-journal}
