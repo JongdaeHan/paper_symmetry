@@ -148,7 +148,7 @@ Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
 Requirements can be divided into functional requirements and non-functional requirements(NFRs).
 Functional requirements are requirements for whether the software properly provides the functions that users want.
-NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), security\cite{security-mei,security-mei2,security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski}, and etc. % TODO :: 채우기 !!
+NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer,fairness-zhang}, security\cite{security-mei,security-mei2,security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski}, and etc. % TODO :: 채우기 !!
 It can be said that it is essential to verifty not only functional requirements but also NFRs for high quality software.
 
 Existing software has been quickly verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
@@ -211,18 +211,18 @@ There are prior studies that directly or indirectly affected the field of NFRs v
 % AI의 비기능적 요구사항이 중요한 이유에 대한 논문들에 대해서 기술 Concrete problems in AI safety 논문을 중심으로 찾을 예정
 % the studies on the fairness of training data 항목 편입 예정
 % Introduction의 관련 연구 언급 부분에 대해서도 수정할 예정
-% notion - related work에서 정리한 내용 참고
 % 추가된 참조 수정 후 해당 참조 논문에 맞게 내용 추가
 
 \subsection{The studies on the fairness of training data}
 
-AI learns the features of the data and derives the results of the input data based on the learned features. Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
+AI learns the features of the data and derives the results of the input data based on the learned features.
+Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
 This can be said to be the result of not satisfying fairness, one of the AI NFRs that requires every users to achieve the same results.
 \cite{fairness-dwork} points out that the bias in training dataset can lead to discriminatory results according to features such as race, gender, and age of each individuals.
 To solve this problem, they proposed a statistical method to identify the discriminating elements of the training dataset, and furthermore, they argued that it is important to keep the fairness of AI as data bias is related to privacy.
 \cite{fairness-feldman} proposed the problem of discrimination that the discriminatory feature of dataset can have on the group using AI and a method to solve the problem.
-% TODO :: notion 1-2, 1-3 추가 필요
-To improve the fairness of the AI, \cite{fairness-feldman} and \cite{fairness-microsoft} find and remove factors that hinder fairness, such as bias, which exists in training dataset.
+In addition, \cite{fairness-zhang} showed that not only the imbalance of data but also the imbalance of data features can be the factors that affects the performance of AI.
+To improve the fairness of the AI, \cite{fairness-feldman,fairness-microsoft, fairness-tramer} attempted to ensure the fairness of AI through the removing or finding factors such as bias in the dataset.
 
 \subsection{Explainable Artificial Intelligence(XAI)}
 
@@ -738,7 +738,8 @@ Written informed consent for publication must be obtained from participating pat
 
 %=====================================
 % References, variant B: internal bibliography
-%=====================================
+% TODO :: References 정리 완료 후 순서 정렬
+% 비기능적 요구사항 속성들 -> AI의 응용분야 -> 
 \begin{thebibliography}{999}
 \bibitem[Bird, S(2020)]{fairness-microsoft}
 Bird, S., Dudík, M., Edgar, R., Horn, B., Lutz, R., Milan, V., Sameki, M., Wallach, H., Walker, K., Fairlearn: A toolkit for assessing and improving fairness in AI. {\em Microsoft, Tech. Rep.} {\bf 2020}, {\em MSR-TR-2020-32}; 142--149.
@@ -746,6 +747,10 @@ Bird, S., Dudík, M., Edgar, R., Horn, B., Lutz, R., Milan, V., Sameki, M., Wall
 Dwork, C., Hardt, M., Pitassi, T., Reingold, O., Zemel, R., Fairness through awareness. Proceedings of the 3rd innovations in theoretical computer science conference; pp. 214--226.
 \bibitem[Feldman, M(2015)]{fairness-feldman}
 Feldmen, M., Friedler, S. A., Moeller, J., Scheidegger, C., Venkatasubramanian, S., Certifying and removing disparate impact. Proceedings of the 21th ACM SIGKDD international conference on knowledge discovery and data mining; pp 259--268.
+\bibitem[Tramer, F(2017)]{fairness-tramer}
+Tramer, F., Atildakis, V. ,Geambasu, R., Hsu, D., Hubaux, J. P., Humbert, M, ..., Lin, H., Fairtest: Discovering unwarranted associations in data-driven applications. In IEEE European Symposium on SEcurity and Privacy, IEEE.
+\bibitem[Zhang, J(2021)]{fairness-zhang} 
+Zhang, J., Harman, M., Ignorance and Prejudice. In 2021 IEEE/ACM 43rd International Conference on Software Engineering(ICSE), IEEE.
 \bibitem[Samek, W(2017)]{xai-samek}
 Samek, W., Wiegand, T., Müller, K. R., Explainable artificial intelligence: Understanding, visualizing and interpreting deep learning models. \textit{arXiv preprint arXiv:1708.08296.} 2017.
 \bibitem[Arrieta, A. B.(2020)]{xai-arrieta}
@@ -792,11 +797,6 @@ Fu, K., Cheng, D., Tu, Y., Zhang, L., Credit card fraud detection using convolut
 Vieira, S., Pinaya, W. H., Mechelli, A., Using deep learning to investigate the neuroimaging correlates of psychiatric and neurologicla disorders: Methods and applications. {\em Neuroscience \& Biobehavioral Reviews} {\bf 2017}, {\em 74}, 58--75.
 \bibitem[Ramsundar, B(2015)]{ai-medical-ramsundar}
 Ramsundar, B., Kearnes, S., Riley, P., Webster, D., Konerding, D., Pande, V., Massively multitask networks for drug discovery. \textit{arXiv preprint arXiv:1502.02072.}; 2015.
-% fairness 추가 -> 순서 변경
-\bibitem[Tramer, F(2017)]{fairness-tramer}
-Tramer, F., Atildakis, V. ,Geambasu, R., Hsu, D., Hubaux, J. P., Humbert, M, ..., Lin, H., Fairtest: Discovering unwarranted associations in data-driven applications. In IEEE European Symposium on SEcurity and Privacy, IEEE.
-\bibitem[Zhang, J(2021)]{fairness-zhang} 
-Zhang, J., Harman, M., Ignorance and Prejudice. In 2021 IEEE/ACM 43rd International Conference on Software Engineering(ICSE), IEEE.
 %%%% template
 % Reference 1
 \bibitem[Author1(year)]{ref-journal}
