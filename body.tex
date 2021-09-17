@@ -142,7 +142,7 @@ Through the accuracy and safety obtained as a results of the evaluations, it can
 % \entrylink{The Link to this entry published on the encyclopedia platform.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\section{Introduction}
+\section{Introuction}
 
 Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
@@ -162,21 +162,23 @@ In AI, verification of NFRs is important especially in the areas that can have a
 If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
 Nevertheless, the quality assessment of AI is mainly done only on the performance corresponding to how well AI through methods such as accuracy and F1-score and NFRs are rarely dealt with.
 
-% TODO :: Related works 정리 후 수정 예정(이 문단 전체)
-% 주요 내용 : 학습 데이터 공정성을 통해 개선하려는 연구들이 진행되었음. 다른 방법(xai, adversarial training)을 통해 AI의 성능을 개선하려는 연구들이 있었는데, 이러한 연구들에서 비기능적 요구사항 검증 방법에 대한 실마리를 잡을 수 있다.
-There are some studies for verifying NFRs of AI. Some of studies' goal is not mainly for verifying NFRs of AI, but there are some points that can be said to be the purpose of study is for verifying NFRs of AI.
-The Microsoft proposed Fairlearn\cite{fairness-microsoft}, an open source project to ensure fairness of machine learning models, to improve unfair situations that may occur when the fairness of training data is not guaranteed.
-Other studies carried out include studies on explainable AI(XAI). These studies were conducted to enable people to understand the process of deriving results of AI.
-In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
-There are also studies of adversarial examples and adversarial training.
-These studies show that machine learning is inevitably vulnerable to adversarial examples due to its learning algorithm and suggest several methods to counter adversarial attacks.
+Several studies have been conducted in this regard, and studies can be largely divided into two types.
+The first are studies that directly deal with the NFRs of AI.
+In \cite{fairness-dwork, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel, security-mei, security-mei2, security-barreno, safety-amodei, transparency-yosinski}, studies have defined fairness of AI and dealt with problems taht may arise when fairness has not been verified and proposed methods for verifying fairness.
+% security 연구들에서는
+% reliability 연구들에서는
+% safety 연구들에서는 
+The second are studies on problmes related to NFRs of AI, although it does not directly deal with NFRs of AI.
+Explainable AI(XAI) and adversarial training can be said to be one of the examples of these types of studies.
+XAI is the study to enable people to understand the process of training process and deriving results process of AI. % xai 제외 대상
+In other words, it can be said that it is a process that can verify the reliability of the results derived by AI.
+Advesrarial training is the study of making trained model more robust to adversarial examples.
 Although the purpose of these stuides is to maintain or improve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
 While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
-Therefore, in this paper, we proceed with a study to verify NFRs of AI especially safety of classification model using adversarial training, inspired by the other interpretation of previous studies we said above.
-% 특히 적대적 학습을 통한 적대적 예시에 대한 robust한 결과를 얻어낼 수 있다는 점으로부터, 소프트웨어의 안전성 검증과 연관을 지을 수 있을 것이라고 생각하였다. 
-% 이를 확인하기 위해 논문에서는 분류 모델과 이에 대한 자세한 내용은 3장에 대해서 다룬다.
-There are the purpose of AI is very diverse and the required NFRs vary according to the purpose, this paper conducted a study on the safety of classification model. The definition of safety and detail purpose of this paper are covered in chapter 3.
-In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of data for learning(adversarial training).
+Therefore, in this paper, we proceed with a study to verify NFRs of AI especially \textit{safety} of \textit{classification} model using \textit{adversarial training}, inspired by the other interpretation of previous studies we said above.
+Among the purposes and NFRs of AI, the reasons for choosing classification and safety, and the definition of safety used in the paper will be convered in more detail in chapter 3.
+
+In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of data for training(adversarial training).
 For proving this, we set up the following research questions(RQ).
 
 \begin{description}
@@ -202,11 +204,12 @@ In chapter 5, we analyze the experimental results and make a discussion of exper
 In chapter 6, we introduces the conclusion of the paper and future work.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Related works} % START :: 레퍼런스 정리 시작 !!! 이거 하면 거의 다 끝나가 !!!
+\section{Related works}
 
 There are prior studies that both directly and indirectly affected the field of NFRs verification of AI.
 
-\subsection{The studies on the fairness of training data}
+\subsection{The studies on the NFRs of AI}
+\subsubsection{About fairness of AI}
 
 AI learns the features of the data and derives the results of the input data based on the learned features.
 Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
@@ -217,7 +220,12 @@ To solve this problem, they proposed a statistical method to identify the discri
 In addition, \cite{fairness-zhang} showed that not only the imbalance of data but also the imbalance of data features can be the factors that affects the performance of AI.
 To improve the fairness of the AI, \cite{fairness-feldman,fairness-microsoft, fairness-tramer} attempted to ensure the fairness of AI through the removing or finding factors such as bias in the dataset.
 
-\subsection{Explainable Artificial Intelligence(XAI)}
+% TODO :: AI의 NFR에 대한 내용들 작성
+\subsubsection{About security of AI}
+\subsubsection{About reliability(transparency) of AI}
+\subsubsection{About safety of AI}
+
+\subsection{Explainable Artificial Intelligence(XAI)} % NOTICE :: 제외 대상
 
 The main purpose of the studies conducted on XAI is not to verify the AI NFRs.
 However, through these studies, people were able to know the learning and result derivation process of AI, which is directly related to the transparency of the AI, so they were included as a related studies.
@@ -682,17 +690,17 @@ In addition, we are going to conduct research on how NFRs other than AI and safe
 
 \funding{``This research received no external funding''}
 
-\institutionalreview{In this section, please add the Institutional Review Board Statement and approval number for studies involving humans or animals. Please note that the Editorial Office might ask you for further information. Please add ``The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical review and approval were waived for this study, due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans or animals. You might also choose to exclude this statement if the study did not involve humans or animals.}
+% \institutionalreview{In this section, please add the Institutional Review Board Statement and approval number for studies involving humans or animals. Please note that the Editorial Office might ask you for further information. Please add ``The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical review and approval were waived for this study, due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans or animals. You might also choose to exclude this statement if the study did not involve humans or animals.}
 
-\informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans.
+% \informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans.
 
-Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
+% Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
 
-\dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.} 
+% \dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.} 
 
-\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
+% \acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
 
-\conflictsofinterest{Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the~results''.} 
+% \conflictsofinterest{Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the~results''.} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Only for journal Encyclopedia
