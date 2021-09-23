@@ -148,7 +148,7 @@ Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
 Requirements can be divided into functional requirements and non-functional requirements(NFRs).
 Functional requirements are requirements for whether the software properly provides the functions that users want.
-NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, security\cite{security-mei, security-mei2, security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei}, reliability(transparency, whether software can be trusted)\cite{transparency-yosinski}, and etc. % TODO :: 채우기 !!
+NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, security\cite{security-mei, security-mei2, security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei,safety-juric,safety-leike}, transparency(whether software can be trusted)\cite{transparency-yosinski,xai-transparency-ribeiro,xai-transparency-murdoch}, and etc. % TODO :: 채우기 !!
 It can be said that it is essential to verifty not only functional requirements but also NFRs for high quality software.
 
 Existing software has been quickly verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
@@ -158,20 +158,20 @@ However, with the advent of Deep Neural Network(DNN), artificial intelligence(AI
 Performance, which is one of the NFRs, can be verified to some extent through accuracy or F1-score measurement. However, other NFRs like safety are difficult to verify.
 The reason why it is difficult to use the verification methods of existing software in AI is because AI operated as black box model. In existing software, these NFRs could be verified through code, but in AI, it is difficult to verify them because it counldn't identify the operation of the code.
 % TODO :: 자율 주행, 금융 및 의학 ai 관련 참조 논문들 찾기(xai 논문 확인)
-In AI, verification of NFRs is important especially in the areas that can have a fatal impact on humans such as autonomous driving\cite{ai-driving-bajarski,ai-driving-levinson}, medical diagnosis\cite{ai-medical-ramsundar,ai-medical-vieira}, and finance\cite{ai-finance-fu}.
+In AI, verification of NFRs is important especially in the areas that can have a fatal impact on humans such as autonomous driving\cite{ai-driving-bajarski,ai-driving-levinson}, medical diagnosis\cite{ai-medical-ramsundar,ai-medical-vieira,ai-medical-xai-holzinger,ai-medical-krause,ai-medical-tan,ai-medical-pesapane,ai-medical-miller}, and finance\cite{ai-finance-fu}.
 If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
 Nevertheless, the quality assessment of AI is mainly done only on the performance corresponding to how well AI through methods such as accuracy and F1-score and NFRs are rarely dealt with.
 
 Several studies have been conducted in this regard, and studies can be largely divided into two types.
 The first are studies that directly deal with the NFRs of AI.
-In \cite{fairness-dwork, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel, security-mei, security-mei2, security-barreno, safety-amodei, transparency-yosinski}, studies have defined fairness of AI and dealt with problems taht may arise when fairness has not been verified and proposed methods for verifying fairness.
+In \cite{fairness-dwork, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel, security-mei, security-mei2, security-barreno, safety-amodei, safety-juric,safety-leike, transparency-yosinski}, studies have defined fairness of AI and dealt with problems taht may arise when fairness has not been verified and proposed methods for verifying fairness.
 % security 연구들에서는
-% reliability 연구들에서는
+% transparency 연구들에서는
 % safety 연구들에서는 
 The second are studies on problmes related to NFRs of AI, although it does not directly deal with NFRs of AI.
 Explainable AI(XAI) and adversarial training can be said to be one of the examples of these types of studies.
-XAI is the study to enable people to understand the process of training process and deriving results process of AI. % xai 제외 대상
-In other words, it can be said that it is a process that can verify the reliability of the results derived by AI.
+XAI is the study to enable people to understand the process of training process and deriving results process of AI. % xai 제외 대상 -> transparency 하위 항목으로 이동 reli
+In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
 Advesrarial training is the study of making trained model more robust to adversarial examples.
 Although the purpose of these stuides is to maintain or improve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
 While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
@@ -222,10 +222,10 @@ To improve the fairness of the AI, \cite{fairness-feldman,fairness-microsoft, fa
 
 % TODO :: AI의 NFR에 대한 내용들 작성
 \subsubsection{About security of AI}
-\subsubsection{About reliability(transparency) of AI}
+\subsubsection{About transparency(transparency) of AI}
 \subsubsection{About safety of AI}
 
-\subsection{Explainable Artificial Intelligence(XAI)} % NOTICE :: 제외 대상
+\subsection{Explainable Artificial Intelligence(XAI)} % NOTICE :: transparency 하위 항목으로 이동
 
 The main purpose of the studies conducted on XAI is not to verify the AI NFRs.
 However, through these studies, people were able to know the learning and result derivation process of AI, which is directly related to the transparency of the AI, so they were included as a related studies.
@@ -233,7 +233,7 @@ One of the characteristics of AI is that it works in a black box. People cannot 
 This raises the problem that the results derived by AI cannot be trusted unconditionally.
 In particular, it is more important to solve these problems in fields where the results of AI have a large impact on humans, such as autonomous driving and medical diagnosis.
 In order to solve this problems, XAI conducted research to enable humans to check the process of AI learning and the process of deriving results.
-Studies in \cite{xai-samek, xai-arrieta} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have been conducted for XAI.
+Studies in \cite{xai-samek, xai-arrieta,ai-medical-xai-holzinger,xai-transparency-ribeiro,xai-transparency-murdoch} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have been conducted for XAI.
 
 \subsection{Adversarial examples and adversarial attacks}
 
@@ -247,12 +247,17 @@ it can be seen that adversarial examples are related with safety of AI.
 \cite{adversarial-goodfellow} proposes an FGSM that uses gradients from the learning process to generate adversarial examples.
 \cite{adversarial-kurakin2} demonstrated through experiments that when the original data used for learning was captured using a smartphone camera and applied to the model, it can behave like an adversarial examples. It has been shown to be effective in the real environment rather than the experimental environmnet.
 \cite{adversarial-papernot} proposes a method for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach which knows the structure of network and training dataset.
+% \cite{adversarial-yuan} 최근 적대적 예시에 대한 방법론 정리 및 분류
 
 Several studies on NFRs have benn conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
 Inspired by theses studies, we proceed with the research of the thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Definition of safety and Experimental design} % Overview of experiments
+
+% \subsection{Definition of safety in the paper}
+
+% \subsection{Experimental design}
 
 % Introduction에서 생략하거나 자세히 설명하지 않은 부분에 대한 내용 추가
 % 왜 안전성인가 ? 왜 분류 모델인가 ?
@@ -739,9 +744,8 @@ In addition, we are going to conduct research on how NFRs other than AI and safe
 
 %=====================================
 % References, variant B: internal bibliography
-% TODO :: References 정리 완료 후 순서 정렬
-% 비기능적 요구사항 속성들 -> AI의 응용분야 -> 
 \begin{thebibliography}{999}
+% NFRS - fairenss
 \bibitem[Bird, S(2020)]{fairness-microsoft}
 Bird, S., Dudík, M., Edgar, R., Horn, B., Lutz, R., Milan, V., Sameki, M., Wallach, H., Walker, K., Fairlearn: A toolkit for assessing and improving fairness in AI. {\em Microsoft, Tech. Rep.} {\bf 2020}, {\em MSR-TR-2020-32}; 142--149.
 \bibitem[Dwork, C(2012)]{fairness-dwork}
@@ -754,42 +758,32 @@ Tramer, F., Atildakis, V. ,Geambasu, R., Hsu, D., Hubaux, J. P., Humbert, M, ...
 Zhang, J., Harman, M., Ignorance and Prejudice. In 2021 IEEE/ACM 43rd International Conference on Software Engineering(ICSE), IEEE.
 \bibitem[Zemel, R.(2013)]{fairness-zemel}
 Zemel, R., Wu, Y., Swersky, K., Pitassi, T., Dwork. C., Learning fair representations. International conference on machine learning; pp. 325--333.
+% NFRS - transparency & xai
 \bibitem[Samek, W(2017)]{xai-samek}
 Samek, W., Wiegand, T., Müller, K. R., Explainable artificial intelligence: Understanding, visualizing and interpreting deep learning models. \textit{arXiv preprint arXiv:1708.08296.} 2017.
 \bibitem[Arrieta, A. B.(2020)]{xai-arrieta}
 Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., Garcia, S., Gil-Lopez, S., Molina, D., Benjamins, R., Chatila, R., Herrera, F., Explainable Artificial Intelligence(XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. {\em Information Fusion} {\bf 2020}, {\em 58}, 82--115.
-\bibitem[Kurakin, A(2018)]{adversarial-kurakin}
-Kurakin, A., Goodfellow, I., Bengio, S., Dong, Y., Liao, F., Liang, M., ..., Abe, M., Adversarial attacks and defences competition. The NIPS'17 Competition: Building Intelligent Systems; Springer, Cham, 2018; pp 195--231.
-\bibitem[Szegedy, C(2013)]{adversarial-szegedy}
-Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I., Fergus, R., Intriguing properties of neural networks. \textit{arXiv preprint arXiv:1312.6199.}; 2013.
-\bibitem[Goodfellow, I(2014)]{adversarial-goodfellow}
-Goodfellow, I., Shlens, J., Szegedy, C., Explaining and harnessing adversarial examples. \textit{arXiv preprint arXiv:1412.6572.}; 2014.
-\bibitem[Kurakin, A(2016)]{adversarial-kurakin2}
-Kurakin, A., Goodfellow, I., Bengio, S., Adversarial examples in the physical world. \textit{arXiv preprint arXiv:1607.02533.}; 2016.
-\bibitem[Papernot, N(2017)]{adversarial-papernot}
-Papernot, N., McDaniel, P., Goodfellow, I., Jha, S., Celik, Z. B., Swami, A., Practical black-box attacks against machine learning. Proceedings of the 2017 ACM on Asia conference on computer and communications security; pp 506--519.
-\bibitem[Paszke, A(2019)]{pytorch}
-Paszke, A., Gross, S., Massa. F., Lerer, A., Bradbury, J., Channan, G., ..., Chintala, S., Pytorch: An imperative style, high performance deep leawrning library. Advances in neural information processing systems, 32; pp 8026--8037.
+\bibitem[Yosinski, J(2015)]{transparency-yosinski}
+Yosinski, J., Clune, J., Nguyen, A., Fuchs, T., Lipson, H., Understanding neural networks through deep visualization. \textit{arXiv preprint arXiv:1506.06579.}; 2015.
+\bibitem[Ribeiro, M. T.(2016)]{xai-transparency-ribeiro}
+Ribeiro, M. T., Singh, S., Guestrin, C., "Why should i trust you?" Explaining the predictions of any classifier. Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining; 1135--1144.
+\bibitem[Merdoch, W. J.(2019)]{xai-transparency-murdoch}
+Murdoch, W. J., Singh, C., Kumbier, K., Abbasi-Asi, R., Yu, B., Interpretable machine learning: definitions, methods, and applications. \textit{arXiv preprint arXiv:1901.04592.}; 2019.
+% NFRS - security
 \bibitem[Mei, S(2015)]{security-mei}
 Mei, S., Zhu, X., The security of latent dirichlet allocation. Artificial Intelligence and Statistics; PMLR, 2015; pp 681--689.
 \bibitem[Mei, S(2015)]{security-mei2}
 Mei, S., Zhu, X., Using machine teaching to identify optimal training-set attakcs on machine learners. Twenty-Ninth AAAI Conference on Artificial Intelligence.
 \bibitem[Barreno, M(2010)]{security-barreno}
 Barreno, M., Nelson, B., Joseph, A. D., Tygar, J. D.,  The security of machine learning. {\em Machine Learning, 81} {\bf 2010}, {\em 2}, 121--148.
+% NFRS - safety
 \bibitem[Amodei, D(2016)]{safety-amodei}
 Amodei, D., Olah, C., Steinhardt, J., Christiano, P., Schulman, J., Mané, D., Concrete problems in AI safety. \textit{arXiv preprint arXiv:1606.06565.}; 2016.
-\bibitem[Yosinski, J(2015)]{transparency-yosinski}
-Yosinski, J., Clune, J., Nguyen, A., Fuchs, T., Lipson, H., Understanding neural networks through deep visualization. \textit{arXiv preprint arXiv:1506.06579.}; 2015.
-\bibitem[Krizhevsky, A(2009)]{cifar}
-Krizhevskey, A., Hinton, G., Leawrning multiple layers of features from tiny images. 2009.
-\bibitem[Stallkamp, J(2012)]{gtsrb}
-Stallkamp, J., Schlipsing, M., Salmen, J., Igel, C., Man vs. computer: Benchmarking machine learning algorithms for traffic sign recognition. {\em Neural networks} {\bf 2012}, {\em 32}, 323--332.
-\bibitem[LeCun, Y(1995)]{lenet}
-LeCun, Y., Bottou, L., Haffner, P., Gradient-based learning applied to document recognition. Proceedings of the IEEE; 86(11); 2278--2324.
-\bibitem[He, K(2016)]{resnet}
-He, K., Zhang, X., Ren, S., Sun, J., Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition; 770--778.
-\bibitem[Simonyan, K(2014)]{vgg}
-Simonyan, K., Zisserman, A., Very deep convolutional networks for large-scale image recognition. \textit{arXiv preprint arXiv:1409.1556.}; 2014.
+\bibitem[Juric, M.(2020)]{safety-juric}
+Juric, M., Sandic, A., Brcic, M., AI safety: state of the field through quantitative lens. 2020 43rd International Convention on Information, Communication and Electronic Technology(MIPRO); 1254--1259.
+\bibitem[Leike, J.(2017)]{safety-leike}
+Leike, J., Martic, M., Krakovna, V., Ortega, P. A., Everitt, T., Lefrancq, A., ..., Legg, S., AI safety gridworlds. \textit{arXiv preprint arXiv:1711.09883.}; 2017.
+% AI APPLICATIONS
 \bibitem[Bojarski, M(2016)]{ai-driving-bajarski}
 Bojarski, M., Del Testa, D., Dworakowski, D., Firner, B., Flepp, B., Goyal, P., ..., Zieba, K., End to end learning to self-driving cars. \textit{arXiv preprint arXiv:1604.07316.}; 2016.
 \bibitem[Levinson, J(2011)]{ai-driving-levinson}
@@ -800,8 +794,42 @@ Fu, K., Cheng, D., Tu, Y., Zhang, L., Credit card fraud detection using convolut
 Vieira, S., Pinaya, W. H., Mechelli, A., Using deep learning to investigate the neuroimaging correlates of psychiatric and neurologicla disorders: Methods and applications. {\em Neuroscience \& Biobehavioral Reviews} {\bf 2017}, {\em 74}, 58--75.
 \bibitem[Ramsundar, B(2015)]{ai-medical-ramsundar}
 Ramsundar, B., Kearnes, S., Riley, P., Webster, D., Konerding, D., Pande, V., Massively multitask networks for drug discovery. \textit{arXiv preprint arXiv:1502.02072.}; 2015.
-\bibitem[Ajunwa, I(2016)]{trade-off}
-Ajunwa, I., Friedler, S., Scheidegeer, C. E., Venkatasubramanian, S., Hiring by algorithm: predicting and preventing disparate impack. \textit{Available at SSRN.}; 2016.
+\bibitem[Holzinger, A(2017)]{ai-medical-xai-holzinger}
+Holzinger, A., Biemann, C., Pattichis, C. S., Kell, D. B., What do we need to build explainable AI systems for the medical domain?. \textit{arXiv preprint arXiv:1712.09923.}; 2017.
+\bibitem[Krause, J.(2016)]{ai-medical-krause}
+Krause, J., Pere, A., Ng, K., Interacting with predictions: Visual inspection of black-box machine learning models. Proceedings of the 2016 CHI conference on human factors in computing systems; 5686--5697.
+\bibitem[Tan, J.(2014)]{ai-medical-tan}
+Tan, J., Ung, M., Cheng, C., Greence, C. S., Unsupervised feature contruction and knowledge extraction from genome-wide assays of breast cancer with denoising autoencoders. Pacific symposium on biocomputing co-charis; 132--143.
+\bibitem[Pesapane, F.(2018)]{ai-medical-pesapane}
+Pesapane, F., Volonté, C., Codari, M., Sardanelli, F., Artificial intelligence as a medical device in radiology: ethical and regulatory: ethical and regulatory issues in Europe and the United States. {\em Insights into imaging} {\bf 2018}, {\em 9(5)}, 743--753.
+\bibitem[Miller, D. D.(2018)]{ai-medical-miller}
+Miller, D. D., Brown, E. W., Artificial intelligence in medical practice: the question to the answer?. {\em The American journal of medicine} {\bf 2018}, {\em 131(2)}, 129--133.
+% ADVERSARIAL TRAINING
+\bibitem[Kurakin, A(2018)]{adversarial-kurakin}
+Kurakin, A., Goodfellow, I., Bengio, S., Dong, Y., Liao, F., Liang, M., ..., Abe, M., Adversarial attacks and defences competition. The NIPS'17 Competition: Building Intelligent Systems; Springer, Cham, 2018; pp 195--231.
+\bibitem[Szegedy, C(2013)]{adversarial-szegedy}
+Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I., Fergus, R., Intriguing properties of neural networks. \textit{arXiv preprint arXiv:1312.6199.}; 2013.
+\bibitem[Goodfellow, I(2014)]{adversarial-goodfellow}
+Goodfellow, I., Shlens, J., Szegedy, C., Explaining and harnessing adversarial examples. \textit{arXiv preprint arXiv:1412.6572.}; 2014.
+\bibitem[Kurakin, A(2016)]{adversarial-kurakin2}
+Kurakin, A., Goodfellow, I., Bengio, S., Adversarial examples in the physical world. \textit{arXiv preprint arXiv:1607.02533.}; 2016.
+\bibitem[Papernot, N(2017)]{adversarial-papernot}
+Papernot, N., McDaniel, P., Goodfellow, I., Jha, S., Celik, Z. B., Swami, A., Practical black-box attacks against machine learning. Proceedings of the 2017 ACM on Asia conference on computer and communications security; pp 506--519.
+\bibitem[Yuan, X.(2019)]{adversarial-yuan}
+Yuan, X., He, P., Zhu, Q., Li, X., Adversarial examples: Attacks and defenses for deep learning. {\em IEEE transactions on neural networks and learning systems} {\bf 2019}, {\em 30(9)}, 2805--2824.
+% ETC
+\bibitem[Paszke, A(2019)]{pytorch}
+Paszke, A., Gross, S., Massa. F., Lerer, A., Bradbury, J., Channan, G., ..., Chintala, S., Pytorch: An imperative style, high performance deep leawrning library. Advances in neural information processing systems, 32; pp 8026--8037.
+\bibitem[Krizhevsky, A(2009)]{cifar}
+Krizhevskey, A., Hinton, G., Leawrning multiple layers of features from tiny images. 2009.
+\bibitem[Stallkamp, J(2012)]{gtsrb}
+Stallkamp, J., Schlipsing, M., Salmen, J., Igel, C., Man vs. computer: Benchmarking machine learning algorithms for traffic sign recognition. {\em Neural networks} {\bf 2012}, {\em 32}, 323--332.
+\bibitem[LeCun, Y(1995)]{lenet}
+LeCun, Y., Bottou, L., Haffner, P., Gradient-based learning applied to document recognition. Proceedings of the IEEE; 86(11); 2278--2324.
+\bibitem[He, K(2016)]{resnet}
+He, K., Zhang, X., Ren, S., Sun, J., Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition; 770--778.
+\bibitem[Simonyan, K(2014)]{vgg}
+Simonyan, K., Zisserman, A., Very deep convolutional networks for large-scale image recognition. \textit{arXiv preprint arXiv:1409.1556.}; 2014.
 %%%% template
 % Reference 1
 \bibitem[Author1(year)]{ref-journal}
