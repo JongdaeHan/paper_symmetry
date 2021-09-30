@@ -142,7 +142,7 @@ Through the accuracy and safety obtained as a results of the evaluations, it can
 % \entrylink{The Link to this entry published on the encyclopedia platform.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\section{Introuction}
+\section{Introduction}
 
 Software requirements are one of the important factors affects software quality.
 If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
@@ -157,22 +157,25 @@ In existing software, it is possible for people to directly check the operation 
 However, with the advent of Deep Neural Network(DNN), artificial intelligence(AI), which has different characteristics with existing software that appeared throughout society, is difficult to verify requirements by methods used in existing software.
 Performance, which is one of the NFRs, can be verified to some extent through accuracy or F1-score measurement. However, other NFRs like safety are difficult to verify.
 The reason why it is difficult to use the verification methods of existing software in AI is because AI operated as black box model. In existing software, these NFRs could be verified through code, but in AI, it is difficult to verify them because it counldn't identify the operation of the code.
-% TODO :: 자율 주행, 금융 및 의학 ai 관련 참조 논문들 찾기(xai 논문 확인)
 In AI, verification of NFRs is important especially in the areas that can have a fatal impact on humans such as autonomous driving\cite{ai-driving-bajarski,ai-driving-levinson}, medical diagnosis\cite{ai-medical-ramsundar,ai-medical-vieira,ai-medical-xai-holzinger,ai-medical-krause,ai-medical-tan,ai-medical-pesapane,ai-medical-miller}, and finance\cite{ai-finance-fu}.
 If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
 Nevertheless, the quality assessment of AI is mainly done only on the performance corresponding to how well AI through methods such as accuracy and F1-score and NFRs are rarely dealt with.
 
 Several studies have been conducted in this regard, and studies can be largely divided into two types.
-The first are studies that directly deal with the NFRs of AI.
-In \cite{fairness-dwork, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel, security-mei, security-mei2, security-barreno, safety-amodei, safety-juric,safety-leike, transparency-yosinski}, studies have defined fairness of AI and dealt with problems taht may arise when fairness has not been verified and proposed methods for verifying fairness.
-% security 연구들에서는
-% transparency 연구들에서는
-% safety 연구들에서는 
+The first are studies that directly deal with various types of NFRs of AI.
+
+\begin{itemize}
+    \item \cite{fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, studies have defined fairness of AI and dealt with problems taht may arise when fairness has not been verified and proposed methods for verifying fairness.
+    \item \cite{security-barreno,security-mei,security-mei2}, studies have defined security problmes that can arise due to the vulnerabilities of AI. In addition, attack methods that threaten the security of AI and methods to prevent them were proposed.
+    \item \cite{transparency-yosinski}, studies have proposed methods to understand the behavior of AI through visualizing the activation of each layer of the used models.
+    \item \cite{safety-amodei,safety-juric,safety-leike}, studies have conducted on the definition of safety of AI, proposed methods for safety, and the previous cases caused that occurred due to non-observance of safety were conducted.
+\end{itemize}
+
 The second are studies on problmes related to NFRs of AI, although it does not directly deal with NFRs of AI.
 Explainable AI(XAI) and adversarial training can be said to be one of the examples of these types of studies.
-XAI is the study to enable people to understand the process of training process and deriving results process of AI. % xai 제외 대상 -> transparency 하위 항목으로 이동 reli
-In other words, it can be said that it is a process that can verify the transparency of the results derived by AI.
-Advesrarial training is the study of making trained model more robust to adversarial examples.
+XAI is the study to enable people to understand the process of training process and deriving results process of AI.
+In other words, it can be said that it is a process that can verify the transparency of the results derived by AI\cite{xai-arrieta,xai-samek,xai-transparency-murdoch,xai-transparency-ribeiro,ai-medical-xai-holzinger}.
+Advesrarial training is the study of making trained model more robust to adversarial examples\cite{adversarial-goodfellow,adversarial-kurakin,adversarial-kurakin2,adversarial-papernot,adversarial-szegedy,adversarial-yuan}.
 Although the purpose of these stuides is to maintain or improve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
 While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
 Therefore, in this paper, we proceed with a study to verify NFRs of AI especially \textit{safety} of \textit{classification} model using \textit{adversarial training}, inspired by the other interpretation of previous studies we said above.
@@ -220,7 +223,8 @@ To solve this problem, they proposed a statistical method to identify the discri
 In addition, \cite{fairness-zhang} showed that not only the imbalance of data but also the imbalance of data features can be the factors that affects the performance of AI.
 To improve the fairness of the AI, \cite{fairness-feldman,fairness-microsoft, fairness-tramer} attempted to ensure the fairness of AI through the removing or finding factors such as bias in the dataset.
 
-% TODO :: AI의 NFR에 대한 내용들 작성
+% START :: 여기서부터 작업 시작
+% TODO :: AI의 NFR에 대한 내용들 작성 -> 모든 논문들에 대한 내용들을 요약(앞에서는 통틀어서 요약)
 \subsubsection{About security of AI}
 \subsubsection{About transparency(transparency) of AI}
 \subsubsection{About safety of AI}
@@ -235,7 +239,7 @@ In particular, it is more important to solve these problems in fields where the 
 In order to solve this problems, XAI conducted research to enable humans to check the process of AI learning and the process of deriving results.
 Studies in \cite{xai-samek, xai-arrieta,ai-medical-xai-holzinger,xai-transparency-ribeiro,xai-transparency-murdoch} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have been conducted for XAI.
 
-\subsection{Adversarial examples and adversarial attacks}
+\subsection{Adversarial examples and adversarial attacks} % NOTICE :: safety 하위 항목으로 이동
 
 The main purpose of the studies conducted on adversarial examples and adversarial training is not to verify the AI NFRs.
 However, in the study of \cite{adversarial-kurakin}, it was noted that:
@@ -247,13 +251,14 @@ it can be seen that adversarial examples are related with safety of AI.
 \cite{adversarial-goodfellow} proposes an FGSM that uses gradients from the learning process to generate adversarial examples.
 \cite{adversarial-kurakin2} demonstrated through experiments that when the original data used for learning was captured using a smartphone camera and applied to the model, it can behave like an adversarial examples. It has been shown to be effective in the real environment rather than the experimental environmnet.
 \cite{adversarial-papernot} proposes a method for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach which knows the structure of network and training dataset.
-% \cite{adversarial-yuan} 최근 적대적 예시에 대한 방법론 정리 및 분류
+% TODO :: \cite{adversarial-yuan} 최근 적대적 예시에 대한 방법론 정리 및 분류
 
+% 논문에서는 분류 모델에 대한 안전성을 주요 주제로 잡았기 때문에 적대적 학습에서 영감을 받아 실험이 진행되었다.
 Several studies on NFRs have benn conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
 Inspired by theses studies, we proceed with the research of the thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Definition of safety and Experimental design} % Overview of experiments
+\section{Definition of safety and Experimental design} % TODO :: Overview of experiments에 맞게 내용 전반적으로 수정
 
 % \subsection{Definition of safety in the paper}
 
