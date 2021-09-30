@@ -211,8 +211,9 @@ In chapter 6, we introduces the conclusion of the paper and future work.
 
 There are prior studies that both directly and indirectly affected the field of NFRs verification of AI.
 
-\subsection{The studies on the NFRs of AI}
-\subsubsection{About fairness of AI}
+\subsection{The studies directly affected on the NFRs of AI}
+
+\subsubsection{The fairness of AI}
 
 AI learns the features of the data and derives the results of the input data based on the learned features.
 Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
@@ -223,13 +224,34 @@ To solve this problem, they proposed a statistical method to identify the discri
 In addition, \cite{fairness-zhang} showed that not only the imbalance of data but also the imbalance of data features can be the factors that affects the performance of AI.
 To improve the fairness of the AI, \cite{fairness-feldman,fairness-microsoft, fairness-tramer} attempted to ensure the fairness of AI through the removing or finding factors such as bias in the dataset.
 
-% START :: 여기서부터 작업 시작
-% TODO :: AI의 NFR에 대한 내용들 작성 -> 모든 논문들에 대한 내용들을 요약(앞에서는 통틀어서 요약)
-\subsubsection{About security of AI}
-\subsubsection{About transparency(transparency) of AI}
-\subsubsection{About safety of AI}
+\subsubsection{The security of AI}
 
-\subsection{Explainable Artificial Intelligence(XAI)} % NOTICE :: transparency 하위 항목으로 이동
+The field of application of AI has been expanded to areas that have been closely related to the human's private areas.
+The more AI is applied to private fields, the more secure it should be for sensitive information such as personal information.
+\cite{security-barreno} was conducted to identify and classify various security problems that can occur due to vulnerabilities in AI and attakcs that can cause security problems.
+There are studies that suggest attack methods that can threaten security through these vulnerabilites and defense methods to defend them.
+\cite{security-mei2} proposed the attack method that can threaten the security against tools widely used in actual data analysis.
+\cite{security-mei} proposed the methods to attack security through attakcs on training data and the contents of maintaining security by defending the methods.
+
+\subsubsection{The transparency of AI}
+
+Most of the AI currently applied operate in black-box, it is impossible to identify what process the results were derived from the users' point of view.
+Lack of transparency in AI due to black-box operation can lead to a number of complex issues, including legal issues regarding who is responsible when problems arise due to AI's decisions.
+\cite{transparency-yosinski} proposed two tools that can visualize the layers activated in the process of deriving results for the convolutional network-based machine learning models and deep learning models.
+Through the confirmation of the visualized active layer, users can check whether the corresponding result is accurately derived and prevent problems caused by wrong decisions in advance.
+
+% START :: 여기서부터 작업 시작 -> 모든 논문들에 대한 내용들을 요약(앞에서는 통틀어서 요약)
+\subsubsection{The safety of AI}
+
+% 안전성에 대한 설명과 연구 필요성(~~해서 연구가 필요하다.)
+% 각 연구들에서 제안하는 방법들에 대한 내용 간단 요약
+
+\subsection{The studies indirectly affected on the NFRs of AI}
+
+% 직접적으로 비기능적 요구사항을 위해서는 아니지만 side-effect로 비기능적 요구사항과 연관지어 생각할 수 있는 연구들에 대해서 가져왔다.
+% xai는 인공지능의 투명성과 관련된 연구로 볼 수 있고 adverasarial training은 안전성과 관련된 연구라고 볼 수 있다.
+
+\subsubsection{Explainable Artificial Intelligence(XAI)}
 
 The main purpose of the studies conducted on XAI is not to verify the AI NFRs.
 However, through these studies, people were able to know the learning and result derivation process of AI, which is directly related to the transparency of the AI, so they were included as a related studies.
@@ -239,7 +261,7 @@ In particular, it is more important to solve these problems in fields where the 
 In order to solve this problems, XAI conducted research to enable humans to check the process of AI learning and the process of deriving results.
 Studies in \cite{xai-samek, xai-arrieta,ai-medical-xai-holzinger,xai-transparency-ribeiro,xai-transparency-murdoch} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have been conducted for XAI.
 
-\subsection{Adversarial examples and adversarial attacks} % NOTICE :: safety 하위 항목으로 이동
+\subsubsection{Adversarial examples and adversarial attacks}
 
 The main purpose of the studies conducted on adversarial examples and adversarial training is not to verify the AI NFRs.
 However, in the study of \cite{adversarial-kurakin}, it was noted that:
@@ -764,12 +786,12 @@ Zhang, J., Harman, M., Ignorance and Prejudice. In 2021 IEEE/ACM 43rd Internatio
 \bibitem[Zemel, R.(2013)]{fairness-zemel}
 Zemel, R., Wu, Y., Swersky, K., Pitassi, T., Dwork. C., Learning fair representations. International conference on machine learning; pp. 325--333.
 % NFRS - transparency & xai
+\bibitem[Yosinski, J(2015)]{transparency-yosinski}
+Yosinski, J., Clune, J., Nguyen, A., Fuchs, T., Lipson, H., Understanding neural networks through deep visualization. \textit{arXiv preprint arXiv:1506.06579.}; 2015.
 \bibitem[Samek, W(2017)]{xai-samek}
 Samek, W., Wiegand, T., Müller, K. R., Explainable artificial intelligence: Understanding, visualizing and interpreting deep learning models. \textit{arXiv preprint arXiv:1708.08296.} 2017.
 \bibitem[Arrieta, A. B.(2020)]{xai-arrieta}
 Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., Garcia, S., Gil-Lopez, S., Molina, D., Benjamins, R., Chatila, R., Herrera, F., Explainable Artificial Intelligence(XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. {\em Information Fusion} {\bf 2020}, {\em 58}, 82--115.
-\bibitem[Yosinski, J(2015)]{transparency-yosinski}
-Yosinski, J., Clune, J., Nguyen, A., Fuchs, T., Lipson, H., Understanding neural networks through deep visualization. \textit{arXiv preprint arXiv:1506.06579.}; 2015.
 \bibitem[Ribeiro, M. T.(2016)]{xai-transparency-ribeiro}
 Ribeiro, M. T., Singh, S., Guestrin, C., "Why should i trust you?" Explaining the predictions of any classifier. Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining; 1135--1144.
 \bibitem[Merdoch, W. J.(2019)]{xai-transparency-murdoch}
