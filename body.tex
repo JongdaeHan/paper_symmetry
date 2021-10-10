@@ -209,9 +209,9 @@ In chapter 6, we introduces the conclusion of the paper and future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related works}
 
-There are prior studies that both directly and indirectly affected the field of NFRs verification of AI.
+There are prior studies that both directly and indirectly dealt with field of NFRs verification of AI.
 
-\subsection{The studies directly affected on the NFRs of AI}
+\subsection{The studies directly dealt with NFRs of AI}
 
 \subsubsection{The fairness of AI}
 
@@ -240,16 +240,22 @@ Lack of transparency in AI due to black-box operation can lead to a number of co
 \cite{transparency-yosinski} proposed two tools that can visualize the layers activated in the process of deriving results for the convolutional network-based machine learning models and deep learning models.
 Through the confirmation of the visualized active layer, users can check whether the corresponding result is accurately derived and prevent problems caused by wrong decisions in advance.
 
-% START :: 여기서부터 작업 시작 -> 모든 논문들에 대한 내용들을 요약(앞에서는 통틀어서 요약)
 \subsubsection{The safety of AI}
 
-% 안전성에 대한 설명과 연구 필요성(~~해서 연구가 필요하다.)
-% 각 연구들에서 제안하는 방법들에 대한 내용 간단 요약
+In dictionary, it defines safety as `A state in which or a place where you are safe and not in danger or at risk.'.
+If we apply this to AI, it can be seen that the decision of AI does not bring any dange or risks to human who applies AI in many other fields.
+This is important in areas such as autonomous driving, where AI decisions have a large impact on humans, just like security.
+This is because if safety is not properly verificated, it can lead to casualties beyond just damage.
+\cite{safety-amodei} deals with safety issues that occured in existing AI studies.
+Case analysis has shown that methods for high performance could lead to safety problems due to other side effects.
+\cite{safety-juric,safety-leike} have described and explained the concept and definition of safety of AI. Furthermore, they proposed methods for safety.
 
-\subsection{The studies indirectly affected on the NFRs of AI}
+\subsection{The studies indirectly dealt with NFRs of AI}
 
-% 직접적으로 비기능적 요구사항을 위해서는 아니지만 side-effect로 비기능적 요구사항과 연관지어 생각할 수 있는 연구들에 대해서 가져왔다.
-% xai는 인공지능의 투명성과 관련된 연구로 볼 수 있고 adverasarial training은 안전성과 관련된 연구라고 볼 수 있다.
+In previous chapter, we looked at studies that directly dealt with NFRs of AI.
+In addition to these studies, there were studies that can be realted to NFRs of AI in other studies.
+For example, explainable artificial intelligence and adversarial training can be seen as studies realted to transparency and safety, respectively.
+In this chapter, we look at what is explainable artificial intelligence and adversarial training, and how we could say that they are indirectly dealt with NFRs of AI.
 
 \subsubsection{Explainable Artificial Intelligence(XAI)}
 
@@ -264,22 +270,24 @@ Studies in \cite{xai-samek, xai-arrieta,ai-medical-xai-holzinger,xai-transparenc
 \subsubsection{Adversarial examples and adversarial attacks}
 
 The main purpose of the studies conducted on adversarial examples and adversarial training is not to verify the AI NFRs.
+
 However, in the study of \cite{adversarial-kurakin}, it was noted that:
 \begin{quote}
    " A good response to adversarial examples is an important part of the safety issue of AI"
 \end{quote}
 it can be seen that adversarial examples are related with safety of AI.
+
 \cite{adversarial-szegedy,adversarial-goodfellow} show that the characteristics of the learning algorithm of AI are bound to vulnerable to adversarial examples, which behave as adversarial examples regardless of the structure and training data of the models.
 \cite{adversarial-goodfellow} proposes an FGSM that uses gradients from the learning process to generate adversarial examples.
 \cite{adversarial-kurakin2} demonstrated through experiments that when the original data used for learning was captured using a smartphone camera and applied to the model, it can behave like an adversarial examples. It has been shown to be effective in the real environment rather than the experimental environmnet.
 \cite{adversarial-papernot} proposes a method for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach which knows the structure of network and training dataset.
-% TODO :: \cite{adversarial-yuan} 최근 적대적 예시에 대한 방법론 정리 및 분류
+\cite{adversarial-yuan} summarizes and classifies methods for generating adversarial examples that have been dealt with recently.
 
-% 논문에서는 분류 모델에 대한 안전성을 주요 주제로 잡았기 때문에 적대적 학습에서 영감을 받아 실험이 진행되었다.
-Several studies on NFRs have benn conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
+Several studies on NFRs have been conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
 Inspired by theses studies, we proceed with the research of the thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START :: 여기서부터 작업 시작
 \section{Definition of safety and Experimental design} % TODO :: Overview of experiments에 맞게 내용 전반적으로 수정
 
 % \subsection{Definition of safety in the paper}
