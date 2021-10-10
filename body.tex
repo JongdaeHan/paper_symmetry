@@ -288,25 +288,20 @@ Inspired by theses studies, we proceed with the research of the thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % START :: 여기서부터 작업 시작
-\section{Definition of safety and Experimental design} % TODO :: Overview of experiments에 맞게 내용 전반적으로 수정
+\section{Overview of our works}
 
-% \subsection{Definition of safety in the paper}
+In this chapter, we deals with definition of safety of this paper and overview of experiments to prove our established RQs.
 
-% \subsection{Experimental design}
+\subsection{Definition of safety in this paper}
 
-% Introduction에서 생략하거나 자세히 설명하지 않은 부분에 대한 내용 추가
-% 왜 안전성인가 ? 왜 분류 모델인가 ?
-% 안전성의 정의와 왜 안전성을 해당 요소와 같이 정의하였는지
-
-In this chapter, we discusses what is the safety of AI in this paper and how the we designed the experiment to answer the RQs.
+AI needs to ensure minimum safety regradless of its purpose. In the field where AI is applied, actual input data may not exist in the dataset used for training.
+In addition, AI is likely to suffer from multiple threats in real-world applications and adversarial attacks(adversarial examples) are one of the examples.
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/example-of-adversarial.png}
 \caption{Examples of adversarial examples.\label{example-of-adversarial}}
 \end{figure}   
 
-AI needs to ensure minimum safety regradless of its purpose. In the field where AI is applied, actual input data may not exist in the dataset used for training.
-In addition, AI is likely to suffer from multiple threats in real-world applications and adversarial attacks(adversarial examples) are one of the examples.
 Examples of adversarial attacks can be seen in Figure~\ref{example-of-adversarial}. Both signs appear to be the same sign in human eyes. However, the right one with adversarial attack is not properly classified compared to left one in Figure is classified correctly.
 Models applied to fields where the results can have a significant impact on humans, such as autonomous driving and medical diagnosis, can cause fatal safety problems if they do not properly respond to adversarial attacks. Therefore, in such a field, it is important to respond well to adversarial attacks and to ensure safety.
 Through this, the paper defined safety as bellows.
@@ -318,6 +313,9 @@ Through this, the paper defined safety as bellows.
 Learning all data and adversarial examples that may occur in the environment in which the model is applied is the best way to ensure safety.
 However, in reality, it is difficult to collect all data on all situations, and even if it collected, it is difficult because it consumes a lot of resources to process and train the data.
 Then, in a situation where it is impossible to learn all data, which data should be learned first to ensure minimum safety?
+
+\subsection{Overview of our experiments}
+
 In the paper, we assumed that adversarial examples are given the highest priority and are the data that should be learned.
 This is because adversarial examples are data designed for the purpose of causing problems or confusing the results of the model.
 For data under other conditions, it cannot be said that the results derived from the model unconditionally cause problems.
@@ -326,7 +324,7 @@ For example, in a traffic signs for autonomous driving, there may be data to cau
 Another reason is the difficulty of creating and configuring dataset. It is difficult to generate corresponding data because there are too many conditions for the data that can occur in the environment in which the model is applied.
 On the other hand, in the case of a adversarial examples, many studies on adversarial attack methods for this purpose have been conducted, so it is relatively easy to generate compared to the previous data.
 For these reasons, the paper thought adversarial training is a way to ensure minimum safety of AI, and tried to prove it through experiments.
-If adversarial training allows the model to better respond to adversarial examples\_improves safety performance\_, it can be used as a way to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data. \\
+If adversarial training allows the model to better respond to adversarial examples\_improves safety performance\_, it can be used as a way to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data.
 
 In order to show this through experiments, we first prepared different kinds of dataset and used the prepared dataset to generate adversarial dataset with different degrees of transformation \begin{math}\epsilon\end{math}.
 The reason for the preparing several \begin{math}\epsilon\end{math} is to check the effect of \begin{math}\epsilon\end{math} on safety performance. If the \begin{math}\epsilon\end{math}is too small, the safety performance will not improve because there is little difference from the original data, so it cannot classify adversarial examples well. If the (\begin{math}\epsilon\end{math}) is too large, the features of the original data cannot be learned properly, resulting in poor performance such as the accuracy of the existing model.
@@ -341,7 +339,7 @@ To show this, the accuracy is additionaly selected as a measure of performance e
 Althogh both accuracy and safety are measures of performance of how well a given data is classified, but we devided measures by the target evaluation dataset to distinguish them on a scale with different meanings.
 Accuracy represents how well model classifies the {\it original} evaluation dataset, and safety represents how well model classifies the {\it adversarial} evaluation dataset, which is considered to be threatening to the model according to the definition given above.
 In the belief that the results may differ depending on the characteristics of the model's structure, we also prepared learning models with different types of structures. 
-Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.'
+Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
@@ -865,6 +863,8 @@ LeCun, Y., Bottou, L., Haffner, P., Gradient-based learning applied to document 
 He, K., Zhang, X., Ren, S., Sun, J., Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition; 770--778.
 \bibitem[Simonyan, K(2014)]{vgg}
 Simonyan, K., Zisserman, A., Very deep convolutional networks for large-scale image recognition. \textit{arXiv preprint arXiv:1409.1556.}; 2014.
+\bibitem[Ajunwa, I(2016)]{trade-off}
+Ajunwa, I., Friedler, S., Scheidegeer, C. E., Venkatasubramanian, S., Hiring by algorithm: predicting and preventing disparate impack. \textit{Available at SSRN.}; 2016.
 %%%% template
 % Reference 1
 % \bibitem[Author1(year)]{ref-journal}
