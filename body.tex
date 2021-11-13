@@ -66,10 +66,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{The Effects of Adversarial Training on the Safety of Classifictaion Models}
+\Title{Effects of Adversarial Training on the Safety of Classification Models}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{The Effects of Adversarial Training on the Safety of Classifictaion Models}
+\TitleCitation{Effects of Adversarial Training on the Safety of Classification Models}
 
 % Author Orchid ID: enter ID or remove command
 % \newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
@@ -102,15 +102,15 @@
 
 % Abstract (Do not insert blank lines, i.e. \\)
 \abstract{
-Although AI is widely used in everyday life, verification of requirements other than performance is rarely performed.
-In this paper, we prove through experiemnts that adversarial training can be usefully used for early verification of the safety of classification model.
-As a result of evaluting the safety of the model including the adversarial examples of diffrent ratios for the dataset and models with 3 different characteristics,
-it was proved that the safety was significantly improved in most cases when adversarial training was performed.
-Through the accuracy and safety obtained as a results of the evaluations, it can help the model finetune work according to the model requirements.
+Although artificial intelligence(AI) is widely applied in everyday life, requirements other than performance are rarely verified.
+In this study, through experiments, we prove that adversarial training can be useful  for early verification of the safety of classification models.
+By evaluting the safety of models with adversarial examples of different ratios for datasets and models with three characteristics,
+we found that the safety is significantly improved in most cases when adversarial training is performed.
+Through the accuracy and safety obtained through evaluations, adversarial training can help models finetune work according to the model requirements.
 }
 
 % Keywords
-\keyword{Requirements Engineering; Non-functional Requirements; Safety; Artificial Intelligence; Adversarial Training;} 
+\keyword{Requirements Engineering; Nonfunctional Requirements; Safety; Artificial Intelligence; Adversarial Training;} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -144,12 +144,12 @@ Through the accuracy and safety obtained as a results of the evaluations, it can
 \begin{document}
 \section{Introduction}
 
-Software requirements are one of the important factors affects software quality.
-If we verify the requirements in early step of software development life cycle, the more likely to develop high quality software as well as to save resources which may be needed to resolve future problems.
-Requirements can be divided into functional requirements and non-functional requirements(NFRs).
-Functional requirements are requirements for whether the software properly provides the functions that users want.
-NFRs are requirements excluding functional requirements. NFRs include the performance(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, security\cite{security-mei, security-mei2, security-barreno}, safety(whether the execution result of software is safe)\cite{safety-amodei,safety-juric,safety-leike}, transparency(whether software can be trusted)\cite{transparency-yosinski,xai-transparency-ribeiro,xai-transparency-murdoch}, and etc.
-It can be said that it is essential to verifty not only functional requirements but also NFRs for high quality software.
+Software requirements are one of the important factors that affect software quality.
+Verifying the requirements in an early stage of software development life cycles helps to more likely develop high-quality software and to save resources that may be needed to resolve future problems.
+Requirements can be divided into functional requirements and nonfunctional requirements\_(NFRs).
+Functional requirements show whether software properly provides the functions wanted by users, and others are NFRs.
+NFRs include the performance\_(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, security\cite{security-mei, security-mei2, security-barreno}, safety(whether the execution result of the software is safe)\cite{safety-amodei,safety-juric,safety-leike}, and transparency(whether software can be trusted)\cite{transparency-yosinski,xai-transparency-ribeiro,xai-transparency-murdoch}.
+It is essential to verifty not only functional requirements but also NFRs for high-quality software.
 
 Existing software has been quickly verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
 In existing software, it is possible for people to directly check the operation of code, so functional requirements as well as non-functional requirements(NFRs) can be verified through code.
