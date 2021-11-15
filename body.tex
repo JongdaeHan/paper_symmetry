@@ -151,62 +151,63 @@ Functional requirements show whether software properly provides the functions wa
 NFRs include the performance\_(whether software performs the desired behavior, accuracy is mainly used), fairness\cite{fairness-microsoft, fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, security\cite{security-mei, security-mei2, security-barreno}, safety(whether the execution result of the software is safe)\cite{safety-amodei,safety-juric,safety-leike}, and transparency(whether software can be trusted)\cite{transparency-yosinski,xai-transparency-ribeiro,xai-transparency-murdoch}.
 It is essential to verifty not only functional requirements but also NFRs for high-quality software.
 
-Existing software has been quickly verifying requirements through many methods such as V model which makes detailed documentation and testing at each stage of the software development life cycle.
-In existing software, it is possible for people to directly check the operation of code, so functional requirements as well as non-functional requirements(NFRs) can be verified through code.
+Existing software quickly verifies requirements through several methods, such as the V model, which makes detailed documentation and testing at each stage of the software development life cycle.
+In existing software, people can directly check the operation of code; thus, functional requirements and NFRs can be verified through codes.
 
-However, with the advent of Deep Neural Network(DNN), artificial intelligence(AI), which has different characteristics with existing software that appeared throughout society, is difficult to verify requirements by methods used in existing software.
-Performance, which is one of the NFRs, can be verified to some extent through accuracy or F1-score measurement. However, other NFRs like safety are difficult to verify.
-The reason why it is difficult to use the verification methods of existing software in AI is because AI operated as black box model. In existing software, these NFRs could be verified through code, but in AI, it is difficult to verify them because it counldn't identify the operation of the code.
-In AI, verification of NFRs is important especially in the areas that can have a fatal impact on humans such as autonomous driving\cite{ai-driving-bajarski,ai-driving-levinson}, medical diagnosis\cite{ai-medical-ramsundar,ai-medical-vieira,ai-medical-xai-holzinger,ai-medical-krause,ai-medical-tan,ai-medical-pesapane,ai-medical-miller}, and finance\cite{ai-finance-fu}.
-If NFRs such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems such as legal problems about liability may arise.
-Nevertheless, the quality assessment of AI is mainly done only on the performance corresponding to how well AI through methods such as accuracy and F1-score and NFRs are rarely dealt with.
+Nevertheless, with the advent of deep neural network and artificial intelligence\_(AI), which has different characteristics from existing common software, it is difficult to verify requirements through methods applied in existing software.
+Performance, which is one of the NFRs, can be verified to some extent through accuracy or F1 score measurement. However, other NFRs, such as safety, are difficult to verify.
+It is difficult to apply verification methods for existing software in AI because AI operates as a black box model. In existing software, NFRs can be verified through codes, but in AI, it is difficult to verify them because AI cannot identify code operations.
+In AI, the verification of NFRs is important, especially in areas that have fatal impacts on humans, such as autonomous driving\cite{ai-driving-bajarski,ai-driving-levinson}, medical diagnosis\cite{ai-medical-ramsundar,ai-medical-vieira,ai-medical-xai-holzinger,ai-medical-krause,ai-medical-tan,ai-medical-pesapane,ai-medical-miller}, and finance\cite{ai-finance-fu}.
+If NFRs, such as safety, security, and transparency are not guaranteed, not only fatal human problems but also other problems, such as legal problems about liability may arise.
+Nevertheless, quality assessment of AI is mainly performed only on the performance corresponding to how well AI through methods such as accuracy and F1 score, and NFRs have rarely been studied.
 
-Several studies have been conducted in this regard, and studies can be largely divided into two types.
-The first are studies that directly deal with various types of NFRs of AI.
+Several studies have been conducted in this regard, and such studies can be categorized into two.
+The first category directly deals with various types of AI NFRs.
 
+For example:
 \begin{itemize}
-    \item \cite{fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}, studies have defined fairness of AI and dealt with problems taht may arise when fairness has not been verified and proposed methods for verifying fairness.
-    \item \cite{security-barreno,security-mei,security-mei2}, studies have defined security problmes that can arise due to the vulnerabilities of AI. In addition, attack methods that threaten the security of AI and methods to prevent them were proposed.
-    \item \cite{transparency-yosinski}, studies have proposed methods to understand the behavior of AI through visualizing the activation of each layer of the used models.
-    \item \cite{safety-amodei,safety-juric,safety-leike}, studies have conducted on the definition of safety of AI, proposed methods for safety, and the previous cases caused that occurred due to non-observance of safety were conducted.
+    \item Studies have defined the fairness of AI, addressed problems that may arise when fairness is not verified, and proposed methods for verifying fairness\cite{fairness-dwork, fairness-feldman, fairness-tramer, fairness-zhang, fairness-zemel}.
+    \item In \cite{security-barreno,security-mei,security-mei2}, security problems that can arise due to the vulnerability of AI were defined. Additionally, attack methods that threaten the security of AI and those to prevent them were proposed.
+    \item In \cite{transparency-yosinski}, the authors proposed methods for understanding the behavior of AI by visualizing the activation of each layer of the used models.
+    \item The authors in \cite{safety-amodei,safety-juric,safety-leike}, defined safety of AI, proposed methods for safety, and the studied previous cases caused by the nonobservance of safety.
 \end{itemize}
 
-The second are studies on problmes related to NFRs of AI, although it does not directly deal with NFRs of AI.
-Explainable AI(XAI) and adversarial training can be said to be one of the examples of these types of studies.
-XAI is the study to enable people to understand the process of training process and deriving results process of AI.
-In other words, it can be said that it is a process that can verify the transparency of the results derived by AI\cite{xai-arrieta,xai-samek,xai-transparency-murdoch,xai-transparency-ribeiro,ai-medical-xai-holzinger}.
-Advesrarial training is the study of making trained model more robust to adversarial examples\cite{adversarial-goodfellow,adversarial-kurakin,adversarial-kurakin2,adversarial-papernot,adversarial-szegedy,adversarial-yuan}.
-Although the purpose of these stuides is to maintain or improve the performance of the model from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
-While these studies made contributions such as revealing the learning process of the model and responding well to adversarial examples, it is somewhat insufficient to say that they contributed to the verification of AI NFRs.
-Therefore, in this paper, we proceed with a study to verify NFRs of AI especially \textit{safety} of \textit{classification} model using \textit{adversarial training}, inspired by the other interpretation of previous studies we said above.
-Among the purposes and NFRs of AI, the reasons for choosing classification and safety, and the definition of safety used in the paper will be convered in more detail in chapter 3.
+The second category of studies investigates problmesrelated to the NFRs of AI, although they do not directly address the NFRs of AI.
+Explainable AI(XAI) and adversarial training are one of the examples of such of studies.
+XAI enables people to understand the process of training and deriving the results of AI.
+In other words, it is a process that verifies the transparency AI results\cite{xai-arrieta,xai-samek,xai-transparency-murdoch,xai-transparency-ribeiro,ai-medical-xai-holzinger}.
+Advesarial training is the study of making trained models more robust to adversarial examples\cite{adversarial-goodfellow,adversarial-kurakin,adversarial-kurakin2,adversarial-papernot,adversarial-szegedy,adversarial-yuan}.
+Although the purpose of these studies is to maintain or improve the performance of models from adversarial examples, it can be interpreted as a verification method to properly classify adversarial examples that threaten the safety of learned models.
+Although these studies make some contributions, such as revealing the learning process of models and responding well to adversarial examples, they do not sufficiently contribute to the verification of AI NFRs.
+Thus, in this study,on the basis of the above-cited studies, we verify NFRs of AI, especially the \textit{safety} of \textit{classification} models using \textit{adversarial training}.
+Among the purposes and NFRs of AI, the reasons for choosing classification and safety and the definition of safety herein will be discussed in more detail in section 3.
 
-In this paper, we assume that the safety of classification model can be improved by using adversarial examples as a part of data for training(adversarial training).
-For proving this, we set up the following research questions(RQ).
+In this study, we assume that the safety of classification models can be improved using adversarial examples as a part of data for training(adversarial training).
+To prove this, we set up the following research questions(RQs).
 
 \begin{description}
-    \item[RQ1.]	Can classification model correctly classify adversarial examples by adversarial training?
-    \item[RQ2.]	Does it show the same results as RQ1 for the dataset related to safety?
-    \item[RQ3.] Does adversarial training affect safety regardless of model structure?
-    \item[RQ4.]	At what rate will learning with adversarial examples perform best?
+    \item[RQ1.]	Can classification models appropriately classify adversarial examples by adversarial training?
+    \item[RQ2.]	Do they show the same results as RQ1 for safety-related datasets?
+    \item[RQ3.] Does adversarial training affect safety regardless of the model structure?
+    \item[RQ4.]	At what rate will learning with adversarial examples perform the best?
 \end{description}
 
-Through experiments to answer each RQ, we were able to make the following contributions in this paper.
+Through experiments to answer each RQ, we obtained the following:
 
 \begin{enumerate}
-    \item	We have shown that adversarial training can lead to improved safety performance. Depending on the experimental results, it can be seen that safety is improved by 2 to 40\%.
-    \item	We have shown that adversarial training can be one of the factors to be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be one of the verification methods to ensure safety by pre-generating adversarial examples and utilizing the adversarial exmaples generated.
-    \item   We have shown that adversarial training can be utilized as one of the factors that can verify safety regardless of model structure. Experimental results show that there was a differences in numerical values depending on the model structure, showing the same tendency.
-    \item	We propose a process to adjust the ratio of inclusion adversarial example in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios demonstrated that adversarial inclusion ratios plays key roles for trade-off between accuracy and safety.
+    \item	Adversarial training can improve safety performance. Depending on the experimental results, safety is improved by 20\%--40\%.
+    \item	Adversarial training can be verified for the safety of AI. Experimental results show that adversarial training can affect safety improvement, which can be a verification method to ensure safety by pregenerating and using adversarial examples.
+    \item   Adversarial training can be utilized as a factor to verify safety regardless of the model structure. Similar results have been observed between experiemntal and numerical results, regardless Of the model structure.
+    \item	Herein, We propose a process of adjusting the ratio of inclusion adversarial examples in training datasets according to the preferential requirements. Experimental results with different adversarial example inclusion ratios show that adversarial inclusion ratios play key roles in a tradeoff between accuracy and safety.
 \end{enumerate} 
 
-The contents of the paper are structured as follows. In chapter 2, we deals with the introduction of previous studies conducted for verification methods for AI NFRs.
-In chapter 3, we deals with the definition of safety and experimental design that we would like to see in our paper.
-In chapter 4, we introduces experiments conducted according to designed experimental methods.
-In chapter 5, we analyze the experimental results and make a discussion of experimental results.
-In chapter 6, we introduces the conclusion of the paper and future work.
+The rest of this paper is structured as follows. In section 2, we review previous studies on verification methods for AI NFRs.
+In section 3, we define the safety and experimental designs applied in this study.
+In section 4, we reports experiments conducted according to the designed experimental methods, and we analyze and discuss the experiemntal results in section 5.
+We conclude the paper and recommend future work in section 6.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 여기부터 수정
 \section{Related works}
 
 There are prior studies that both directly and indirectly dealt with field of NFRs verification of AI.
