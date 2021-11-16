@@ -208,138 +208,138 @@ We conclude the paper and recommend future work in section 6.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 여기부터 수정
-\section{Related works}
+\section{Related work}
 
-There are prior studies that both directly and indirectly dealt with field of NFRs verification of AI.
+Prior studies have directly and indirectly addressed the NFRs verification of AI.
 
-\subsection{The studies directly dealt with NFRs of AI}
+\subsection{Studies that directly addressed the NFRs of AI}
 
-\subsubsection{The fairness of AI}
+\subsubsection{Fairness of AI}
 
-AI learns the features of the data and derives the results of the input data based on the learned features.
-Due to theses characteristics, if bias exists in the training data set, discriminatory results can be produced for each individuals or group use AI.
-This can be said to be the result of not satisfying fairness, one of the AI NFRs that requires every users to achieve the same results.
-\cite{fairness-dwork, fairness-zemel} points out that the bias in training dataset can lead to discriminatory results according to features such as race, gender, and age of each individuals.
-To solve this problem, they proposed a statistical method to identify the discriminating elements of the training dataset, and furthermore, they argued that it is important to keep the fairness of AI as data bias is related to privacy.
-\cite{fairness-feldman} proposed the problem of discrimination that the discriminatory feature of dataset can have on the group using AI and a method to solve the problem.
-In addition, \cite{fairness-zhang} showed that not only the imbalance of data but also the imbalance of data features can be the factors that affects the performance of AI.
-To improve the fairness of the AI, \cite{fairness-feldman,fairness-microsoft, fairness-tramer} attempted to ensure the fairness of AI through the removing or finding factors such as bias in the dataset.
+AI learns the features of data and derives the results of input data based on the learned features.
+Because of these characteristics, if there is a bias in the training dataset, discriminatory results are obtained for each individual or group using AI.
+Such results do not satisfying fairness, an AI NFR that requires every user to achieve the same results.
+As reported in \cite{fairness-dwork, fairness-zemel}, bias in training datasets can lead to discriminatory results according to features such as race, gender, and age of each individual.
+To solve this problem, the authors proposed a statistical method to identify the discriminating elements of training datasets, argued that it is important to keep the fairness of AI as data bias is related to privacy.
+Authors in \cite{fairness-feldman} proposed the problem of discrimination that discriminatory features of datasets can have on groups using AI and a method to solve such a problem.
+Additionally, \cite{fairness-zhang} showed that the imbalance of not only data but also data features can affect the performance of AI.
+To improve the fairness of AI, \cite{fairness-feldman,fairness-microsoft, fairness-tramer} ensured the fairness of AI by removing or finding factors, such as bias in datasets.
 
-\subsubsection{The security of AI}
+\subsubsection{Security of AI}
 
-The field of application of AI has been expanded to areas that have been closely related to the human's private areas.
-The more AI is applied to private fields, the more secure it should be for sensitive information such as personal information.
-\cite{security-barreno} was conducted to identify and classify various security problems that can occur due to vulnerabilities in AI and attakcs that can cause security problems.
+The field of application of AI has been expanded to areas closely related to human privacy.
+The more AI is applied to private fields, the more it demands security for sensitive information, such as personal information.
+Studies have been conducted to identify and classify various security problems occurring because of vulnerabilities in AI and attacks that can cause security problems\cite{security-barreno}.
 There are studies that suggest attack methods that can threaten security through these vulnerabilites and defense methods to defend them.
-\cite{security-mei2} proposed the attack method that can threaten the security against tools widely used in actual data analysis.
-\cite{security-mei} proposed the methods to attack security through attakcs on training data and the contents of maintaining security by defending the methods.
+Authors in \cite{security-mei2} proposed the attack method that can threaten the security against tools widely used in actual data analysis.
+Authors in \cite{security-mei} proposed the methods to attack security through attacks on training data and the contents of maintaining the security by defending the methods.
 
-\subsubsection{The transparency of AI}
+\subsubsection{Transparency of AI}
 
-Most of the AI currently applied operate in black-box, it is impossible to identify what process the results were derived from the users' point of view.
-Lack of transparency in AI due to black-box operation can lead to a number of complex issues, including legal issues regarding who is responsible when problems arise due to AI's decisions.
-\cite{transparency-yosinski} proposed two tools that can visualize the layers activated in the process of deriving results for the convolutional network-based machine learning models and deep learning models.
-Through the confirmation of the visualized active layer, users can check whether the corresponding result is accurately derived and prevent problems caused by wrong decisions in advance.
+Most of the AI currently applied to operate in black box, users couldn't identify what process the results were derived from models.
+Lack of transparency in AI due to black box operations can lead to several complex issues, including legal issues regarding who is responsible when problems arise due to AI's decisions.
+Authors in \cite{transparency-yosinski} proposed two tools to visualize layers activated in the process of deriving results for convolutional network-based machine and deep learning models.
+By confirming visualized active layers, users can check whether the corresponding result is accurately derived and prevent problems caused by wrong decisions in advance.
 
-\subsubsection{The safety of AI}
+\subsubsection{Safety of AI}
 
-In dictionary, it defines safety as `A state in which or a place where you are safe and not in danger or at risk.'.
-If we apply this to AI, it can be seen that the decision of AI does not bring any dange or risks to human who applies AI in many other fields.
-This is important in areas such as autonomous driving, where AI decisions have a large impact on humans, just like security.
-This is because if safety is not properly verificated, it can lead to casualties beyond just damage.
-\cite{safety-amodei} deals with safety issues that occured in existing AI studies.
-Case analysis has shown that methods for high performance could lead to safety problems due to other side effects.
-\cite{safety-juric,safety-leike} have described and explained the concept and definition of safety of AI. Furthermore, they proposed methods for safety.
+According to the dictionary, safety is "a state in which or a place where you are safe and not in danger or at risk.".
+If AI, the decision of AI does not pose any danger or risks to humans who apply it in many other fields.
+This is important in areas, such as autonomous driving, where AI decisions have a significant impact on humans, just like security.
+This is because if safety is not properly verified, it can lead to casualties beyond just damage.
+Safety issues that occur in existing AI studies have been addressed\cite{safety-amodei}.
+Case analysis has shown that high-performance techniques can lead to safety problems due to other side effects.
+Authors in \cite{safety-juric,safety-leike} described the concept and definition of safety in AI and proposed methods for achieving safety.
 
-\subsection{The studies indirectly dealt with NFRs of AI}
+\subsection{Studies that indirectly addressed NFRs of AI}
 
-In previous chapter, we looked at studies that directly dealt with NFRs of AI.
-In addition to these studies, there were studies that can be realted to NFRs of AI in other studies.
-For example, explainable artificial intelligence and adversarial training can be seen as studies realted to transparency and safety, respectively.
-In this chapter, we look at what is explainable artificial intelligence and adversarial training, and how we could say that they are indirectly dealt with NFRs of AI.
+In the previous section, we reviewed studies that directly addressed NFRs of AI.
+Besides such studies, some studies addressed NFRs of AI in other studies.
+For example, XAI and adversarial training are related to transparency and safety, respectively.
+In this section, we investigate XAI and adversarial training and how they indirectly address NFRs of AI.
 
-\subsubsection{Explainable Artificial Intelligence(XAI)}
+\subsubsection{Explainable AI}
 
-The main purpose of the studies conducted on XAI is not to verify the AI NFRs.
-However, through these studies, people were able to know the learning and result derivation process of AI, which is directly related to the transparency of the AI, so they were included as a related studies.
-One of the characteristics of AI is that it works in a black box. People cannot check what features AI learns from training data and what process it goes through to derive results.
-This raises the problem that the results derived by AI cannot be trusted unconditionally.
-In particular, it is more important to solve these problems in fields where the results of AI have a large impact on humans, such as autonomous driving and medical diagnosis.
-In order to solve this problems, XAI conducted research to enable humans to check the process of AI learning and the process of deriving results.
-Studies in \cite{xai-samek, xai-arrieta,ai-medical-xai-holzinger,xai-transparency-ribeiro,xai-transparency-murdoch} define the concept of XAI and introduce the methodology used for XAI to organize previous studies that have been conducted for XAI.
+The main purpose of the studies conducted on XAI is not to verify AI NFRs.
+However, such studies have revealed the learning and result derivation process in AI, which is directly related to the transparency of AI. Therefore, such studies are considered as related studies.
+A characteristic of AI is that it works in a black box: people cannot check what features AI learns from training data and what process it goes through to derive results.
+Hence, the derived results cannot be trusted unconditionally.
+Particularly, it is more important to solve these problems in fields where results have a large impact on humans, such as autonomous driving and medical diagnosis.
+To solve this problem, XAI applied to enable humans to check the AI learning process and that through which results.
+Some studies have defined the concept of XAI and introduced the methodology used for XAI to organize previous studies on XAI\cite{xai-samek, xai-arrieta,ai-medical-xai-holzinger,xai-transparency-ribeiro,xai-transparency-murdoch} .
 
-\subsubsection{Adversarial examples and adversarial attacks}
+\subsubsection{Adversarial examples and attacks}
 
-The main purpose of the studies conducted on adversarial examples and adversarial training is not to verify the AI NFRs.
+The main purpose of studies conducted on adversarial examples and training is not to verify AI NFRs.
 
-However, in the study of \cite{adversarial-kurakin}, it was noted that:
+However, in \cite{adversarial-kurakin}, it was noted that
 \begin{quote}
-   " A good response to adversarial examples is an important part of the safety issue of AI"
+   "a good response to adversarial examples is an important safety issue in AI."
 \end{quote}
-it can be seen that adversarial examples are related with safety of AI.
+Therefore, adversarial examples are related to the safety of AI.
 
-\cite{adversarial-szegedy,adversarial-goodfellow} show that the characteristics of the learning algorithm of AI are bound to vulnerable to adversarial examples, which behave as adversarial examples regardless of the structure and training data of the models.
-\cite{adversarial-goodfellow} proposes an FGSM that uses gradients from the learning process to generate adversarial examples.
-\cite{adversarial-kurakin2} demonstrated through experiments that when the original data used for learning was captured using a smartphone camera and applied to the model, it can behave like an adversarial examples. It has been shown to be effective in the real environment rather than the experimental environmnet.
-\cite{adversarial-papernot} proposes a method for adversarial attacks in a black box environment\_with no information about the network and no information about the training dataset\_, rather than the existing white-box approach which knows the structure of network and training dataset.
-\cite{adversarial-yuan} summarizes and classifies methods for generating adversarial examples that have been dealt with recently.
+Previous studies have shown that the characteristics of AI learning algorithms are vulnerable to adversarial examples, which behave as adversarial examples regardless of the structure and training data of the models\cite{adversarial-szegedy,adversarial-goodfellow}.
+Authors in \cite{adversarial-goodfellow} proposed a fast gradient sign method(FGSM) that uses gradients from the learning process to generate adversarial examples.
+Authors in \cite{adversarial-kurakin2} demonstrated through experiments that when the original data used for learning are captured using a smartphone camera and applied to the model, they behave like an adversarial examples. It is effective in real environments rather than experimental environments.
+Authors in \cite{adversarial-papernot} proposed a method for adversarial attacks in a black box environment, with no information regarding the network the training dataset, rather than the existing white box approach in which the structure of the etwork and training dataset is known.
+Authors in \cite{adversarial-yuan} summarized and classified methods for generating adversarial examples that have been recently addressed.
 
-Several studies on NFRs have been conducted, and even for studies that do not have the main purpose of NFRs, the attributes related to the verification of NFRs can be confirmed.
-Inspired by theses studies, we proceed with the research of the thesis.
+Several studies on NFRs have been reported, and even in studies that do not primarily consider NFRs, attributes related to the verification of NFRs can be confirmed.
+Inspired by these cited studies, we conducted this study.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overview of our works}
 
-In this chapter, we deals with definition of safety of this paper and overview of experiments to prove our established RQs.
+In this section, we define safety and present an overview of experiments to prove our established RQs.
 
-\subsection{Definition of safety in this paper}
+\subsection{Definition of safety}
 
-AI needs to ensure minimum safety regradless of its purpose. In the field where AI is applied, actual input data may not exist in the dataset used for training.
-In addition, AI is likely to suffer from multiple threats in real-world applications and adversarial attacks(adversarial examples) are one of the examples.
+AI must ensure minimum safety regardless of its purpose. In a field where AI is applied, the actual input data may not exist in the dataset used for training.
+Additionally, AI suffers from multiple threats in real-world applications, such as adversarial attacks(adversarial examples).
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/example-of-adversarial.png}
 \caption{Examples of adversarial examples.\label{example-of-adversarial}}
 \end{figure}   
 
-Examples of adversarial attacks can be seen in Figure~\ref{example-of-adversarial}. Both signs appear to be the same sign in human eyes. However, the right one with adversarial attack is not properly classified compared to left one in Figure is classified correctly.
-Models applied to fields where the results can have a significant impact on humans, such as autonomous driving and medical diagnosis, can cause fatal safety problems if they do not properly respond to adversarial attacks. Therefore, in such a field, it is important to respond well to adversarial attacks and to ensure safety.
-Through this, the paper defined safety as bellows.
+Examples of adversarial attacks are shown in Figure~\ref{example-of-adversarial}. Both signs appear the same sign in human eyes. Nevertheless, the right one with an adversarial attack is not properly classified compared with the left one.
+Models applied to fields where the results can have significant impacts on humans, such as autonomous driving and medical diagnosis, can cause fatal safety problems if they do not properly respond to adversarial attacks. Thus, in such a field, it is important to respond well to adversarial attacks and ensure safety.
+Based on this, herein, we define safety as
 
 \begin{quote}
-    "\textit{\textbf{Safety}} is the measure of whether the model responds appropriately to data with untrained features or to data that has been adversarial attacked to obtain incorrect results from the model."
+    "a measure of whether a model responds appropriately to data with untrained features or to data that have been adversarially attacked to obtain incorrect results from the model."
 \end{quote}
 
-Learning all data and adversarial examples that may occur in the environment in which the model is applied is the best way to ensure safety.
-However, in reality, it is difficult to collect all data on all situations, and even if it collected, it is difficult because it consumes a lot of resources to process and train the data.
-Then, in a situation where it is impossible to learn all data, which data should be learned first to ensure minimum safety?
+Learning all data and adversarial examples that may occur in an environment in which the model is applied is the best way to ensure safety.
+However, in reality, it is difficult to collect all data in all situations, and even if they are collected, a lot of resources are consumed to process and train them.
+Therefore, in a situation where all data cannot be learned, which data should be learned first to ensure minimum safety?
 
 \subsection{Overview of our experiments}
 
-In the paper, we assumed that adversarial examples are given the highest priority and are the data that should be learned.
-This is because adversarial examples are data designed for the purpose of causing problems or confusing the results of the model.
-For data under other conditions, it cannot be said that the results derived from the model unconditionally cause problems.
-On the other hand, adversarial examples are very likely to cause problems with the model's results.
-For example, in a traffic signs for autonomous driving, there may be data to cause problems as shown in Figure~\ref{example-of-adversarial}, whereas there may be data that does not necessarily lead to problems, such as traffic signs with natural environment(sunlight, fog, etc.).
-Another reason is the difficulty of creating and configuring dataset. It is difficult to generate corresponding data because there are too many conditions for the data that can occur in the environment in which the model is applied.
-On the other hand, in the case of a adversarial examples, many studies on adversarial attack methods for this purpose have been conducted, so it is relatively easy to generate compared to the previous data.
-For these reasons, the paper thought adversarial training is a way to ensure minimum safety of AI, and tried to prove it through experiments.
-If adversarial training allows the model to better respond to adversarial examples\_improves safety performance\_, it can be used as a way to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data.
+Herein, we assume that adversarial examples are given the highest priority and are the data that should be learned.
+This is because adversarial examples are data designed to cause problems or confuse the results of the model.
+For data under other conditions, the results derived from the model unconditionally cause problems.
+Conversely, adversarial examples are likely to cause problems with the model's results.
+For example, in traffic signs for autonomous driving, there may be data to cause problems, as shown in Figure~\ref{example-of-adversarial}, whereas there may be data that do not necessarily cause problems, such as traffic signs with natural environments(sunlight, fog, etc.).
+Another reason is the difficulty in creating and configuring datasets. Generating corresponding data is difficult because there are too many conditions for the data that can occur in the environment in which the model is applied.
+Conversely, in the case of adversarial examples, several studies on adversarial attack methods for this purpose have been conducted. Therefore, it is relatively easy to generate when compared with the previous data.
+For these reasons, adversarial training can be a way to ensure minimum AI safety, which has been proven through experiments.
+If adversarial training allows a model to better respond to adversarial examples, i.e., to improves safety performance, it can be used to verify whether safety is guaranteed in advance by preparing adversarial examples before training and mixing them with the training data.
 
-In order to show this through experiments, we first prepared different kinds of dataset and used the prepared dataset to generate adversarial dataset with different degrees of transformation \begin{math}\epsilon\end{math}.
-The reason for the preparing several \begin{math}\epsilon\end{math} is to check the effect of \begin{math}\epsilon\end{math} on safety performance. If the \begin{math}\epsilon\end{math}is too small, the safety performance will not improve because there is little difference from the original data, so it cannot classify adversarial examples well. If the (\begin{math}\epsilon\end{math}) is too large, the features of the original data cannot be learned properly, resulting in poor performance such as the accuracy of the existing model.
-In addition, when generating dataset for adversarial training, the size of the training dataset was kept the same as the size of the existing training dataset.
-This is because increasing the number of data does not necessarily lead to improved performance of the model, as well as requiring additional resources to learn it.
-Furthermore, in order to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, the experiment was conducted by setting the mixing ratio of the original data and the adversarial examples differently.
-At this time, if adversarial training is executed, the number of original training data was reduced, and thus the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evaluation dataset, may decrease\cite{trade-off}. 
-It is important improving safety, but accuracy can be more important than safety at some moment that depends on the purpose of the model.
-So, it is also necessary to ensure accuracy as well as safety. 
-Therefore, in order to maintain the accuracy of the model learned with original dataset with the appropriate resources, we chose the method of mixing the original data and adversarial examples at an appropriate ratio while preserving the size of the training dataset.
-To show this, the accuracy is additionaly selected as a measure of performance evaluation.
-Althogh both accuracy and safety are measures of performance of how well a given data is classified, but we devided measures by the target evaluation dataset to distinguish them on a scale with different meanings.
-Accuracy represents how well model classifies the {\it original} evaluation dataset, and safety represents how well model classifies the {\it adversarial} evaluation dataset, which is considered to be threatening to the model according to the definition given above.
-In the belief that the results may differ depending on the characteristics of the model's structure, we also prepared learning models with different types of structures. 
-Detail informations about dataset, adversarial attack method, accuracy, safety, models and experimental methods will be discussed in chapter 4.
+To show this through experiments, we first prepared different kinds of dataset and used them to generate adversarial datasets with different degrees of transformation \begin{math}\epsilon\end{math}.
+Several degrees of \begin{math}\epsilon\end{math} were prepared to check the effect of \begin{math}\epsilon\end{math} on safety performance. If \begin{math}\epsilon\end{math} is too small, the safety performance will not improve because there is little difference from the original data. Thus, it cannot classify adversarial examples well. If t(\begin{math}\epsilon\end{math}) is too large, the features of the original data cannot be learned properly, resulting in a poor performance like the accuracy of the existing model.
+Additionally, when generating datasets for adversarial training, the size of the training dataset was maintained the same as the size of the existing training dataset.
+This is because increasing the number of data does not necessarily improve the performance of the model and requires additional resources to learn them.
+Furthermore, to show at what ratio adversarial examples should be included for safety verification in the data preparation stage, an experiment was conducted by setting the mixing ratio of the original data and the adversarial examples differently.
+Then, when adversarial training was executed, the number of original training data was reduced, thus, the accuracy, which is one of the performance evaluation measures of the model for accurately classifying the original evaluation dataset, may decrease\cite{trade-off}. 
+It is important to improve safety, but accuracy can be more important in some cases, depending on the purpose of the model.
+Therefore, it is necessary to ensure accuracy and safety. 
+Thus, in order to maintain the accuracy of the model learned with the original dataset and appropriate resources, we mixed the original data and adversarial examples at an appropriate ratio while preserving the size of the training dataset.
+To show this, accuracy is selected as an additional measure for performance evaluation.
+Although both accuracy and safety are measures for classifying a given data we divided the measures by the target evaluation dataset to distinguish them on a scale with different meanings.
+Accuracy represents how well a model classifies the {\it original} evaluation dataset, and safety represents how well model classifies the {\it adversarial} evaluation dataset, which is considered threatening to the model according to the definition given above.
+With the belief that results may differ according to the characteristics of the model's structure, we prepared learning models with different structures. 
+Detailed informations regarding the dataset, adversarial attack method, accuracy, safety, models, and experimental methods are discussed in section 4.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
