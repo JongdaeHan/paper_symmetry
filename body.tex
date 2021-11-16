@@ -207,7 +207,6 @@ In section 4, we reports experiments conducted according to the designed experim
 We conclude the paper and recommend future work in section 6.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 여기부터 수정
 \section{Related work}
 
 Prior studies have directly and indirectly addressed the NFRs verification of AI.
@@ -344,117 +343,117 @@ Detailed informations regarding the dataset, adversarial attack method, accuracy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
 
-We conducted experiments under different conditions to answer the RQs. For the experiment, we prepared dataset with three different characteristics and models with three different structures.
-Section 4.1 introduces a introduction to the dataset and models used in our experiment and the reason why they were selected.
-Section 4.2 introduces a brief introduction to FGSM for generating adversarial examples and the reason why is was selected.
-Section 4.3 introduces each process of the experiment designed in chapter 3.
+We conducted experiments under different conditions to answer the formulated RQs. For the experiment, we prepared a dataset with three characteristics and models with three structures.
+Section 4.1 introduces the dataset and models used in our experiment and the reason they were selected.
+Section 4.2 presents a brief introduction to FGSM for generating adversarial examples and the reason it is was selected.
+Section 4.3 introduces each experimental process designed in section 3.
 
 \subsection{Datasets and Models}
 
 \subsubsection{Datasets}
 
-For the experiments, three dataset were used: CIFAR-10, CIFAR-100\cite{cifar}, and GTSRB\cite{gtsrb}.
-The CIFAR-10 consists of a total 60,000 data in 10 classes, each contains 6,000 data with 3 channels and \begin{math}{32\times 32}\end{math} size.
-Of these, 5,000 data are used for training and last data used for evaluation.
+For the experiments, three datasets, including CIFAR-10, CIFAR-100\cite{cifar}, and German traffic sign recognition benchmark(GTSRB)\cite{gtsrb}, were used.
+CIFAR-10 comprises 60,000 data in 10 classes, each containing 6,000 data with three channels and \begin{math}{32\times 32}\end{math} in size.
+Among these, 5,000 data were used for training, and the remaining were used for evaluation.
 
 \begin{figure}[H] 
 \includegraphics[width=13cm]{Definitions/cifar-datasets.png}
 \caption{CIFAR datasets.\label{cifar-datasets}}
 \end{figure} 
 
-You can see some data of CIFAR datasets in Figure~\ref{cifar-datasets}.
-The CIFAR-100 consists of a total 60,000 data in 100 classes, each contains 600 data with 3 channels and \begin{math}{32\times 32}\end{math} size. Of these, 500 data are used for training and last data used for evaluation.
-The CIFAR-10 and CIFAR-100 were used for experiment to answer RQ1, which corresponds to the most basic hypothesis established in our paper.
-This is due to the difference between CIFAR-10 and CIFAR-100. The CIFAR-10 has a large number of data for a small classes, which is likely for the model to learn features for each class.
-On the other hand, CIFAR-100 has a small number of data for many classes, so model is less likely to learn features for each class.
-If it is possible to identify the improvement of safety through adversarial training for datasets with these opposite characteristics, valid results can be seen for most training dataset with characteristics intermediate between CIFAR-10 and CIFAR-100. So, we used CIFAR datasets for the experiment.
+Figure~\ref{cifar-datasets} shows some CIFAR datasets.
+CIFAR-100 ccomprises 60,000 data in 100 classes, each class containing 600 data with three channels and \begin{math}{32\times 32}\end{math} in size. Among them, 500 data were used for training, and the remaining were used for evaluation.
+CIFAR-10 and CIFAR-100 were used for the experiment to answer RQ1, which corresponds to the most basic hypothesis established herein.
+This is due to the difference between CIFAR-10 and CIFAR-100. CIFAR-10 has a large number of data for small classes, which is likely for the model to learn features for each class.
+Conversely, CIFAR-100 has a small number of data for many classes, so the model is less likely to learn features for each class.
+If it is possible to identify the improvement of safety through adversarial training for datasets with these opposite characteristics, valid results can be seen for most training datasets with characteristics intermediate between CIFAR-10 and CIFAR-100. Thus, we used CIFAR datasets for the experiment.
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/gtsrb-dataset.png}
 \caption{GTSRB.\label{gtsrb-dataset}}
 \end{figure} 
 
-The GTSRB(German Traffic Sign Recognition Benchmark) is a German traffic sign dataset. It consists of more than 50,000 data with 43 classes.
-The difference between GTSRB and CIFAR datasets is that the number of data corresponding to each class is not uniform.
-You can see some data of GTSRB in Figure~\ref{gtsrb-dataset}.
+The German Traffic Sign Recognition Benchmark GTSRGB is a German traffic sign dataset. It comprises more than 50,000 data under 43 classes.
+The difference between GTSRB and CIFAR datasets is the number of data corresponding to each class.
+Figure~\ref{gtsrb-dataset} shows some GTSRB data.
 The dataset used for applicable AI training has some of this data bias.
-Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of model through adversarial training for dataset in which the number of data is not uniform for each class, we can get valid results for other dataset.
+Thus, we selected GTSRB because we assume if it is possible to identify the safety improvement of a model through adversarial training for datasets in which the number of data is not uniform for each class, we can get valid results for other datasets.
 Another reason for selecting GTSRB is that it is closely related to safety.
 
 \subsubsection{Models}
 
-In the paper, three models of different structures were used to understand the effect of adversarial training through data augmentation on safety performance regardless of network structure.
-LeNet\cite{lenet} is a classical CNN  structured model introduced in 1998 and features better performance compared to its simple structure.
-LeNet has the simplest structure among the models used in the experiment, it was used to understand the effect of the model of the simple structure.
-ResNet18\cite{resnet} and VGG16\cite{vgg} are the most well-known and widely used models for classification, and their performance has also been proven through ILSVRC(ImageNet Large Scale Visual Recognition Challenge).
-VGG16, although it came in second in the 2014 competition, is more popular than the winning model GoogLeNet for its simplicity and ease of use.
-ResNet18 is a model that won the 2015 competition with the additional of Residual blocks to VGGNet.
-We selected two models with guaranteed classification performance through the competition prize for experiments.
-ResNet18 is chosen because it has complex structure and VGG16 has a structure that is intermediate between ResNet18 and LeNet.
+Herein, three models with different structures were applied to understand the effect of adversarial training through data augmentation on safety performance regardless of the network structure.
+LeNet\cite{lenet} is a classical convolutional neural network-structured model developed in 1998 and features better performance when compared when its simple structure.
+LeNet has the simplest structure among the models used in the experiment herein. It was used to understand the effect of simple structured model.
+ResNet18\cite{resnet} and VGG16\cite{vgg} are the most well-known and widely used models for classification, and their performance has also been proven through ImageNet large scale visual recognition challenge.
+Although VGG16 came second in the 2014 competition, it is more popular than the winning model GoogLeNet because of its simplicity and ease of use.
+ResNet18 won the 2015 competition with the addition of Residual blocks to VGGNet.
+Herein, we selected two models with guaranteed classification performance through the competition prize for experiments.
+ResNet18 was chosen because it has a complex structure, and VGG16 has a structure intermediate between ResNet18 and LeNet.
 For LeNet, we directly implemented the model by referring to the paper and used it.
-For ResNet18 and VGG16, the model defined in {\it "torchvision.models"} of PyTorch\cite{pytorch}, one of the deep learning frameworks used for Python, was used.
-Each model didn't go through a seperate finetune process, and the rest of the hyper parameters were used under the same conditions, except for epoch.
-The reason the same conditions were set without additional adjustment is that this paper does not aim for model to produce optimal performance.
-Moreover, adjustment of model structure and hyper parameters can make better performance through multiple training and evaluation processes, but it needs a lot of resources and does not help much for the safety of AI.
-However, for epoch, the first time when the accuracy exceeds 90\% in training within the maximum range of 30. This is because the structures of used models are all different, when experiments are conducted with the same epoch, overfitting occurs in some models.
+For ResNet18 and VGG16, models defined in {\it "torchvision.models"} of PyTorch\cite{pytorch}, one of the deep learning frameworks used for Python, were used.
+The models were not separately finetuned, and the rest of the hyperparameters were used under the same conditions, except for epoch.
+The same conditions were set without additional adjustment because we did not consider models producing optimal performance.
+Moreover, adjusting the model structure and hyperparameters can result in better performance through multiple training and evaluation processes, but it needs several resources and does not help much for AI safety.
+However, for the epoch, the accuracy exceeded 90\% in training within the maximum range of 30. This is because the structures of the used models are different; hence, when experiments were conducted with the same epoch, overfitting occurred in some models.
 
-\subsection{Fast Gradient Sign Method(FGSM)}
+\subsection{FGSM}
 
-We assumed that the safety of AI is how well it classifies adversarial examples that mentioned in chapter 3.
-To do this, it is necessary to generate adversarial examples. Among several adversarial attack methods to generate adversarial examples, we used the FGSM proposed by \cite{adversarial-goodfellow}.
-Because FGSM generates adversarial examples by using gradient in the training process, it is necessary to train at least once with the dataset which we want to generate adversarial examples.
-So, for the generating adversarial examples, we used LeNet, which has a relatively simple structure and does not require much time to learn in our paper.
+We assume that the safety of AI is how well it classifies adversarial examples mentioned in section 3.
+Hence, it is necessary to generate adversarial examples. Among several adversarial attack methods to generate adversarial examples, we used FGSM\cite{adversarial-goodfellow}.
+Because FGSM generates adversarial examples using gradient in the training process, it is necessary to train at least once with the dataset that we want to generate adversarial examples.
+Thus, to generate adversarial examples, we used LeNet, which has a relatively simple structure and does not require much time to learn in our paper.
 
 \begin{figure}[H] 
 \includegraphics[width=13cm]{Definitions/fgsm.png}
-\caption{Process of generating adversarial examples with FGSM. Image taken from \cite{adversarial-goodfellow}\label{fgsm}}
+\caption{Process of generating adversarial examples with FGSM. Image adapted from \cite{adversarial-goodfellow}\label{fgsm}}
 \end{figure} 
 
-As shown in Figure~\ref{fgsm}, adversarial examples are generated using the gradient change that occurred during the training process.
-At this time, \begin{math}\epsilon\end{math} is used to determine the degree of adversarial attack by reflecting the slope value.
-In this paper, 0.05 and 0.1 were used as \begin{math}\epsilon\end{math}s. The failure to use values above 0.1 is due to the observation of human-observable transformation points in adversarial examples.
-Therefore, if a value greater than 0.1, it can no longer serve as a adversarial example, so two types of \begin{math}\epsilon\end{math}s are used to generate adversarial examples.
-In \cite{adversarial-goodfellow}, adversarial examples were applied only to the evaluation data to confirm the effect of adversarial examples, but in our paper, training data were also to create adversarial examples because adversarial examples should be used for training.
+As shown in Figure~\ref{fgsm}, adversarial examples were generated using the gradient change that occuring during the training process.
+At this time, \begin{math}\epsilon\end{math} was used to determine the degree of adversarial attack by reflecting the slope value.
+Herein, 0.05 and 0.1 were used as \begin{math}\epsilon\end{math}. Failure to use values above 0.1 is due to the observation of human-observable transformation points in adversarial examples.
+Thus, if the value is greater than 0.1, it can no longer serve as an adversarial example. Therefore, two types of \begin{math}\epsilon\end{math} are used to generate adversarial examples.
+In \cite{adversarial-goodfellow}, adversarial examples were applied only to the evaluation data to confirm the effect of adversarial examples. Nevertheless, herein, the training data were also to create adversarial examples because adversarial examples should be used for training.
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/adversarial-dataset.png}
 \caption{Examples of adversarial examples.\label{adversarial-examples}}
 \end{figure} 
 
-Through this method, as shown in Figure~\ref{adversarial-examples}, adversarial examples were generated for all data of CIFAR-10, CIFAR-100, and GTSRB to be used in the experiments.
-In this paper, the training data and evaluation data which the adversarial attack is applied will be referred to as {\it adversarial training data} and {\it adversarial evaluation data}.
-The generated adversarial training data are randomly extracted at a certain ratio and mixed with the original training data to be used for training.
-And the adversarial evaluaion data are used for experiments to measure the safety.
+Through this method, as shown in Figure~\ref{adversarial-examples}, adversarial examples were generated for all CIFAR-10, CIFAR-100, and GTSRB data to be used for experiments.
+In this paper, the training and evaluation data, to which the adversarial attack is applied, are referred to as {\it adversarial training} and {\it evaluation data}.
+The generated adversarial training data were randomly extracted at a certain ratio and mixed with the original training data to be used for training, and the adversarial evaluation data were used for experiments to evaluate the safety.
 
 \subsection{Methodology}
 
-We did experiments on the PC with Ubuntu 18.04 OS that had consisted of 4.20GHz Intel(R) i7-7700K CPU, 64GB RAM, and NVIDIA Titan XP 12GB GPU.
+We conducted the experiments using a PC with Ubuntu 18.04 OS, 4.20GHz Intel(R) i7-7700K CPU, 64GB RAM, and NVIDIA Titan XP 12GB GPU.
 
-The models used in the experiment have hyper parameters set to a batch size of 64, learning rate of 0.001, momentum of 0.9, CrossEntropy as loss functions and SGD as optimization functions, respectively.
+The models used in the experiment have hyperparameters set to a batch size of 64, a learning rate of 0.001, a momentum of 0.9, CrossEntropy as loss functions, and SGD as optimization functions.
 
-Figure~\ref{methodology} is picture of the experimental process carried out in the paper.
+Figure~\ref{methodology} shows picture of the experimental procedure.
 
 \begin{figure}[H]
 \includegraphics[width=13 cm]{Definitions/methodology.png}
-\caption{Experimental methodology\label{methodology}}
+\caption{Experimental procedure\label{methodology}}
 \end{figure} 
 
-The experiment is mainly divided into two stages.
-The first step is data preparation. 
-We generate the adversarial dataset by applying FGSM in 4.2 to the original dataset we have.
-At this time, the adversarial attack is applied not only to the evalutation data but also to the training data.
-The generated adversarial training data has to go through one more process of mixing data.
-We generate mixed training data by randomly extracting the data from the original training data and the adversarial training data according to the specified ratio while preserving total number of training data same with total number of original training data.
-At this time, 4 different mixing ratios were used as shown in Figure~\ref{methodology} 1-2.
-The mixed training data, original evaluation data, and adversarial data generated through this step are used in the model training and evaluation step.
+The experiment was mainly divided into two stages.
+The first step was data preparation. 
+We generated the adversarial dataset by applying FGSM in 4.2 to the original dataset.
+At this time, the adversarial attack was applied not only to both the evalutation data and training data.
+The generated adversarial training data were subjected to one more process data mixing process.
+We generated mixed training data by randomly extracting the data from the original training data and the adversarial training data according to the specified ratio while preserving the total number of training data the same as the total number of original training data.
+At this time, from mixing ratios were used(Figure~\ref{methodology} 1-2).
+The mixed training data, original evaluation data, and adversarial data generated through this step were used in the model training and evaluation step.
 
-The second step is to train and evaluate the models.
-The mixed training data generated in the previous step is used for training.
-By using the mixed training data for the model set with the afrorementioned hyperparameters, the training proceeds to the epoch in which the accuracy measured during the training process exceeds 90\%.
-If the training accuracy does not reach 90\% until the 30 epoch is reached, the 30 epoch model is used for evalutaion.
-The trained model evaluates the accuracy using the original evaluation data and the safetty using the adversarial evaluation data.
+The second step involves training and evaluating the models.
+The mixed training data generated in the previous step was used for training.
+Using the mixed training data for the model set with the aforementioned hyperparameters, the training proceeded to the epoch in which the accuracy measured during the training process exceeded 90\%.
+If the training accuracy does not reach 90\% until the 30 epoch is reached, the 30 epoch model is used for evaluation.
+The trained model evaluates the accuracy and safety using the original evaluation and the adversarial evaluation data, respectively.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 여기
 \section{Experimental Results and Discussions}
 
 In this paper, we hypothesized that adversarial training could significantly improve safety while minimizing the impact on performance, And we designed the experiments to prove this assumptions.
