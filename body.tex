@@ -611,7 +611,6 @@ The accuracy and safety significantly differ by 68\%(LeNet), 38\%(ResNet18), and
 This confirms that the models were well trained on the original GTSRB and were vulnerable to adversarial examples.
 From the previous experimental results, comparing the 0-model and 20-model, the effect of adversarial training on accuracy and safety was confirmed.
 Comparing the GTSRB 0- and 20-model, we found that they were most affected by adversarial training in the used dataset.
-% THINK :: 이 부분을 그래프 해석에서 각 그래프에 대해서 진행하는 것이 나을까 ?
 To show this, the average of differences in accuracy and safety between 0- and 20-model for each network was calculated in each dataset.
 In the case of CIFAR-10, the accuracy of LeNet and ResNet18 decreased by an average of 3\% and 2.5\%, and the safety increased by an average of 27\% and 35\%, respectively.
 Also, the accuracy of VGG16 decreased by an average of 4.5\%, and the safety increased by an average of 24.5\%.
